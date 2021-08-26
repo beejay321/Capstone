@@ -1,0 +1,19 @@
+#searchSection {
+  display: flex;
+  align-items: center;
+  min-height: 70vh;
+  background: rgb(226, 226, 226);
+}
+
+#howItWorksSection {
+  display: flex;
+  align-items: center;
+  min-height: 45vh;
+  /* background: rgb(211, 206, 206); */
+}
+.categoryButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* background: rgb(211, 206, 206); */
+}

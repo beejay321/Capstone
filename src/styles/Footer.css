@@ -1,0 +1,20 @@
+#footer {
+  /* position: fixed;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  bottom: 0;
+  width: 100%; */
+  /* Height of the footer*/
+  /* height: 200px; */
+  background: rgb(207, 207, 207);
+}
+.footerbox {
+  /* position: fixed; */
+  /* padding: 0px 48px 0px 48px; */
+  /* margin: 48px 48px 48px 48px; */
+  bottom: 0;
+  /* width: 100%; */
+  /* Height of the footer*/
+  /* height: 200px; */
+  /* background: rgb(207, 207, 207); */
+}

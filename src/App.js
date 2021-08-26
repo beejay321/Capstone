@@ -8,6 +8,7 @@ import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
 import Dashboard from "./components/DashBoard";
 import DetailPage from "./components/detailPage";
+import Register from "./components/Register";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" exact component={LandingPage} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/login" exact render={(routerProps) => <Login />} />
+        <Route path="/register" exact render={(routerProps) => <Register />} />
         <Route render={(routerProps) => <DetailPage title="DETAILS" {...routerProps} />} path="/details/:projectId" />
         {/* <Login /> */}
         <Footer />
