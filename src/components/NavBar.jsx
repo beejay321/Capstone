@@ -1,61 +1,57 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Navbar, Nav, Col, Row } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
-import MyLoginModal from "./Login";
+import LoginModal from "./LoginModal";
 import "../styles/Login.css";
 
-const NavBar = () => {
-  const [modalShow, setModalShow] = React.useState(false);
+const NavBar = (props) => {
+  const [LoggedIn, setLoggedIn] = useState(false);
+
+  const check = () => {
+    console.log(props);
+  };
 
   return (
     <>
-      {/* <Navbar bg="dark" variant="dark">
-        <Container>
-          <Nav className="me-auto">
-            <Link to="/">
-              <Nav.Link href="#home">Navbar</Nav.Link>
-            </Link>
-            <Link to="/howitworks">
-              <Nav.Link href="#howItWorks"> About Us</Nav.Link>
-            </Link>
-            <Link to="/dashboard">
-              <Nav.Link href="#dashboard">Find Projects</Nav.Link>
-            </Link>
-          </Nav>
-        </Container>
-      </Navbar> */}
+      <Navbar>
+        {/* <Navbar.Brand href="#home" onClick={check}>
+          Navbar with text
+        </Navbar.Brand> */}
 
-      <div className =" navBar pt-3">
-        <Container >
-          <Row className="d-flex justify-content-between">
-            <Col xs={8} md={3}>
-              <div className="d-flex justify-content-between">
-                <Link to="/">
-                  <p href="#home">Navbar</p>
-                </Link>
-                <Link to="/howitworks">
-                  <p href="#home">About Us</p>
-                </Link>
-                <Link to="/dashboard">
-                  <p href="#home">Find Projects</p>
-                </Link>
-              </div>
-            </Col>
-            <Col xs={8} md={2}>
-              <div className="d-flex justify-content-between">
-                <Link to="/register">
-                  <p href="#home">Register Your Skill</p>
-                </Link>
-        
-                <p onClick={() => setModalShow(true)} href="#dashboard">
-                  Login
-                </p>
-                {/* <MyLoginModal className="loginModal" show={modalShow} onHide={() => setModalShow(false)} /> */}
-              </div>
-            </Col>
-          </Row>
+        <Container>
+          <Link to="/">
+            <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
+          </Link>
+          <Link to="/">
+            <Nav.Link href="#home">Home</Nav.Link>
+          </Link>
+          <Link to="/aboutUs">
+            <Nav.Link href="#howItWorks"> About Us</Nav.Link>
+          </Link>
+          <Link to="/dashboard">
+            <Nav.Link href="#dashboard">Find Projects</Nav.Link>
+          </Link>
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end">
+            <Link to="/register">
+              <Nav.Link href="#register">Register Your Skill</Nav.Link>
+            </Link>
+
+            {LoggedIn ? (
+              <Link to="/myProfile">
+                <Navbar.Text>
+                  Signed in as: <a href="#login">Mark Otto</a>
+                </Navbar.Text>
+              </Link>
+            ) : (
+              // <LoginModal name="Login" props={props} />
+              <Link to="/login">
+                <Nav.Link href="#login">Login</Nav.Link>
+              </Link>
+            )}
+          </Navbar.Collapse>
         </Container>
-      </div>
+      </Navbar>
     </>
   );
 };

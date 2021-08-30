@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Container, Row, Button, Form, Col, Image, FormControl } from "react-bootstrap";
+import { Link, withRouter } from "react-router-dom";
 import DetailPage from "./detailPage";
 import MyLoginModal from "./Login";
-import LoginModal from ""
+import LoginModal from "./LoginModal";
 import "../styles/Register.css";
 
 const Register = (routerProps) => {
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = useState(false);
+  const [LoggedIn, setLoggedIn] = useState(true);
 
   return (
     <>
@@ -20,19 +22,22 @@ const Register = (routerProps) => {
               <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed </h3>
             </div>
             <div className=" py-2 registerSection">
-              <MyLoginModal show={modalShow} onHide={() => setModalShow(false)} />
-              <AddPostModal
-            //   handleChange={this.handleChange}
-            //   submitPost={this.submitPost}
-            //   text={this.state.new.text}
-            //   id={this.state.new}
-            //   selectImage={this.selectImage}
-            //   close={this.state.modalDisappear}
-            />
+              {/* <MyLoginModal show={modalShow} onHide={() => setModalShow(false)} /> */}
+              {/* <LoginModal name="Register your skill" props= {routerProps} /> */}
 
-              {/* <Button variant="success" id="button-addon2">
-                Register your skill
-              </Button> */}
+              {LoggedIn ? (
+                <Link to="/myProfile">
+                  <Button variant="success" id="button-addon2">
+                    Register your skill
+                  </Button>
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <Button variant="success" id="button-addon2">
+                    Register your skill
+                  </Button>
+                </Link>
+              )}
             </div>
           </Row>
         </Container>
