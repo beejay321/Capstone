@@ -37,6 +37,7 @@ export const loggedInAction = (user) => {
         localStorage.setItem("accessToken", json.accessToken);
         localStorage.setItem("refreshToken", json.refreshToken);
         localStorage.setItem("username", json.username);
+        localStorage.setItem("id", json._id);
         dispatch({
           type: "LOGGED_IN",
           payload: true,
@@ -45,7 +46,7 @@ export const loggedInAction = (user) => {
           type: "GET_USERNAME",
           payload: json.username,
         });
-        alert("successfully logged in");
+        // alert("successfully logged in");
       } else {
         console.log("there is an error");
       }
