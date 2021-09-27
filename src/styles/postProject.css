@@ -1,0 +1,12 @@
+.postProjectSection {
+  background-color: rgb(163, 118, 118);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  /* margin-right: 0px; */
+}
+
+.postProjectForm {
+  background-color: rgb(255, 255, 255);
+  padding: 50px;
+  border-radius: 10px;
+}

@@ -15,7 +15,7 @@ const MyProjects = (props) => {
   useEffect(() => {
     const getProfile = async () => {
       try {
-        let response = await fetch(`http://localhost:3255/users/me`, {
+        let response = await fetch(`http://localhost:3255/users/6128d7f565384b4ca09f9406`, {
           method: "GET",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -24,14 +24,8 @@ const MyProjects = (props) => {
         if (response.ok) {
           let data = await response.json();
           console.log(data);
-          // console.log(user);
-          // console.log(user.skills);
-          // console.log(user.languages);
-          // setProfile(user);
           setUser(data);
           console.log(user);
-          // setSkills(data.skills);
-          // setLanguage(data.languages);
           setProject(data.projects);
         }
       } catch (error) {
@@ -53,34 +47,44 @@ const MyProjects = (props) => {
           {/* <div className="  mt-5 d-flex justify-content-center ">
             <p>No Projects Yet</p>
           </div> */}
-          <div className=" mx-2 d-flex justify-content-between ">
-            <div className="py-1  my-1 summaryBox ">
-              <span>Web Design</span>
+          {props.projects &&
+            props.projects.map((p) => {
+              // <Link to={`/details/${p._id}`}>
+              <Link to={`/details/614daaf05a7f4f615c11f748`}>
+                <div className=" mx-2 d-flex justify-content-between ">
+                  <div className="py-1  my-1 summaryBox ">
+                    <span>{p.title}</span>
+                  </div>
+                  <div className="py-1  my-1  ">
+                    <span>{p.summary} </span>
+                  </div>
+                  <div className=" py-1  my-1  ">
+                    <span>Germany</span>
+                  </div>
+                  {/* <div className=" py-1  my-1  ">
+                  <Button></Button>
+                </div> */}
+                </div>{" "}
+                ;
+              </Link>;
+            })}
+
+          <Link to={`/details/614daa143b03bf280c66cef1`}>
+            <div className=" mx-2 d-flex justify-content-between ">
+              <div className="py-1  my-1 summaryBox ">
+                <span>Logo Design</span>
+              </div>
+              <div className="py-1  my-1  d-flex justify-content-start ">
+                <span>A logo for my business</span>
+              </div>
+              <div className=" mt-1  ">
+                <span>Italy</span>
+              </div>
+              <div className=" py-1  my-1  ">
+                <Button></Button>
+              </div>
             </div>
-            <div className="py-1  my-1  ">
-              <span>I need to design a logo for my wedding. </span>
-            </div>
-            <div className=" py-1  my-1  ">
-              <span>Location</span>
-            </div>
-            <div className=" py-1  my-1  ">
-              <Button></Button>
-            </div>
-          </div>
-          <div className=" mx-2 d-flex justify-content-between ">
-            <div className="py-1  my-1 summaryBox ">
-              <span>Spanish lesson</span>
-            </div>
-            <div className="py-1  my-1  d-flex justify-content-start ">
-              <span>I need an Spanish teacher for 1 month</span>
-            </div>
-            <div className=" mt-1  ">
-              <span>Location</span>
-            </div>
-            <div className=" py-1  my-1  ">
-              <Button></Button>
-            </div>
-          </div>
+          </Link>
           {/* {projects.map((p) => (
             // <Col xs={3}>
             <div className=" projectBox">

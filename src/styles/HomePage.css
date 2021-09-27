@@ -1,8 +1,14 @@
-#searchSection {
+.searchSection {
   display: flex;
+  /* justify-content: center; */
   align-items: center;
   min-height: 70vh;
   background: rgb(226, 226, 226);
+}
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
 }
 
 #howItWorksSection {
@@ -11,9 +17,14 @@
   min-height: 45vh;
   /* background: rgb(211, 206, 206); */
 }
-.categoryButtons {
+.homeButtonsSection {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: space-between;
-  /* background: rgb(211, 206, 206); */
+}
+
+.homeButtons {
+  width: 50%;
+  border-radius: 20px;
+  /* justify-content: center; */
 }

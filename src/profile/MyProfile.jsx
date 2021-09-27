@@ -24,7 +24,7 @@ const MyProfile = (props) => {
   useEffect(() => {
     const getProfile = async () => {
       try {
-        let response = await fetch(`http://localhost:3255/users/me`, {
+        let response = await fetch(`http://localhost:3255/users/6128d7f565384b4ca09f9406`, {
           method: "GET",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -151,7 +151,7 @@ const MyProfile = (props) => {
             </Row>
           </Col>
           <Col xs={7} className="mx-5">
-            {client && <MyProfileCard title="Projects" user={user} content={<MyProjects title="Projects" user={user} />} />}
+            {client && <MyProfileCard title="Projects" user={user} content={<MyProjects title="Projects" projects={projects} user={user} />} />}
             <div className="my-3 py-2 px-1 summaryBox " style={{ minHeight: "15rem" }}>
               <div className="mx-2 ">
                 <h4>Reviews</h4>

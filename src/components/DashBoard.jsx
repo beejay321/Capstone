@@ -123,7 +123,7 @@ class Dashboard extends React.Component {
           <Row>
               <Row className=" pt-5">
 
-                {this.state.projects.map((p) => (
+                {this.state.projects && this.state.projects.map((p) => (
                   <Col xs={3} className="py-3">
                     <div className=" projectBox">
                       <Link to={`/details/${p._id}`}>
@@ -158,9 +158,9 @@ class Dashboard extends React.Component {
                       <div className=" mt-1  ">
                         <span>{p.location}</span>
                       </div>
-                      <div className=" mt-2 ">
+                      {/* <div className=" mt-2 ">
                         <span>€{p.price}</span>
-                      </div>
+                      </div> */}
                     </div>
                   </Col>
                 ))}
