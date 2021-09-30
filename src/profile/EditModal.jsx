@@ -14,46 +14,12 @@ const EditModal = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const login = async (event) => {
-    const form = event.currentTarget;
-
-    try {
-      const details = {
-        email: username,
-        password: password,
-      };
-      const res = await fetch(`http://localhost:3255/users/login`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(details),
-      });
-
-      if (res.ok) {
-        setValidated(true);
-        const json = await res.json();
-        localStorage.setItem("accessToken", json.accessToken);
-        localStorage.setItem("refreshToken", json.refreshToken);
-        localStorage.setItem("username", json.username);
-        setLoggedIn(true);
-        setShow(false);
-        alert("successfully logged in");
-        console.log(props);
-        // props.history.push("/dashboard");
-      } else {
-        alert("Credentials are incorrect");
-      }
-    } catch (error) {
-      console.log(error);
-      alert(error);
-    }
-  };
+  
 
   return (
     <>
       <Button variant="primary" id="button-addon2" onClick={handleShow}>
-        Edit 
+        Add 
         {/* {props.title} */}
       </Button>
 

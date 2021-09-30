@@ -15,6 +15,8 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
+const ADDRESS = "http://localhost:3255";
+
 const BidModal = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +29,7 @@ const BidModal = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const login = async (event) => {
+  const bid = async (event) => {
     const form = event.currentTarget;
     // if (form.checkValidity() === false) {
     //   event.preventDefault();
@@ -35,31 +37,26 @@ const BidModal = (props) => {
     // }
 
     try {
-      const details = {
-        email: username,
-        password: password,
+      const bidetails = {
+        message: message,
+        cost: cost,
+        duration: duration,
       };
-      const res = await fetch(`http://localhost:3255/users/login`, {
+      const response = await fetch(`${ADDRESS}/projects/${props.match.params.projectId}/bids`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
-        body: JSON.stringify(details),
+        body: JSON.stringify(bidetails),
       });
 
-      if (res.ok) {
-        setValidated(true);
-        const json = await res.json();
-        localStorage.setItem("accessToken", json.accessToken);
-        localStorage.setItem("refreshToken", json.refreshToken);
-        localStorage.setItem("username", json.username);
-        setLoggedIn(true);
+      if (response.ok) {
+        console.log(response);
+        alert("bid successful");
         setShow(false);
-        alert("successfully logged in");
-        // console.log(routerProps);
-        // routerProps.history.push("/dashboard");
       } else {
-        alert("Credentials are incorrect");
+        alert("bid unsuccessful");
       }
     } catch (error) {
       console.log(error);
@@ -95,7 +92,7 @@ const BidModal = (props) => {
             <Form.Group className="mb-4" controlId="duration">
               <Form.Label>How long will it take you to deliver?</Form.Label>
 
-              <Form.Control required value={cost} onChange={(e) => setCost(e.target.value)} type="text" placeholder="1 day" />
+              <Form.Control required value={duration} onChange={(e) => setDuration(e.target.value)} type="text" placeholder="1 day" />
               <Form.Control.Feedback type="invalid">Please enter your duration.</Form.Control.Feedback>
             </Form.Group>
           </Form>
@@ -105,7 +102,7 @@ const BidModal = (props) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={bid}>
             Save Changes
           </Button>
         </Modal.Footer>

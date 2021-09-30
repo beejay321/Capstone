@@ -14,3 +14,16 @@
   border: none;
   background-color: rgb(233, 232, 232);
 }
+.profileImageDiv {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profileImage {
+  width: auto;
+  height: 100%;
+}

@@ -56,9 +56,11 @@ function App() {
         <Route path="/createService" render={(routerProps) => <CreateService {...routerProps} />} />
         <Route path="/users/me" render={(routerProps) => <MyProfile {...routerProps} />} />
         <Route path="/chat" render={(routerProps) => <ChatBox {...routerProps} />} />
+        <Route path="/checkout/:projectId" render={(routerProps) => <Checkout {...routerProps} />} />
+        {/* <Route path="/checkout/:projectId/:bidId" render={(routerProps) => <Checkout {...routerProps} />} /> */}
+
         {/* <Route path="/myProjects" render={(routerProps) => <MyProjects {...routerProps} />} /> */}
-        {/* <Route path="/myCart" render={(routerProps) => <MyCart {...routerProps} />} />
-        <Route path="/checkout" render={(routerProps) => <Checkout {...routerProps} />} />*/}
+        {/* <Route path="/myCart" render={(routerProps) => <MyCart {...routerProps} />} />*/}
         {/* <Login /> */}
         <Footer />
       </Router>

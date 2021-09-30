@@ -24,7 +24,7 @@ const FreelancerProfile = (props) => {
   const [client, setClient] = useState(false);
   const [freelancer, setFreelancer] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState(null);
-  const [chatHis, setchatHis] = useState(null);
+  const [roomHistory, setRoomHistory] = useState(null);
   const [chats, setChats] = useState(null);
   const [dataSource, setDataSource] = useState(null);
 
@@ -33,8 +33,7 @@ const FreelancerProfile = (props) => {
   useEffect(() => {
     const getProfile = async () => {
       try {
-        // let response = await fetch(`http://localhost:3255/users/${props.match.params.projectId}`, {
-        let response = await fetch(`http://localhost:3255/users/6128d2ae65384b4ca09f9404`, {
+        let response = await fetch(`${ADDRESS}/users/${props.match.params.id}`, {
           method: "GET",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -58,11 +57,11 @@ const FreelancerProfile = (props) => {
 
   const id = localStorage.getItem("id");
 
-  const setRoomForUser = async (user) => {
+  const createRoom = async (user) => {
     console.log("user");
     const accessTokenn = localStorage.getItem("accessToken");
-    console.log(accessTokenn);
-    const response = await fetch(`${ADDRESS}/room/user/6128d2ae65384b4ca09f9404`, {
+    // console.log(accessTokenn);
+    const response = await fetch(`${ADDRESS}/room/user/${props.match.params.id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -72,56 +71,26 @@ const FreelancerProfile = (props) => {
       const room = await response.json();
       console.log("room:", room);
       if (room._id) {
-        //     console.log("u:", u);
         console.log("id:", id);
-        const test = room.members.filter((item) => {
-          if (item._id !== id) return item.username;
-        });
-        const roomName = room.members.filter((item) => item._id !== id);
-        console.log("roomName:", roomName);
 
-        setSelectedRoom(null);
-        setSelectedRoom({ ...room, title: roomName[0].username });
-        setSelectedRoom(roomName[0]);
-        setchatHis(room.chatHistory);
+        setSelectedRoom(room);
+        setRoomHistory(room.chatHistory);
       }
     }
   };
 
-  const setRoom = async (room) => {
+  const continueRoom = async (room) => {
     setSelectedRoom(room);
-    setchatHis([]);
+    setRoomHistory([]);
     console.log("room:", room);
-    const response = await fetch(`${ADDRESS}/room/history/`);
+    const response = await fetch(`${ADDRESS}/room/history/${selectedRoom.id}`);
     const { chatHistory } = await response.json();
-    setchatHis(chatHistory);
-  };
-
-  const getRooms = async () => {
-    const response = await fetch(`${ADDRESS}/users/me/chats`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    });
-    const data = await response.json();
-    setChats(data);
-    const chatsNames = data.map((item) => {
-      return {
-        ...item,
-        title: item.members.map((item) => {
-          if (item._id !== id) return item.username;
-        }),
-      };
-      // return { ...item, onClick: setRoom }
-    });
-    console.log("chatsNames:", chatsNames);
-    setDataSource(chatsNames);
+    setRoomHistory(chatHistory);
   };
 
   const showChatBox = () => {
     setShowChat(true);
-    setRoomForUser();
+    createRoom();
   };
 
   return (
@@ -132,8 +101,10 @@ const FreelancerProfile = (props) => {
         <Row className="">
           <Col xs={3} className="    ">
             <Row className=" my-3 py-4 profileColumn">
-              <div className=" pb-2 d-flex justify-content-center">
-                <Image src={user.picture} fluid roundedCircle />
+              <div className="  pb-2 d-flex justify-content-center">
+                <div className="  profileImageDiv ">
+                  <Image className="profileImage" src={user.picture} fluid />
+                </div>
               </div>
               <div className=" d-flex justify-content-center">
                 <h5>{user.firstname}</h5>
@@ -146,14 +117,14 @@ const FreelancerProfile = (props) => {
                 <p className="">{user.location}</p>
               </div>
 
-              {/* {language.map((l) => ( */}
+              {language && language.map((l) => (
               <div className=" py-1   ">
                 <span className="   ">
                   <strong>Language</strong>
                 </span>
                 <p className=" py-1  summaryBox ">{user.languages}</p>
               </div>
-              {/* ))} */}
+               ))} 
               <hr className=" my-1 " />
               <div className=" py-1   ">
                 <div className="  d-flex justify-content-between ">
@@ -208,7 +179,7 @@ const FreelancerProfile = (props) => {
             <MyProfileCard title="Publication" user={user} content={<PublicationCard title="Publication" loggedInUser={loggedInUser} user={user} />} />
           </Col>
           <Col xs={3} className="">
-            <ChatBox show={showChat} setShowChat={setShowChat} user={user} firstname={user.firstname} lastname={user.lastname} />
+            <ChatBox selectedRoom={selectedRoom} roomHistory={roomHistory} show={showChat} setShowChat={setShowChat} user={user} firstname={user.firstname} lastname={user.lastname} />
           </Col>
           {/* <ChatBox show={true} /> */}
         </Row>

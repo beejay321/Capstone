@@ -24,7 +24,7 @@ const MyProfile = (props) => {
   useEffect(() => {
     const getProfile = async () => {
       try {
-        let response = await fetch(`http://localhost:3255/users/6128d7f565384b4ca09f9406`, {
+        let response = await fetch(`http://localhost:3255/users/me`, {
           method: "GET",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -34,10 +34,10 @@ const MyProfile = (props) => {
           let data = await response.json();
           console.log(data);
           setUser(data);
-          console.log(user);
+          console.log(data.projects);
+          setProject(data.projects);
           setSkills(data.skills);
           setLanguage(data.languages);
-          setProject(data.projects);
         }
       } catch (error) {
         console.log(error);
@@ -90,9 +90,12 @@ const MyProfile = (props) => {
         <Row className="">
           <Col xs={3} className="    ">
             <Row className=" my-3 py-4 profileColumn">
-              <div className=" pb-2 d-flex justify-content-center">
-                <Image src={user.picture} fluid roundedCircle />
-              </div>
+             <div className="  pb-2 d-flex justify-content-center" >
+                <div className="  profileImageDiv ">
+                  <Image className="profileImage" src={user.picture}  fluid  />
+                 
+                </div>
+             </div>
               <div className=" d-flex justify-content-center">
                 <h5>{user.firstname}</h5>
                 <h5 className="px-2">{user.lastname}</h5>
@@ -104,14 +107,14 @@ const MyProfile = (props) => {
                 <p className="">{user.location}</p>
               </div>
 
-              {/* {language.map((l) => ( */}
+              {language && language.map((l) => (
               <div className=" py-1   ">
                 <span className="   ">
-                  <strong>Language</strong>
+                  <strong>Languages</strong>
                 </span>
                 <p className=" py-1  summaryBox ">{user.languages}</p>
               </div>
-              {/* ))} */}
+               ))}
               <hr className=" my-1 " />
               <div className=" py-1   ">
                 <div className="  d-flex justify-content-between ">
@@ -144,7 +147,7 @@ const MyProfile = (props) => {
             </Row>
 
             <Row className="  profileColumn">
-              <MyProfileCard title="Skills" content={<SkillsCard title="Skills" user={user} />} />
+              <MyProfileCard title="Skills" content={<SkillsCard title="Skills" skills = {skills} user={user} />} />
             </Row>
             <Row className=" my-3 profileColumn">
               <MyProfileCard title="Cert" content={<CertificationCard title="Cert" user={user} />} />

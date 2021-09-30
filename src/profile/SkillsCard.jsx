@@ -11,9 +11,9 @@ const SkillsCard = (props) => {
   const [skills, setSkills] = useState([]);
   const [language, setLanguage] = useState([]);
 
-  const editExperience = async () => {
+  const editSkill = async () => {
     try {
-      const response = await fetch(`http://localhost:3255/users/me/experience`, {
+      const response = await fetch(`http://localhost:3255/users/me/skills`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -41,11 +41,22 @@ const SkillsCard = (props) => {
           {!props.loggedInUser && <EditModal title={props.title} />}
         </div>
         <hr className=" my-2 " />
-        <div>
-          <p>Graphic design</p>
-          <p>Photoshop</p>
-          <p>Adobe Indesign</p>
-        </div>
+        {props.skills ? (
+          <div>
+            {props.skills &&
+              props.skills.map((skill) => (
+                <div>
+                  <p>{skill}</p>
+                  <p>Photoshop</p>
+                  <p>Adobe Indesign</p>
+                </div>
+              ))}
+          </div>
+        ) : (
+          <div className="  mt-5 d-flex justify-content-center ">
+            <p>No Skills Yet</p>
+          </div>
+        )}
       </div>
     </>
   );
