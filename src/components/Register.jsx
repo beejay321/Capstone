@@ -5,10 +5,11 @@ import DetailPage from "./detailPage";
 import MyLoginModal from "./Login";
 import LoginModal from "./LoginModal";
 import "../styles/Register.css";
+import { propTypes } from "react-bootstrap/esm/Image";
 
 const Register = (routerProps) => {
   const [modalShow, setModalShow] = useState(false);
-  const [LoggedIn, setLoggedIn] = useState(true);
+  const [LoggedIn, setLoggedIn] = useState(false);
 
   return (
     <>
@@ -25,19 +26,14 @@ const Register = (routerProps) => {
               {/* <MyLoginModal show={modalShow} onHide={() => setModalShow(false)} /> */}
               {/* <LoginModal name="Register your skill" props= {routerProps} /> */}
 
-              {LoggedIn ? (
-                <Link to="/myProfile">
-                  <Button variant="success" id="button-addon2">
-                    Register your skill
-                  </Button>
-                </Link>
-              ) : (
-                <Link to="/login">
-                  <Button variant="success" id="button-addon2">
-                    Register your skill
-                  </Button>
-                </Link>
-              )}
+              <Button
+                variant="success"
+                id="button-addon2"
+                // onClick={LoggedIn ? () => routerProps.history.push("/createService") : () => routerProps.history.push("/login")}
+                onClick={() => routerProps.history.push("/createService")}
+              >
+                Register your skill
+              </Button>
             </div>
           </Row>
         </Container>

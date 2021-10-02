@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import { Card, Container, Row, Button, Form, Col, InputGroup, FormControl, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
@@ -19,29 +20,31 @@ import Login from "./components/Login";
 import Checkout from "./components/checkout";
 import PostProject from "./components/postProjects";
 import FreelancerProfile from "./profile/freelancerProfile";
+import PayPal from "./components/PayPal";
 
 function App() {
   const [LoggedIn, setLoggedIn] = useState(false);
   const [sellerLoggedIn, setSellerLoggedIn] = useState(false);
   const [user, setUser] = useState("");
-
-  useEffect(() => {
-    const login = async () => {
-      try {
-        // let response = await fetch(`http://localhost:3255/projects/${match.params.projectId}`);
-        // console.log(response);
-        // let result = await response.json();
-        // console.log(result);
-        // setUser("result");
-      } catch (error) {
-        console.log("error");
-      }
-    };
-    login();
-  }, []);
+  const [checkout, setCheckOut] = useState(false);
 
   return (
     <>
+      {/* {checkout ? (
+        <PayPal />
+        // ""
+      ) : (
+        <Button
+          variant="warning"
+          size="lg"
+          onClick={() => {
+            setCheckOut(true);
+          }}
+        >
+          PayPal{" "}
+        </Button>
+      )} */}
+
       <Router>
         <NavBar />
         <Route path="/" exact component={LandingPage} />
@@ -54,7 +57,7 @@ function App() {
         <Route path="/register" render={(routerProps) => <Register LoggedIn={LoggedIn} {...routerProps} />} />
         <Route path="/updateProfile" render={(routerProps) => <UpdateProfile {...routerProps} />} />
         <Route path="/createService" render={(routerProps) => <CreateService {...routerProps} />} />
-        <Route path="/users/me" render={(routerProps) => <MyProfile {...routerProps} />} />
+        <Route path="/users/:id" render={(routerProps) => <MyProfile {...routerProps} />} />
         <Route path="/chat" render={(routerProps) => <ChatBox {...routerProps} />} />
         <Route path="/checkout/:projectId" render={(routerProps) => <Checkout {...routerProps} />} />
         {/* <Route path="/checkout/:projectId/:bidId" render={(routerProps) => <Checkout {...routerProps} />} /> */}

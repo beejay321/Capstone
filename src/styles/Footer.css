@@ -1,12 +1,13 @@
 #footer {
-  /* position: fixed; */
+  /* position: sticky; */
   /* padding: 0px 0px 0px 0px; */
   /* margin: 0px 0px 0px 0px; */
   bottom: 0;
+  z-index: 4;
   /*  width: 100%; */
   /* Height of the footer*/
   /* height: 200px; */
-  background: rgb(207, 207, 207);
+  background: rgb(224, 224, 224);
 }
 .footerbox {
   /* position: fixed; */

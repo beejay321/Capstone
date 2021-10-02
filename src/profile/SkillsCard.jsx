@@ -38,7 +38,7 @@ const SkillsCard = (props) => {
       <div className="  px-1 summaryBox " style={{ minHeight: "15rem" }}>
         <div className=" mx-2 d-flex justify-content-between ">
           <h4>{props.title}</h4>
-          {!props.loggedInUser && <EditModal title={props.title} />}
+          {localStorage.getItem("id") === props.user._id ? <EditModal title={props.title} /> : ""}
         </div>
         <hr className=" my-2 " />
         {props.skills ? (

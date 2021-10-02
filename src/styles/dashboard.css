@@ -1,0 +1,57 @@
+
+.projectBox {
+  border: solid 3px rgb(211, 207, 207);
+  border-radius: 10px;
+  padding: 5px !important;
+}
+.projectDetailBox {
+  border: solid 3px rgb(211, 207, 207);
+  border-radius: 10px;
+  padding: 5px !important;
+}
+
+.summaryBox {
+  /* border: solid 1px rgb(184, 184, 184); */
+  border-radius: 5px;
+  background-color: rgb(233, 232, 232);
+}
+.searchButton {
+  border-radius: 30px;
+  /* background-color: rgb(190, 187, 187); */
+}
+.categoryButtons {
+  border-radius: 30px;
+  background-color: rgb(190, 187, 187);
+}
+
+.categoryButtonsDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* background-color: rgb(221, 221, 219); */
+  background-color: rgb(238, 235, 235);
+}
+
+#searchDiv {
+  background-color: rgb(226, 222, 222);
+
+  padding-bottom: 40px;
+  padding-top: 20px;
+  /* margin-right: 0px; */
+}
+
+.searchInput {
+  border-radius: 30px;
+}
+
+.topRow {
+  background-color: rgb(231, 225, 228);
+  height: 100px;
+}
+.detailtopRow {
+  background-color: rgb(231, 225, 228);
+  /* height: 100px; */
+}
+.peoplealsoviewed {
+  background-color: rgb(241, 239, 240);
+}

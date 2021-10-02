@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
 const ADDRESS = "http://localhost:3255";
 
 const BidModal = (props) => {
-  const [username, setUsername] = useState("");
+  const [user, setUser] = useState(localStorage.getItem("id"));
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [cost, setCost] = useState("");
@@ -38,6 +38,7 @@ const BidModal = (props) => {
 
     try {
       const bidetails = {
+        user:user,
         message: message,
         cost: cost,
         duration: duration,

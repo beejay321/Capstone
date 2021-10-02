@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import React, { Component } from "react";
 import { Modal, Button, Form, Col, Row, Card, Image } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
-import SignUpModal from "./SignUpModal";
+import LoginModal from "./LoginModal";
 
 // class LoginModal extends Component {
 //   state = {
@@ -21,7 +21,7 @@ import SignUpModal from "./SignUpModal";
 
 const ApiUrl = process.env.REACT_APP_API_URL;
 
-const LoginModal = (props) => {
+const SignUpModal = ({ routerProps, name, closeLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [validated, setValidated] = useState(false);
@@ -58,9 +58,8 @@ const LoginModal = (props) => {
         localStorage.setItem("username", json.username);
         setLoggedIn(true);
         setShow(false);
+        routerProps.history.push("/dashboard");
         alert("successfully logged in");
-        console.log(props);
-        // props.history.push("/dashboard");
       } else {
         alert("Credentials are incorrect");
       }
@@ -73,9 +72,9 @@ const LoginModal = (props) => {
   return (
     <>
       <Button variant="success" id="button-addon2" size="lg" onClick={handleShow}>
-        {props.name}
+        {name}
       </Button>
-      <Modal id="loginModal" show={show} onHide={handleClose}>
+      <Modal id="signupModal" show={show} onHide={handleClose}>
         <Modal.Body>
           <div className=" mt-3 d-flex justify-content-md-center">
             <Image src="https://via.placeholder.com/100" height="100" roundedCircle />
@@ -98,7 +97,7 @@ const LoginModal = (props) => {
               <Form.Control.Feedback type="invalid">Please enter your password.</Form.Control.Feedback>
             </Form.Group>
             <div className="d-grid gap-2 mb-4">
-              <Link to="/dashboard">
+              <Link to="/updateProfile">
                 <Button className="d-grid gap-2 " variant="primary" size="lg" onClick={login} disabled={username.length < 0 && password.length < 0 ? true : false} type="button">
                   Login{" "}
                 </Button>
@@ -116,16 +115,9 @@ const LoginModal = (props) => {
 
             <Row className="d-grid gap-2 justify-content-md-center mb-2">
               <p>
-                You don't have an account? Signup
+                I already have an account? Login
                 <span className="m-1">
-                  {/* {(
-                    <Button variant="success" id="button-addon2" size="lg" onClick={handleClose}>
-                      here
-                    </Button>
-                  ) && <SignUpModal name="here" />} */}
-                  <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">
-                    here
-                  </button>
+                  <LoginModal name="here" />
                 </span>
               </p>
             </Row>
@@ -133,9 +125,8 @@ const LoginModal = (props) => {
           </Form>
         </Modal.Body>
       </Modal>
-      <SignUpModal id="signinModal" name="here" />
     </>
   );
 };
 
-export default LoginModal;
+export default SignUpModal;

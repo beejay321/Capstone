@@ -6,3 +6,8 @@
   /* height: 0px; */
   background: rgb(182, 181, 181);
 }
+
+.loginContainer {
+  border: solid 3px rgb(211, 207, 207);
+  border-radius: 10px;
+}

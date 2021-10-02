@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Container, Navbar, Nav, Col, Row } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown, Col, Row } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import "../styles/Login.css";
+import "../styles/navbar.css";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { loggedInAction } from "../redux/actions";
+
+const mapDispatchToProps = (dispatch) => ({
+  isLogged: (user) => dispatch(loggedInAction(user)),
+});
 
 const NavBar = (props) => {
-  const [LoggedIn, setLoggedIn] = useState(false);
+  const users = useSelector((s) => s.users);
 
   const check = () => {
     console.log(props);
@@ -13,38 +20,49 @@ const NavBar = (props) => {
 
   return (
     <>
-      <Navbar>
-        {/* <Navbar.Brand href="#home" onClick={check}>
-          Navbar with text
-        </Navbar.Brand> */}
-
-        <Container>
+      <Navbar id="navbox">
+       
+        <Container >
           <Link to="/">
-            <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
+            <Navbar.Brand href="#home">LOGO</Navbar.Brand>
           </Link>
-          <Link to="/">
+          {/* <Link to="/">
             <Nav.Link href="#home">Home</Nav.Link>
-          </Link>
+          </Link> */}
           <Link to="/aboutUs">
             <Nav.Link href="#howItWorks"> About Us</Nav.Link>
           </Link>
+        
           <Link to="/dashboard">
             <Nav.Link href="#dashboard">Find Projects</Nav.Link>
           </Link>
+
+          <Link to="/">
+            <Nav.Link href="#dashboard">FAQ</Nav.Link>
+          </Link>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-            <Link to="/register">
-              <Nav.Link href="#register">Register Your Skill</Nav.Link>
+            <Link to="/postproject">
+              <Nav.Link href="#dashboard">Post a Project</Nav.Link>
             </Link>
-
-            {LoggedIn ? (
-              <Link to="/myProfile">
-                <Navbar.Text>
-                  Signed in as: <a href="#login">Mark Otto</a>
-                </Navbar.Text>
-              </Link>
+            {`${localStorage.getItem("accessToken")}` ? (
+              <NavDropdown title={`${localStorage.getItem("username")}`} id="basic-nav-dropdown">
+                <Link to = {`/users/${localStorage.getItem("id")}`}>
+                  <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
+                </Link>{" "}
+                <NavDropdown.Item href="#action/3.3">My Messages</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <Link to="/register">
+                  <NavDropdown.Item href="#action/3.4">Register a Skill</NavDropdown.Item>
+                </Link>{" "}
+                <Link to="/myProjects">
+                  <NavDropdown.Item href="#action/3.4">My Projects</NavDropdown.Item>
+                </Link>{" "}
+                <Link to="">
+                  <NavDropdown.Item href="#action/3.4">Log out</NavDropdown.Item>
+                </Link>{" "}
+              </NavDropdown>
             ) : (
-              // <LoginModal name="Login" props={props} />
               <Link to="/login">
                 <Nav.Link href="#login">Login</Nav.Link>
               </Link>
