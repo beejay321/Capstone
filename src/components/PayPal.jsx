@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Card, Container, Row, Button, Form, Col, InputGroup, FormControl, Image } from "react-bootstrap";
 import "../styles/dashboard.css";
-import { Link } from "react-router-dom";
 
-const PayPal = (props) => {
-  const [checkout, setCheckOut] = useState(false);
-  const paypal = useRef();
+const PayPal = ({ setHidePaypal }) => {
+  const [madePayment, setMadePayment] = useState(false);
+
+  const paypalRef = useRef();
 
   useEffect(() => {
     window.paypal
@@ -15,10 +15,10 @@ const PayPal = (props) => {
             intent: "CAPTURE",
             purchase_units: [
               {
-                description: "Cool looking table",
+                description: "productDescription",
                 amount: {
-                  currency_code: "CAD",
-                  value: 650.0,
+                  currency_code: "EUR",
+                  value: "20.00",
                 },
               },
             ],
@@ -26,19 +26,28 @@ const PayPal = (props) => {
         },
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
+          alert("Payment made succesfully");
+          setMadePayment(true);
           console.log(order);
         },
         onError: (err) => {
           console.log(err);
         },
       })
-      .render(paypal.current);
+      .render(paypalRef.current);
   }, []);
+
+  if (madePayment) {
+    alert("Time to hide paypal");
+    setHidePaypal(true);
+  } else {
+    console.log("there was an error");
+  }
 
   return (
     <>
       <div>
-        <div ref={paypal}></div>
+        <div ref={paypalRef}></div>
       </div>
     </>
   );
