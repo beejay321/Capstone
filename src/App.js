@@ -25,28 +25,12 @@ import PayPal from "./components/PayPal";
 function App() {
   const [LoggedIn, setLoggedIn] = useState(false);
   const [sellerLoggedIn, setSellerLoggedIn] = useState(false);
-  const [user, setUser] = useState("");
-  const [checkout, setCheckOut] = useState(false);
-
+  
   return (
-    <>
-      {/* {checkout ? (
-        <PayPal />
-        // ""
-      ) : (
-        <Button
-          variant="warning"
-          size="lg"
-          onClick={() => {
-            setCheckOut(true);
-          }}
-        >
-          PayPal{" "}
-        </Button>
-      )} */}
+    <>    
 
       <Router>
-        <NavBar />
+        {/* <NavBar /> */}
         <Route path="/" exact component={LandingPage} />
         <Route path="/dashboard" render={(routerProps) => <Dashboard {...routerProps} />} />
         <Route path="/details/:projectId" render={(routerProps) => <DetailPage title="DETAILS" {...routerProps} />} />
@@ -59,13 +43,13 @@ function App() {
         <Route path="/createService" render={(routerProps) => <CreateService {...routerProps} />} />
         <Route path="/users/:id" render={(routerProps) => <MyProfile {...routerProps} />} />
         <Route path="/chat" render={(routerProps) => <ChatBox {...routerProps} />} />
-        <Route path="/checkout/:projectId" render={(routerProps) => <Checkout {...routerProps} />} />
+        <Route path="/checkout/:projectId/:bidId" render={(routerProps) => <Checkout {...routerProps} />} />
         {/* <Route path="/checkout/:projectId/:bidId" render={(routerProps) => <Checkout {...routerProps} />} /> */}
 
         {/* <Route path="/myProjects" render={(routerProps) => <MyProjects {...routerProps} />} /> */}
         {/* <Route path="/myCart" render={(routerProps) => <MyCart {...routerProps} />} />*/}
         {/* <Login /> */}
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </>
   );
