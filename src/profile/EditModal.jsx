@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 // import React, { Component } from "react";
 import { Modal, Button, Form, Col, Row, Card, Image } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
+import "./profilepage.css";
+
 
 const ApiUrl = process.env.REACT_APP_API_URL;
 
@@ -18,7 +20,7 @@ const EditModal = (props) => {
 
   return (
     <>
-      <Button variant="primary" id="button-addon2" onClick={handleShow}>
+      <Button className = "editButton" variant="" id="button-addon2" onClick={handleShow}>
         Add 
         {/* {props.title} */}
       </Button>
