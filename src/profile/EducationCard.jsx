@@ -11,26 +11,7 @@ const EducationCard = (props) => {
   const [skills, setSkills] = useState([]);
   const [language, setLanguage] = useState([]);
 
-  useEffect(() => {
-    const getProfile = async () => {
-      try {
-        let response = await fetch(`http://localhost:3255/users/me`, {
-          method: "GET",
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        });
-        if (response.ok) {
-          let data = await response.json();
-          console.log(data);
-          setEducation(data.education);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getProfile();
-  }, []);
+  
 
   const editExperience = async () => {
     try {
@@ -56,28 +37,40 @@ const EducationCard = (props) => {
 
   return (
     <>
-      <div className=" my-2 py-2 px-1 summaryBox " style={{ minHeight: "15rem" }}>
+      <div className=" my-2 py-2 px-1 profileColumn " style={{ minHeight: "15rem" }}>
         <div className=" mx-2 d-flex justify-content-between ">
           <h4>{props.title}</h4>
           {localStorage.getItem("id") === props.user._id ? <EditModal title={props.title} /> : ""}
         </div>
         <hr className=" my-2 " />
-        <div>
-          {/* {education.map((edu) => ( */}
-          <Card className="profileCards" style={{ width: "18rem" }}>
-            <Card.Body>
-              {/* <Card.Title>{edu.degree}</Card.Title> */}
-              <Card.Title>M.A Architecture</Card.Title>
-              {/* <Card.Subtitle className="mb-2 text-muted">{edu.institution}</Card.Subtitle> */}
-              <Card.Subtitle className="mb-2 text-muted">TUM</Card.Subtitle>
-              <Card.Text>Munich, Germany </Card.Text>
-              {/* <Card.Text>
-                  {edu.city},{edu.country}
-                </Card.Text> */}
-            </Card.Body>
-          </Card>
-          {/* ))} */}
-        </div>
+        {props.education ? (
+          <div>
+            {props.education &&
+              props.education.map((edu) => (
+                <div className=" mx-2 py-2 d-flex justify-content-between ">
+                  <div>
+                    <Card className="profileCards" style={{ width: "18rem" }}>
+                      <Card.Body className="profileCards">
+                        <Card.Title>{edu.degree}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">{edu.institution}</Card.Subtitle>
+                        <Card.Text className="  d-flex gap-2 ">
+                          <span>{edu.city}</span>
+                          <span>{edu.country}</span>
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </div>
+                  <div>
+                    <Button className="editButton">edit</Button>
+                  </div>{" "}
+                </div>
+              ))}
+          </div>
+        ) : (
+          <div className="  mt-5 d-flex justify-content-center ">
+            <p>No Experience Yet</p>
+          </div>
+        )}
       </div>
     </>
   );

@@ -35,7 +35,7 @@ const PublicationCard = (props) => {
 
   return (
     <>
-      <div className=" my-2 py-2 px-1 summaryBox " style={{ minHeight: "15rem" }}>
+      <div className=" my-2 py-2 px-1 profileColumn " style={{ minHeight: "15rem" }}>
         <div className=" mx-2 d-flex justify-content-between ">
           <h4>{props.title}</h4>
           {localStorage.getItem("id") === props.user._id ? <EditModal title={props.title} /> : ""}
