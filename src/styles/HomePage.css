@@ -1,20 +1,26 @@
 .searchSection {
   display: flex;
-  /* justify-content: center; */
-  align-items: center;
-  min-height: 70vh;
-  background: rgb(226, 226, 226);
+  justify-content: center;
+  min-height: 80vh;
+  background: #2b6777;
 }
 .searchContainer {
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
+  transform: translate(0%, 25%);
+  margin-left: 150px;
+}
+.searchContainer h2 {
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+.searchContainer p {
+  font-weight: 450;
+  color: rgb(255, 255, 255);
 }
 
 #howItWorksSection {
   display: flex;
   align-items: center;
-  min-height: 45vh;
+  min-height: 50vh;
   /* background: rgb(211, 206, 206); */
 }
 .homeButtonsSection {
@@ -24,7 +30,32 @@
 }
 
 .homeButtons {
-  width: 50%;
-  border-radius: 20px;
-  /* justify-content: center; */
+  width: 30%;
+  border-radius: 5px;
+  background-color: #c8d8e4;
+  font-size: 16px;
+  font-weight: bold;
+  border-color: #c8d8e4;
+  color: #2b6777;
+}
+.homeButtons :hover {
+  background-color: #2b6777 !important;
+  width: 30%;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  border-color: #c8d8e4;
+  color: #c8d8e4;
+}
+
+.landingImage {
+  background: url("../assets/images/world_1.jpg");
+  background-size: cover;
+  min-height: "100vh";
+}
+
+.howItWorksText {
+  /* font-size: 18px; */
+  font-weight: bold;
+  color: #2b6777;
 }

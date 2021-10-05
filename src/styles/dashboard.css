@@ -1,57 +1,98 @@
-
-.projectBox {
-  border: solid 3px rgb(211, 207, 207);
-  border-radius: 10px;
-  padding: 5px !important;
+#searchDiv {
+  background-color: #2b6777;
+  padding-bottom: 40px;
+  padding-top: 20px;
+  /* margin-right: 0px; */
 }
-.projectDetailBox {
-  border: solid 3px rgb(211, 207, 207);
-  border-radius: 10px;
-  padding: 5px !important;
-}
-
-.summaryBox {
-  /* border: solid 1px rgb(184, 184, 184); */
+.searchInput {
   border-radius: 5px;
-  background-color: rgb(233, 232, 232);
+  width: 100%;
+  border: 0;
+  outline: none;
 }
+
 .searchButton {
-  border-radius: 30px;
-  /* background-color: rgb(190, 187, 187); */
-}
-.categoryButtons {
-  border-radius: 30px;
-  background-color: rgb(190, 187, 187);
+  width: 30%;
+  border-radius: 5px;
+  background-color: #c8d8e4;
+  font-weight: bold;
+  border-color: #c8d8e4;
+  color: #2b6777;
 }
 
 .categoryButtonsDiv {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* background-color: rgb(221, 221, 219); */
-  background-color: rgb(238, 235, 235);
+  background-color: rgb(241, 241, 241);
 }
 
-#searchDiv {
-  background-color: rgb(226, 222, 222);
-
-  padding-bottom: 40px;
-  padding-top: 20px;
-  /* margin-right: 0px; */
+.categoryButtons {
+  border-radius: 5px;
+  width: 14%;
+  background-color: rgb(190, 187, 187);
+  font-weight: bold;
+  border-color: #c8d8e4;
+  color: #2b6777;
 }
 
-.searchInput {
-  border-radius: 30px;
+.searchButton :hover {
+  width: 30%;
+  border-radius: 5px;
+  background-color: #c8d8e4;
+  font-weight: bold;
+  border-color: #c8d8e4;
+  color: #2b6777;
 }
 
-.topRow {
-  background-color: rgb(231, 225, 228);
-  height: 100px;
+.projectBox {
+  border: solid 3px #2b6777;
+  border-radius: 10px;
+  padding: 5px !important;
+  min-height: 200px;
+  position: relative; 
 }
-.detailtopRow {
-  background-color: rgb(231, 225, 228);
-  /* height: 100px; */
+.projectLink {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2b6777;
 }
-.peoplealsoviewed {
-  background-color: rgb(241, 239, 240);
+.projectLink :hover{
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2b6777;
 }
+
+.sellerDiv {
+  position: absolute;
+  bottom: 5px;
+}
+
+.sellerImageDiv {
+  display: inline-block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.sellerImage {
+  width: auto;
+  height: 100%;
+}
+
+/* .projectDetailBox {
+  border: solid 3px rgb(211, 207, 207);
+  border-radius: 10px;
+  padding: 5px !important;
+} */
+
+/* .summaryBox {
+  border: solid 1px rgb(184, 184, 184);
+  border-radius: 5px;
+  background-color: rgb(107, 31, 31);
+} */
+
+
