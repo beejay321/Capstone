@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import EditModal from "./EditModal";
 
 const MyBids = (props) => {
-  
-
   return (
     <>
       <div className=" my-2 py-2 px-1 profileColumn " style={{ minHeight: "15rem" }}>
@@ -17,16 +15,16 @@ const MyBids = (props) => {
         <hr className=" my-2 " />
         {props.myBids ? (
           <div>
-            {props.myBids.map((b) => (
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>Projects</th>
-                    <th>Client</th>
-                    <th>Decision</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>Projects</th>
+                  <th>Client</th>
+                  <th>Decision</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              {props.myBids.map((b) => (
                 <tbody>
                   <tr>
                     <td>{b.projectTitle}</td>
@@ -34,15 +32,9 @@ const MyBids = (props) => {
                     <td>Approved</td>
                     <td>Confirmed</td>
                   </tr>
-                  <tr>
-                    <td>PhotoShoot</td>
-                    <td>Toby Cobbs</td>
-                    <td>Rejected</td>
-                    <td>Confirmed</td>
-                  </tr>
                 </tbody>
-              </Table>
-            ))}
+              ))}
+            </Table>
           </div>
         ) : (
           <div className="  mt-5 d-flex justify-content-center ">

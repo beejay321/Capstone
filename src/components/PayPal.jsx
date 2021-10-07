@@ -2,12 +2,19 @@ import React, { useState, useEffect, useRef } from "react";
 import { Card, Container, Row, Button, Form, Col, InputGroup, FormControl, Image } from "react-bootstrap";
 import "../styles/dashboard.css";
 
-const PayPal = ({ setHidePaypal }) => {
+const PayPal = ({ setHidePaypal, price, projectDetails, project, user }) => {
   const [madePayment, setMadePayment] = useState(false);
+
+  const sendMail = () => {
+    console.log("email sent to freelancer");
+  };
 
   const paypalRef = useRef();
 
   useEffect(() => {
+    console.log(project.Description)
+    console.log(user)
+    console.log(price)
     window.paypal
       .Buttons({
         createOrder: (data, actions, err) => {
@@ -15,10 +22,10 @@ const PayPal = ({ setHidePaypal }) => {
             intent: "CAPTURE",
             purchase_units: [
               {
-                description: "productDescription",
+                description: project.Description,
                 amount: {
                   currency_code: "EUR",
-                  value: "20.00",
+                  value: price,
                 },
               },
             ],
@@ -27,6 +34,7 @@ const PayPal = ({ setHidePaypal }) => {
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
           alert("Payment made succesfully");
+          sendMail();
           setMadePayment(true);
           console.log(order);
         },
@@ -41,7 +49,7 @@ const PayPal = ({ setHidePaypal }) => {
     alert("Time to hide paypal");
     setHidePaypal(true);
   } else {
-    console.log("there was an error");
+    console.log("Payment not successful");
   }
 
   return (

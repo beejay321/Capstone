@@ -44,6 +44,10 @@
   border-color: #c8d8e4;
   color: #2b6777;
 }
+.projectDiv{
+  min-height: 80vh;
+
+}
 
 .projectBox {
   border: solid 3px #2b6777;
