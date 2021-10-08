@@ -1,111 +1,175 @@
-import React, { useState, useEffect } from "react";
-import { Card, Container, Row, Button, Form, Col, InputGroup, FormControl, Image } from "react-bootstrap";
-import "../styles/dashboard.css";
+import React, { useState, useEffect, useRef } from "react";
+import { Card, Container, Row, Button, Form, Col, Alert, FormControl, Image } from "react-bootstrap";
+import "../styles/checkout.css";
 import { Link } from "react-router-dom";
 import PayPal from "./PayPal";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
 
-const Checkout = (props) => {
-  const [user, setUser] = useState("");
+const ADDRESS = "http://localhost:3255";
+
+const Checkout = ({ match, history }) => {
+  const [bidder, setBidder] = useState("");
   const [checkout, setCheckOut] = useState(false);
+  const [freelancer, setFreelancer] = useState(false);
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [projectDetails, setProjectDetails] = useState("");
+  const [project, setProject] = useState("");
+  const [bid, setBids] = useState("");
+  const [hidePaypal, setHidePaypal] = useState(false);
+
+  const getProject = async () => {
+    try {
+      let response = await fetch(`${ADDRESS}/projects/${match.params.projectId}`);
+      console.log(response);
+      let result = await response.json();
+      console.log(result);
+      setProject(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getBid = async () => {
+    try {
+      let response = await fetch(`${ADDRESS}/projects/${match.params.projectId}/bids/${match.params.bidId}`);
+      console.log(response);
+      if (response.ok) {
+        let result = await response.json();
+        console.log(result);
+        console.log(result[0].user);
+        setBids(result);
+        const bidderId = result[0].user;
+
+        try {
+          let response = await fetch(`${ADDRESS}/users/${bidderId}`, {
+            method: "GET",
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          });
+          if (response.ok) {
+            let data = await response.json();
+            console.log(data);
+            setBidder(data);
+          }
+        } catch (error) {}
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    const getProfile = async () => {
-      try {
-        let response = await fetch(`http://localhost:3255/projects/612e0c102a68687fa0360db5`);
-
-        if (response.ok) {
-          let data = await response.json();
-          console.log(data);
-          this.setState({
-            project: data,
-          });
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getProfile();
+    getProject();
+    getBid();
   }, []);
 
   return (
     <>
-      <Container className="  mb-5">
-        <Row className="d-flex gap-3">
-          <h3 className="pb-5 ">Checkout Details</h3>
-          <Col xs={6}>
-            <Row className=" py-5 gap-4 ">
-              <div className=" projectBox py-5">
-                <h3>Project details</h3>
-                <Form>
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Bid Details</Form.Label>
-                    <Form.Control as="textarea" rows={3} placeholder="A brief description of the the final details of the project" />
-                  </Form.Group>
-                </Form>
-              </div>
-              <div className=" projectBox py-5">
-                <h3>Payment Method</h3>
-                <div className="d-grid gap-2">
-                  <Form>
-                    <div className="mb-3">
-                      <Form.Check type="radio" id="default-radio" label="Cash On Delivery" />
-                    </div>
-                  </Form>
-                  {checkout ? (
-                    <PayPal />
-                  ) : (
-                    // ""
-                    <Button
-                      variant="warning"
-                      size="lg"
-                      onClick={() => {
-                        setCheckOut(true);
-                      }}
-                    >
-                      PayPal{" "}
-                    </Button>
-                  )}
+      <NavBar />
+      <div className="topRow"></div>
+      {hidePaypal ? (
+        <div>
+          <div className="d-flex justify-content-center py-5">
+            <Col xs={3} className="py-3">
+              <div className=" projectBox">
+                <div className="py-1    ">
+                  <span>{project.summary}</span>
+                </div>
 
+                <div className="py-1  my-1  ">
+                  <span>I need to design a logo for my wedding. To use for on all both invitation and access cards.</span>
+                </div>
+                <div className=" mt-1  ">
+                  <span>{project.location}</span>
+                </div>
+              </div>
+            </Col>
+          </div>
+          <div className="d-flex justify-content-center pb-5">
+            <h3>Payment has been made to the freelancer !</h3>
+          </div>
+        </div>
+      ) : (
+        <Container className=" CheckoutContainer mb-5">
+          <Alert className="my-3" variant="danger">
+            <Alert.Heading>Confirm details of the project with the Freelancer!!</Alert.Heading>
+            <p>
+              Be sure to have a chat with the freelancer about the details of the project and confirm their availability and ability to carry out the task. Payment made will be held by the platform
+              until project is completed .
+            </p>
+            {/* <hr />
+            <p className="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p> */}
+          </Alert>
+
+          <Row className="d-flex gap-5 my-5">
+            <Col xs={6} className=" CheckoutBox p-3">
+              <h3>Project details</h3>
+              <div className="  ">
+                <div>
+                  <p className="m-1">Product Title</p>
+                  <p className="fixedValue">{project.summary} </p>
+                </div>
+                <div>
+                  <p className="m-1">Email address</p>
+                  <p className="fixedValue">{bidder.email}</p>
+                </div>
+                <div>
+                  <p className="m-1">Price</p>
+                  <Form>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                      <Form.Control className="fixedValue" required  onChange={(e) => setPrice(e.target.value)} type="text" placeholder="Final price" />
+                    </Form.Group>
+                  </Form>
+                </div>
+                <div>
+                  <p className="m-1">Bid Details</p>
+                  <Form>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                      <Form.Control
+                        required
+                        className="fixedValue"
+                        onChange={(e) => setProjectDetails(e.target.value)}
+                        as="textarea"
+                        rows={3}
+                        placeholder="Additional details of the project"
+                      />
+                    </Form.Group>
+                  </Form>
+                </div>
+              </div>
+            </Col>
+
+            <Col className=" CheckoutBox p-3">
+              <h3>Payment Method</h3>
+              {/* <div className=""> */}
+              <Form>
+                <div className="mb-3">
+                  <Form.Check type="radio" id="default-radio" label="Cash On Delivery" />
+                </div>
+              </Form>
+              <div>
+                {checkout ? (
+                  <PayPal setHidePaypal={setHidePaypal} project={project} bidder={bidder} price={price} projectDetails={projectDetails} />
+                ) : (
                   <Button
-                    variant="warning"
-                    size="lg"
                     onClick={() => {
                       setCheckOut(true);
                     }}
                   >
-                    PayPal{" "}
+                    Make Payment
                   </Button>
-                  <Button variant="dark" size="lg">
-                    Debit or Credit Card{" "}
-                  </Button>
-                </div>
+                )}
               </div>
-            </Row>
-          </Col>
+              {/* </div> */}
+            </Col>
+          </Row>
+        </Container>
+      )}
 
-          <Col>
-            <div className=" projectBox py-5">
-              <h3>Project Summary</h3>
-              <Row className="py-5">
-                <Form>
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Bid Details</Form.Label>
-                    <Form.Control as="textarea" rows={3} placeholder="A brief description of the the final details of the project" />
-                  </Form.Group>
-                </Form>
-              </Row>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+      <Footer />
     </>
   );
 };
