@@ -11,9 +11,9 @@ const Footer = () => {
 
           <Row className=" py-5  ">
             <Container className=" footerbox">
-              <Row>
+              <Row >
                 <Col xs={2}>
-                  <ul>
+                  <ul  className="footerText" >
                     <li className="footerlist">About</li>
                     <li className="footerlist">Community Guidelines</li>
                     <li className="footerlist">Privacy & Terms </li>
@@ -22,7 +22,7 @@ const Footer = () => {
                   </ul>
                 </Col>
                 <Col xs={2}>
-                  <ul>
+                  <ul className="footerText" >
                     <li className="footerlist">Accessibility</li>
                     <li className="footerlist">Careers</li>
                     <li className="footerlist">Ad Choices</li>
@@ -30,7 +30,7 @@ const Footer = () => {
                   </ul>
                 </Col>
                 <Col xs={2}>
-                  <ul>
+                  <ul className="footerText" >
                     <li className="footerlist">Talent Solutions</li>
                     <li className="footerlist">Marketing Solutions</li>
                     <li className="footerlist">Advertising</li>
@@ -39,7 +39,7 @@ const Footer = () => {
                 </Col>
 
                 <Col xs={3}>
-                  <ul>
+                  <ul className="footerText" >
                     <li className="footerlist footer-flex mr-3">
                       <i className="bi bi-question-circle-fill fs-4 mr-3"></i>{" "}
                       <span>
@@ -57,7 +57,7 @@ const Footer = () => {
                   </ul>
                 </Col>
                 <Col xs={3}>
-                  <ul>
+                  <ul className="footerText" >
                     <li className="selectlanguage">
                       <Form.Group controlId="exampleForm.ControlSelect2">
                         <Form.Label>Select Language</Form.Label>

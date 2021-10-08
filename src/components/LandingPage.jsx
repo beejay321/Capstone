@@ -6,6 +6,7 @@ import DetailPage from "./detailPage";
 import MyLoginModal from "./Login";
 import "../styles/HomePage.css";
 import NavBar from "./NavBar";
+import Footer from "./Footer";
 
 const LandingPage = (routerProps) => {
   const [query, setQuery] = useState("");
@@ -25,70 +26,70 @@ const LandingPage = (routerProps) => {
     }
   };
 
+  const createProject = () => {
+    if (localStorage.getItem("username")) {
+      routerProps.history.push("/postproject");
+    } else {
+      routerProps.history.push("/login");
+    }
+  };
+
   return (
     <>
-      {/* <Card className="bg-dark text-white">
-        <Card.Img src="https://res.cloudinary.com/dvyids286/image/upload/v1622151363/Strive/fbuminjbxhiziiulrfrg.jpg" height="800" alt="Card image" />
-
-        <Card.ImgOverlay> */}
-        {/* <NavBar/> */}
-      <div className="searchSection">
-        <Container id="">
-          <Row className="py-5 my-5 d-flex justify-content-center">
-            <Col xs={8} md={7}>
-              <div className="searchContainer">
-                <h1>Find the perfect freelancer to help </h1>
-                {/* <h1> with your projects</h1> */}
-              </div>{" "}
-              <div className="searchContainer">
-                <h1> with your projects</h1>
-              </div>{" "}
-              <div className="searchContainer">
-                <h3>Just a few clicks away </h3>
-              </div>{" "}
-              <div className="searchContainer">
-                <h3> Reliable customer service</h3>
-              </div>{" "}
-              <div className=" py-2  homeButtonsSection">
-                <Button className="homeButtons" variant="success" id="button-addon2" onClick={() => routerProps.history.push("/postproject")}>
+      <NavBar />
+      <Container fluid>
+        <Row className="d-flex">
+          <Col className="searchSection  ">
+            <div className=" p-5 searchContainer  ">
+              <h2 className=" py-3 ">Find your perfect project match </h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.{" "}
+              </p>
+              <div className=" d-flex gap-1 ">
+                <Button className="homeButtons" variant="outline-secondary" id="button-addon2" onClick={createProject}>
                   Create Project{" "}
                 </Button>
-                <Button className="homeButtons" variant="success" id="button-addon2" onClick={() => routerProps.history.push("/dashboard")}>
+                <Button className="homeButtons" variant="outline-secondary" id="button-addon2" onClick={() => routerProps.history.push("/dashboard")}>
                   Find Projects{" "}
                 </Button>
               </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+            </div>{" "}
+          </Col>
+          <Col className="landingImage">
+            <div className="landingImage"></div>{" "}
+          </Col>{" "}
+        </Row>
+      </Container>
 
       <div id="">
         <Container>
           <Row className=" py-5 ">
-            <div className="howItWorksSection">
-              <h1>How It Works</h1>
+            <div className=" py-3 howItWorksSection">
+              <h2 className="howItWorksText">How It Works</h2>
             </div>
             <div className="howItWorksSection">
-              <h3>Its very simple, start earning in few steps. </h3>
+              <h4 className="howItWorksText">Its very simple, start earning in few steps. </h4>
             </div>
 
             <div className="howItWorksBox py-4">
-              <div className="howItWorksCard py-2">
+              <div className="howItWorksCard py-3">
                 <Image src="https://via.placeholder.com/200" />
-                <p>Step 1</p>
+                <p className="howItWorksText py-3">Click on Post Project</p>
               </div>
-              <div className="howItWorksCard py-2">
+              <div className="howItWorksCard py-3">
                 <Image src="https://via.placeholder.com/200" />
-                <p>Step 2</p>
+                <p className="howItWorksText py-3">Fill in Project Details</p>
               </div>
-              <div className="howItWorksCard py-2">
+              <div className="howItWorksCard py-3">
                 <Image src="https://via.placeholder.com/200" />
-                <p>Step 3</p>
+                <p className="howItWorksText py-3">Create Project </p>
               </div>
             </div>
           </Row>
         </Container>
       </div>
+      <Footer />
     </>
   );
 };
