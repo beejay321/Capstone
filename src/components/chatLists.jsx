@@ -10,7 +10,7 @@ import ChatBox from "./chatBox";
 const ADDRESS = "http://localhost:3255";
 const socket = io(ADDRESS, { transports: ["websocket"] });
 
-const ChatLists = ({ roomHistory, setShowChat, user, selectedRoom, firstname, lastname, setShowChatList, show, continueRoom, getRooms, chats }) => {
+const ChatLists = ({ roomHistory, setShowChat, user, selectedRoom, firstname, lastname, setShowChatList, showChat, continueRoom, getRooms, chats }) => {
   const [userName, setUserName] = useState("Liam");
   const [currentMessage, setCurrentMessage] = useState("");
   const [onlineUsers, setOnlineUsers] = useState([]);
@@ -20,21 +20,9 @@ const ChatLists = ({ roomHistory, setShowChat, user, selectedRoom, firstname, la
     getRooms();
   }, []);
 
-  const sendMessage = async (e) => {
-    // e.prevent.Default();
-    console.log("message sent");
-    const messageToSend = {
-      text: currentMessage,
-      id: socket.id,
-      type: "text",
-      sender: "You",
-      timestamp: Date.now(),
-    };
-    // socket.emit("sendMessage", messageToSend);
-    console.log("selectedRoom:", selectedRoom);
-    socket.emit("sendMessage", { message: messageToSend, selectedRoom });
-    setChatHistory([...chatHistory, messageToSend]);
-    setCurrentMessage("");
+  const showChatBoxList = () => {
+    setShowChat(true);
+    // continueRoom();
   };
 
   return (
@@ -55,7 +43,7 @@ const ChatLists = ({ roomHistory, setShowChat, user, selectedRoom, firstname, la
               {chats &&
                 chats.map((chat) => (
                   <div style={{ maxHeight: "100%", overflowY: "scroll", backgroundColor: "white" }}>
-                    <div className="d-flex  gap-3 summary Box">
+                    <div className="d-flex  gap-3 summary Box" onClick={showChatBoxList}>
                       <div className=" px-2 pt-2">
                         <Image src="https://picsum.photos/seed/picsum/200/300" height="45" width="45" roundedCircle />
                       </div>{" "}
@@ -112,7 +100,7 @@ const ChatLists = ({ roomHistory, setShowChat, user, selectedRoom, firstname, la
             </div>
           </Col>
           <Col xs={3} className="">
-            <ChatBox selectedRoom={selectedRoom} roomHistory={roomHistory} show={show} setShowChat={setShowChat} user={user} firstname={user.firstname} lastname={user.lastname} />
+            <ChatBox selectedRoom={selectedRoom} roomHistory={roomHistory} showChat={showChat} setShowChat={setShowChat} user={user} firstname={user.firstname} lastname={user.lastname} />
           </Col>
         </Row>
       </Container>

@@ -1,9 +1,13 @@
 import React from "react";
 import { Form, Container, Row, Col, Button, Accordion, Card } from "react-bootstrap";
+import Footer from "./Footer";
+import NavBar from "./NavBar";
 
 const AboutUs = (props) => {
   return (
     <>
+      <NavBar />
+
       <Container className="py-5" style={{ minHeight: "100vh", width: "1000px" }}>
         <h3>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -11,6 +15,7 @@ const AboutUs = (props) => {
           proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </h3>
       </Container>
+      <Footer/>
     </>
   );
 };

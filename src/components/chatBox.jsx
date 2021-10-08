@@ -9,7 +9,7 @@ import InputEmoji from "react-input-emoji";
 const ADDRESS = "http://localhost:3255";
 const socket = io(ADDRESS, { transports: ["websocket"] });
 
-const ChatBox = ({ selectedRoom, firstname, lastname, setShowChat, show }) => {
+const ChatBox = ({ selectedRoom, firstname, lastname, setShowChat, showChat }) => {
   const [userName, setUserName] = useState("Liam");
   const [currentMessage, setCurrentMessage] = useState("");
   const [onlineUsers, setOnlineUsers] = useState([]);
@@ -42,7 +42,7 @@ const ChatBox = ({ selectedRoom, firstname, lastname, setShowChat, show }) => {
     setCurrentMessage("");
   };
 
-  return show ? (
+  return showChat ? (
     <>
       <Container>
         <Row>
@@ -70,22 +70,23 @@ const ChatBox = ({ selectedRoom, firstname, lastname, setShowChat, show }) => {
                   <span className="ml-2" style={{ fontSize: "0.7rem" }}>
                     {new Date().toLocaleTimeString("en-US")}
                   </span>
+                  <hr className=" " />
                 </div>
+
               ))}
             </div>
-            <div key="{message.id}" className="my-2"></div>
-            <InputGroup className="mb-3">
+            {/* <div key="{message.id}" className="my-2"></div> */}
+            <InputGroup className="chatInput mb-3">
+            <hr className=" " />
               <FormControl placeholder="Write a message" aria-label="Recipient's username" aria-describedby="basic-addon2" value={currentMessage} onChange={(e) => setCurrentMessage(e.target.value)} />
               <Button type="submit" variant="outline-secondary" id="button-addon2" onClick={sendMessage}>
                 Send
               </Button>
             </InputGroup>
-            {/* <Form onSubmit={sendMessage}>
-              <Form.Control placeholder="Write a message" value={currentMessage} onChange={(e) => setCurrentMessage(e.target.value)} />
-            </Form> */}
+            
 
             {/* <div className="input-parent d-flex p-3">
-              <InputEmoji className="message-input" value={currentMessage} onChange={(e) => setCurrentMessage(e.target.value)} cleanOnEnter={true} onEnter={sendMessage} />
+              <InputEmoji className="message-input"  onChange={(e) => setCurrentMessage(e.target.value)} cleanOnEnter={true} onEnter={sendMessage} />
             </div> */}
           </Col>
         </Row>

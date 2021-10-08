@@ -38,7 +38,9 @@ const BidModal = (props) => {
 
     try {
       const bidetails = {
-        user:user,
+        user: user,
+        client: props.project.seller,
+        projectTitle: props.project.title,
         message: message,
         cost: cost,
         duration: duration,

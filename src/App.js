@@ -11,7 +11,6 @@ import Dashboard from "./components/DashBoard";
 import DetailPage from "./components/detailPage";
 import Register from "./components/Register";
 import UpdateProfile from "./components/UpdateProfile";
-import CreateService from "./components/CreateService";
 import MyProfile from "./profile/MyProfile.jsx";
 // import MyProjects from "./profile/myProjects.jsx";
 import AboutUs from "./components/AboutUs";
@@ -21,14 +20,14 @@ import Checkout from "./components/checkout";
 import PostProject from "./components/postProjects";
 import FreelancerProfile from "./profile/freelancerProfile";
 import PayPal from "./components/PayPal";
+import ConfirmDetails from "./components/confirmDetails";
 
 function App() {
   const [LoggedIn, setLoggedIn] = useState(false);
   const [sellerLoggedIn, setSellerLoggedIn] = useState(false);
-  
-  return (
-    <>    
 
+  return (
+    <>
       <Router>
         {/* <NavBar /> */}
         <Route path="/" exact component={LandingPage} />
@@ -40,16 +39,10 @@ function App() {
         <Route path="/login" render={(routerProps) => <Login LoggedIn={LoggedIn} {...routerProps} />} />
         <Route path="/register" render={(routerProps) => <Register LoggedIn={LoggedIn} {...routerProps} />} />
         <Route path="/updateProfile" render={(routerProps) => <UpdateProfile {...routerProps} />} />
-        <Route path="/createService" render={(routerProps) => <CreateService {...routerProps} />} />
         <Route path="/users/:id" render={(routerProps) => <MyProfile {...routerProps} />} />
         <Route path="/chat" render={(routerProps) => <ChatBox {...routerProps} />} />
         <Route path="/checkout/:projectId/:bidId" render={(routerProps) => <Checkout {...routerProps} />} />
-        {/* <Route path="/checkout/:projectId/:bidId" render={(routerProps) => <Checkout {...routerProps} />} /> */}
-
-        {/* <Route path="/myProjects" render={(routerProps) => <MyProjects {...routerProps} />} /> */}
-        {/* <Route path="/myCart" render={(routerProps) => <MyCart {...routerProps} />} />*/}
-        {/* <Login /> */}
-        {/* <Footer /> */}
+        <Route path="/confirmProjectDetails/:bidderId" render={(routerProps) => <ConfirmDetails {...routerProps} />} />
       </Router>
     </>
   );
