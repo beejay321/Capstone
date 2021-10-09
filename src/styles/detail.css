@@ -1,0 +1,72 @@
+.topRow {
+  background-color: #2b6777;
+  height: 75px;
+}
+.detailtopRow {
+  background-color: #dddddd;
+  min-height: 40%;
+}
+.similarProjectRow {
+  background-color: #dddddd;
+  min-height: 80%;
+}
+
+.projectTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2b6777;
+}
+.projectText {
+  font-size: 15px;
+  font-weight: 500;
+  color: #2b6777;
+}
+.peoplealsoviewed {
+  background-color: rgb(241, 239, 240);
+}
+
+.sellerDiv {
+  position: absolute;
+  bottom: 5px;
+}
+
+.sellerImageDiv {
+  display: inline-block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.sellerImage {
+  width: auto;
+  height: 100%;
+}
+.sellerLink {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2b6777;
+}
+.sellerLink :hover {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2b6777;
+}
+.bidButton {
+  width: 20%;
+  border-radius: 5px;
+  /* background-color: #c8d8e4; */
+  font-weight: bold;
+  border-color: #2b6777;
+  color: #2b6777;
+}
+.bidButton :hover {
+  width: 30%;
+  border-radius: 5px;
+  background-color: #c8d8e4;
+  font-weight: bold;
+  border-color: #c8d8e4;
+  color: #2b6777;
+}
