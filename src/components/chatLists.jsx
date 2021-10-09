@@ -39,16 +39,19 @@ const ChatLists = ({ roomHistory, setShowChat, user, selectedRoom, firstname, la
             </div>
             <hr className="p-0 " />
 
-            <div>
+            <div className="p-2" style={{ maxHeight: "100%", overflowY: "scroll", backgroundColor: "white" }}>
               {chats &&
                 chats.map((chat) => (
-                  <div style={{ maxHeight: "100%", overflowY: "scroll", backgroundColor: "white" }}>
+                  <div>
                     <div className="d-flex  gap-3 summary Box" onClick={showChatBoxList}>
                       <div className=" px-2 pt-2">
                         <Image src="https://picsum.photos/seed/picsum/200/300" height="45" width="45" roundedCircle />
                       </div>{" "}
                       <div className="d-grid py-1 gap-1">
-                        <span>Name</span>
+                        <div className="d-flex py-1 gap-1">
+                          <span>{chat.members[0].firstname}</span>
+                          <span>{chat.members[0].lastname}</span>
+                        </div>
                         <span>last message</span>
                       </div>
                     </div>
@@ -60,7 +63,7 @@ const ChatLists = ({ roomHistory, setShowChat, user, selectedRoom, firstname, la
                 ))}
             </div>
             <div>
-              <div style={{ maxHeight: "100%", overflowY: "scroll", backgroundColor: "white" }}>
+              {/* <div style={{ maxHeight: "100%", overflowY: "scroll", backgroundColor: "white" }}>
                 <div className="d-flex  gap-3 summary Box">
                   <div className=" px-2 pt-2">
                     <Image src="https://picsum.photos/seed/picsum/200/300" height="45" width="45" roundedCircle />
@@ -71,9 +74,9 @@ const ChatLists = ({ roomHistory, setShowChat, user, selectedRoom, firstname, la
                   </div>
                 </div>
                 <hr />
-              </div>
+              </div> */}
 
-              <ChatList
+              {/* <ChatList
                 style={{ maxHeight: "100%", overflowY: "scroll" }}
                 className="chat-list "
                 // onClick={continueRoom}
@@ -96,7 +99,7 @@ const ChatLists = ({ roomHistory, setShowChat, user, selectedRoom, firstname, la
                     unread: 3,
                   },
                 ]}
-              />
+              /> */}
             </div>
           </Col>
           <Col xs={3} className="">

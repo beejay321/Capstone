@@ -10,7 +10,8 @@ const MyBids = (props) => {
       <div className=" my-2 py-2 px-1 profileColumn " style={{ minHeight: "15rem" }}>
         <div className=" mx-2 d-flex justify-content-between ">
           <h4>{props.title}</h4>
-          <EditModal title={props.title} />
+          {localStorage.getItem("id") === props.user._id ? <EditModal title={props.title} /> : ""}
+
         </div>
         <hr className=" my-2 " />
         {props.myBids ? (
