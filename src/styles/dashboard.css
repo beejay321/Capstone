@@ -44,29 +44,37 @@
   border-color: #c8d8e4;
   color: #2b6777;
 }
-.projectDiv{
-  min-height: 80vh;
-
+.projectDiv {
+  min-height: 60vh;
 }
 
 .projectBox {
-  border: solid 3px #2b6777;
-  border-radius: 10px;
+  border: inset 2px #2b6777;
+  border-radius: 7px;
   padding: 5px !important;
-  min-height: 200px;
-  position: relative; 
+  min-height: 180px;
+  position: relative;
 }
+
 .projectLink {
   text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 18px;
+}
+.projectTitle {
+  font-size: 18px;
+  font-weight: bold;
+  border: none !important;
   color: #2b6777;
 }
-.projectLink :hover{
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
+.projectTitle :hover {
+  border: none !important;
+  font-size: 18px !important ;
+  font-weight: bold !important ;
   color: #2b6777;
+}
+.text {
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .sellerDiv {
@@ -86,17 +94,3 @@
   width: auto;
   height: 100%;
 }
-
-/* .projectDetailBox {
-  border: solid 3px rgb(211, 207, 207);
-  border-radius: 10px;
-  padding: 5px !important;
-} */
-
-/* .summaryBox {
-  border: solid 1px rgb(184, 184, 184);
-  border-radius: 5px;
-  background-color: rgb(107, 31, 31);
-} */
-
-
