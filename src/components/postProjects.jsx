@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Form, Container, Row, Col, Button, Image, Card } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import "../styles/postProject.css";
+import Footer from "./Footer";
+import NavBar from "./NavBar";
 
 const ADDRESS = "http://localhost:3255";
 
@@ -12,6 +14,7 @@ const PostProject = (props) => {
   const [description, setDescription] = useState("");
   const [summary, setSummary] = useState("");
   const [location, setLocation] = useState("");
+  const [file, setFile] = useState([]);
 
   const postProject = async (event) => {
     try {
@@ -31,21 +34,41 @@ const PostProject = (props) => {
         },
         body: JSON.stringify(service),
       });
-
       if (response.ok) {
-        console.log(response);
-        alert(" project successfully created");
-        // props.history.push("/myProjects");
+        if (file !== undefined) {
+          const data = await response.json();
+          const id = data._id;
+          let newResponse = await fetch(`${ADDRESS}/projects/${id}/uploadFile`, {
+            method: "POST",
+            body: file,
+          });
+          if (newResponse.ok) {
+            alert("Sucessfully posted");
+          }
+        } else {
+          console.log("File was not uploaded!");
+        }
       } else {
-        alert(" not successful");
+        console.log("project not created!");
       }
+
+   
     } catch (error) {
       console.log(error);
     }
   };
 
+  const selectImage = (e) => {
+    e.preventDefault();
+    const file = e.target.files[0];
+    let formData = new FormData();
+    formData.append("file", file);
+    setFile(formData);
+  };
+
   return (
     <>
+      <NavBar />
       <div className="postProjectSection">
         <Container className=" py-5">
           <Row>
@@ -75,14 +98,29 @@ const PostProject = (props) => {
                     <Form.Label>Upload Files</Form.Label>
                   </Form.Group>
                 </Row>
-                <Form.Group controlId="formFile" className="mb-3">
+                {/* <Form.Group controlId="formFile" className="mb-3">
                   <Form.Label>Default file input example</Form.Label>
                   <Form.Control type="file" />
-                </Form.Group>
+                </Form.Group> */}
+                <Button className="addpostfooterbtn mx-1">
+                  <div id="selectimages">
+                    <form enctype="multipart/form-data" method="post" name="fileinfo">
+                      <input id="post-file" type="file" name="file" onChange={selectImage} required />
+                      <label for="post-file">
+                        <Row>
+                          <Col>
+                            Add File
+                            {/* <i className="bi bi-card-image"></i> */}
+                          </Col>
+                        </Row>
+                      </label>
+                    </form>
+                  </div>
+                </Button>
 
                 <Row className="mb-3">
                   <Form.Group className="mb-3" controlId="formGridAddress1">
-                    <Form.Label>Summary</Form.Label>
+                    <Form.Label>Description</Form.Label>
                     <Form.Control
                       type="text"
                       placeholder="A more detailed description of your projects"
@@ -109,10 +147,8 @@ const PostProject = (props) => {
           </Row>
         </Container>
       </div>
+      <Footer />
     </>
   );
 };
 export default PostProject;
-
-// "d-flex justify-content-center align-items-center"
-//   style={{ minHeight: "100vh" }}
