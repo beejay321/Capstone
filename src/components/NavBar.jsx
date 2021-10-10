@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Navbar, Nav, NavDropdown, Col, Row } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown, Button, Row } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import "../styles/Login.css";
@@ -14,59 +14,68 @@ const mapDispatchToProps = (dispatch) => ({
 const NavBar = (props) => {
   const users = useSelector((s) => s.users);
 
-  const check = () => {
-    console.log(props);
+  const logOut = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("id");
+    console.log("logged out");
+    console.log(localStorage.getItem("accessToken"));
   };
 
   return (
     <>
       <Navbar id="navbox">
-       
-        <Container >
-          <Link to="/">
-            <Navbar.Brand href="#home">LOGO</Navbar.Brand>
+        <Container>
+          <Link to="/" id="navlogo">
+            <Navbar.Brand href="#home">
+              <img alt="" src="/logo.svg" width="30" height="30" className="d-inline-block align-top" />{" "}
+            </Navbar.Brand>
           </Link>
           {/* <Link to="/">
             <Nav.Link href="#home">Home</Nav.Link>
           </Link> */}
-          <Link to="/aboutUs">
+          <Link  className = "navLink" to="/aboutUs">
             <Nav.Link href="#howItWorks"> About Us</Nav.Link>
           </Link>
-        
-          <Link to="/dashboard">
+
+          <Link to="/dashboard" className = "navLink" >
             <Nav.Link href="#dashboard">Find Projects</Nav.Link>
           </Link>
 
-          <Link to="/">
+          <Link to="/" className = "navLink" >
             <Nav.Link href="#dashboard">FAQ</Nav.Link>
           </Link>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-            <Link to="/postproject">
+            <Link to="/postproject" className = "navLink" >
               <Nav.Link href="#dashboard">Post a Project</Nav.Link>
             </Link>
-            {`${localStorage.getItem("accessToken")}` ? (
-              <NavDropdown title={`${localStorage.getItem("username")}`} id="basic-nav-dropdown">
-                <Link to = {`/users/${localStorage.getItem("id")}`}>
-                  <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
-                </Link>{" "}
-                <NavDropdown.Item href="#action/3.3">My Messages</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <Link to="/register">
-                  <NavDropdown.Item href="#action/3.4">Register a Skill</NavDropdown.Item>
-                </Link>{" "}
-                <Link to="/myProjects">
-                  <NavDropdown.Item href="#action/3.4">My Projects</NavDropdown.Item>
-                </Link>{" "}
-                <Link to="">
-                  <NavDropdown.Item href="#action/3.4">Log out</NavDropdown.Item>
-                </Link>{" "}
-              </NavDropdown>
-            ) : (
-              <Link to="/login">
-                <Nav.Link href="#login">Login</Nav.Link>
-              </Link>
-            )}
+            {/* {`${localStorage.getItem("accessToken")}`  ? ( */}
+            <NavDropdown title={`${localStorage.getItem("username")}`} id="basic-nav-dropdown">
+              <Link to={`/users/${localStorage.getItem("id")}`} className = "navLink" >
+                <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
+              </Link>{" "}
+              <NavDropdown.Divider />
+              <Link to="/register" className = "navLink" >
+                <NavDropdown.Item href="#action/3.4" >Register a Skill</NavDropdown.Item>
+              </Link>{" "}
+              <Link to="/myProjects" className = "navLink">
+                <NavDropdown.Item href="#action/3.4">My Projects</NavDropdown.Item>
+              </Link>{" "}
+              <Link to="/" className = "navLink">
+                <NavDropdown.Item href="#action/3.4" onClick={logOut}>
+                  Log out
+                </NavDropdown.Item>
+              </Link>{" "}
+            </NavDropdown>
+            {/* ) : ( */}
+            {/* <Link to="/login">
+              <Button>
+                Login
+              </Button>
+            </Link> */}
+            {/* )} */}
           </Navbar.Collapse>
         </Container>
       </Navbar>
