@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Card, Container, Row, Button, Form, Col, InputGroup, FormControl, Image } from "react-bootstrap";
 import "../styles/dashboard.css";
 import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
 
 class Dashboard extends React.Component {
   state = {
     user: "",
     projects: [],
     query: null,
-    location: null,
     category: null,
   };
 
@@ -59,12 +60,12 @@ class Dashboard extends React.Component {
   render() {
     return (
       <>
-        {/* >
-         */}
+        <NavBar />
+
         <div id="searchDiv">
           <Container className="mt-3 mb-0">
             <Row>
-              <Col className="d-flex justify-content-between mb-0  ">
+              <Col className="d-flex justify-content-between mb-0 gap-2 ">
                 <InputGroup className="searchInput">
                   <FormControl
                     value={this.state.query}
@@ -78,14 +79,11 @@ class Dashboard extends React.Component {
                     aria-describedby="basic-addon2"
                   />
                 </InputGroup>
-                {/* <InputGroup className="px-5">
-                  <FormControl placeholder="Where do you need the service?" aria-label="Search" aria-describedby="basic-addon2" />
-                </InputGroup> */}
-                <Button id="button-addon2" variant="success" className="searchButton px-5 mx-5"  onClick={this.searchProjects}>
+
+                <Button id="button-addon2" variant="outline" className="searchButton " onClick={this.searchProjects}>
                   Search
                 </Button>
               </Col>
-              {/* <Col  className="searchButtons "></Col> */}
             </Row>
           </Container>
         </div>
@@ -119,54 +117,41 @@ class Dashboard extends React.Component {
           </Container>
         </div>
 
-        <Container  className=" mb-3">
-          <Row>
-              <Row className=" pt-5">
-
-                {this.state.projects && this.state.projects.map((p) => (
-                  <Col xs={3} className="py-3">
-                    <div className=" projectBox">
-                      <Link to={`/details/${p._id}`}>
-                        {/* <div>
-                          <Image
-                            src={p.image}
-                            // height="10px"
-                            rounded
-                            fluid
-                            // onClick={() => this.props.history.push("/details")}
-                          />
-                        </div> */}
-                      </Link>
-                      <div className="d-flex py-1 ">
-                        {/* <Image src={p.seller.picture} height="60" roundedCircle /> */}
-                        {/* <Image src="https://via.placeholder.com/35" roundedCircle /> */}
-                        {/* <Image src={p.seller.picture} roundedCircle /> */}
-
-                        {/* <span className="px-3 ">Name</span>
-                        <span className="d-flex ">Surname</span> */}
-                        {/* <span className="px-3 ">{p.seller.firstname}</span> */}
-                        {/* <span className="d-flex ">{p.seller.lastname}</span> */}
+        <Container className=" mb-3">
+          <Row className="projectDiv pt-5">
+            {this.state.projects &&
+              this.state.projects.map((p) => (
+                <Col xs={3} className="py-3">
+                  <div className=" projectBox">
+                    <Link to={`/details/${p._id}`} className="projectLink">
+                      <div className="py-1  ">
+                        <span className="projectTitle">{p.title}</span>
                       </div>
-                      <Link to={`/details/${p._id}`} > 
-                        <div className="py-1    ">
-                          <span>{p.summary}</span>
-                        </div>
-                      </Link>
-                      <div className="py-1  my-1  ">
-                        <span>I need to design a logo for my wedding. To use for on all both invitation and access cards.</span>
-                      </div>
-                      <div className=" mt-1  ">
-                        <span>{p.location}</span>
-                      </div>
-                      {/* <div className=" mt-2 ">
-                        <span>€{p.price}</span>
-                      </div> */}
+                    </Link>
+                    <div className="py-1  my-1  ">
+                      <span className="text">{p.summary}</span>
+                      {/* <span>I would like a a skiiled graphic designer to design a logo for my startup. </span> */}
                     </div>
-                  </Col>
-                ))}
-              </Row>
+                    <div className=" sellerDiv px-1 ">
+                      {p.seller && (
+                        <div className="  d-flex  gap-1 ">
+                          <div className="sellerImageDiv">
+                            <Image className="sellerImage" src={p.seller.picture} fluid />
+                          </div>
+                          <span className="text  ">{p.seller.firstname}</span>
+                          <span className="d-flex text ">{p.seller.lastname} </span>
+                        </div>
+                      )}
+                      <div className=" mt-1  ">
+                        <span className="text">{p.location}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+              ))}
           </Row>
         </Container>
+        <Footer />
       </>
     );
   }
