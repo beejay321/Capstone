@@ -69,7 +69,7 @@ const LandingPage = (routerProps) => {
               <h2 className="howItWorksText">How It Works</h2>
             </div>
             <div className="howItWorksSection">
-              <h4 className="howItWorksText">Its very simple, start earning in few steps. </h4>
+              <h4 className="howItWorksText">Its very simple, get people to work on your project in few steps. </h4>
             </div>
 
             <div className="howItWorksBox py-4">
