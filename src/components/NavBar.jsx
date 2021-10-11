@@ -29,41 +29,46 @@ const NavBar = (props) => {
         <Container>
           <Link to="/" id="navlogo">
             <Navbar.Brand href="#home">
-              <img alt="" src="/logo.svg" width="30" height="30" className="d-inline-block align-top" />{" "}
+              <img
+                alt=""
+                src="https://res.cloudinary.com/dvyids286/image/upload/v1633950808/Capstone/sqpxzpmoq4nq0hpcbjpc.jpg
+"
+                width="45"
+                height="50"
+                className="d-inline-block align-top"
+              />{" "}
             </Navbar.Brand>
           </Link>
-          {/* <Link to="/">
-            <Nav.Link href="#home">Home</Nav.Link>
-          </Link> */}
-          <Link  className = "navLink" to="/aboutUs">
+
+          <Link className="navLink" to="/aboutUs">
             <Nav.Link href="#howItWorks"> About Us</Nav.Link>
           </Link>
 
-          <Link to="/dashboard" className = "navLink" >
+          <Link to="/dashboard" className="navLink">
             <Nav.Link href="#dashboard">Find Projects</Nav.Link>
           </Link>
 
-          <Link to="/" className = "navLink" >
+          <Link to="/" className="navLink">
             <Nav.Link href="#dashboard">FAQ</Nav.Link>
           </Link>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-            <Link to="/postproject" className = "navLink" >
+            <Link to="/postproject" className="navLink">
               <Nav.Link href="#dashboard">Post a Project</Nav.Link>
             </Link>
             {/* {`${localStorage.getItem("accessToken")}`  ? ( */}
             <NavDropdown title={`${localStorage.getItem("username")}`} id="basic-nav-dropdown">
-              <Link to={`/users/${localStorage.getItem("id")}`} className = "navLink" >
+              <Link to={`/users/${localStorage.getItem("id")}`} className="navLink">
                 <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
               </Link>{" "}
               <NavDropdown.Divider />
-              <Link to="/register" className = "navLink" >
-                <NavDropdown.Item href="#action/3.4" >Register a Skill</NavDropdown.Item>
+              <Link to="/register" className="navLink">
+                <NavDropdown.Item href="#action/3.4">Register a Skill</NavDropdown.Item>
               </Link>{" "}
-              <Link to="/myProjects" className = "navLink">
+              <Link to="/myProjects" className="navLink">
                 <NavDropdown.Item href="#action/3.4">My Projects</NavDropdown.Item>
               </Link>{" "}
-              <Link to="/" className = "navLink">
+              <Link to="/" className="navLink">
                 <NavDropdown.Item href="#action/3.4" onClick={logOut}>
                   Log out
                 </NavDropdown.Item>
