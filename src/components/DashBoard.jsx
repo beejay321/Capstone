@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Card, Container, Row, Button, Form, Col, InputGroup, FormControl, Image } from "react-bootstrap";
+import React from "react";
+import {  Container, Row, Button, Form, Col, InputGroup, FormControl, Image } from "react-bootstrap";
 import "../styles/dashboard.css";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
@@ -120,8 +120,8 @@ class Dashboard extends React.Component {
         <Container className=" mb-3">
           <Row className="projectDiv pt-5">
             {this.state.projects &&
-              this.state.projects.map((p) => (
-                <Col xs={3} className="py-3">
+              this.state.projects.reverse().map((p) => (
+                <Col xs={3} className="py-3" key={p._id}>
                   <div className=" projectBox">
                     <Link to={`/details/${p._id}`} className="projectLink">
                       <div className="py-1  ">

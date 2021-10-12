@@ -9,7 +9,7 @@ import InputEmoji from "react-input-emoji";
 const ADDRESS = "http://localhost:3255";
 const socket = io(ADDRESS, { transports: ["websocket"] });
 
-const ChatBox = ({ selectedRoom, firstname, lastname, setShowChat, showChat }) => {
+const ChatBox = ({ setShowButton, selectedRoom, firstname, lastname, setShowChat, showChat }) => {
   const [userName, setUserName] = useState("Liam");
   const [currentMessage, setCurrentMessage] = useState("");
   const [onlineUsers, setOnlineUsers] = useState([]);
@@ -42,6 +42,11 @@ const ChatBox = ({ selectedRoom, firstname, lastname, setShowChat, showChat }) =
     setCurrentMessage("");
   };
 
+  const closeChat = () => {
+    setShowChat(false);
+    // setShowButton(true);
+  };
+
   return showChat ? (
     <>
       <Container>
@@ -53,7 +58,7 @@ const ChatBox = ({ selectedRoom, firstname, lastname, setShowChat, showChat }) =
                 <h5>{firstname}</h5>
                 <h5 className="px-2 ">{lastname}</h5>
               </div>
-              <CloseButton onClick={() => setShowChat(false)} />
+              <CloseButton onClick={closeChat} />
             </div>
             <hr className="p-0 " />
 
@@ -72,18 +77,16 @@ const ChatBox = ({ selectedRoom, firstname, lastname, setShowChat, showChat }) =
                   </span>
                   <hr className=" " />
                 </div>
-
               ))}
             </div>
             {/* <div key="{message.id}" className="my-2"></div> */}
             <InputGroup className="chatInput mb-3">
-            <hr className=" " />
+              <hr className=" " />
               <FormControl placeholder="Write a message" aria-label="Recipient's username" aria-describedby="basic-addon2" value={currentMessage} onChange={(e) => setCurrentMessage(e.target.value)} />
               <Button type="submit" variant="outline-secondary" id="button-addon2" onClick={sendMessage}>
                 Send
               </Button>
             </InputGroup>
-            
 
             {/* <div className="input-parent d-flex p-3">
               <InputEmoji className="message-input"  onChange={(e) => setCurrentMessage(e.target.value)} cleanOnEnter={true} onEnter={sendMessage} />
