@@ -16,9 +16,8 @@ const PostProject = (props) => {
   const [location, setLocation] = useState("");
   const [file, setFile] = useState([]);
 
-  const postProject = async (event) => {
+  const postProject = async (e) => {
     try {
-      console.log(localStorage.getItem("id"));
       const service = {
         seller: seller,
         title: title,
@@ -34,25 +33,31 @@ const PostProject = (props) => {
         },
         body: JSON.stringify(service),
       });
+      console.log(response);
       if (response.ok) {
-        if (file !== undefined) {
-          const data = await response.json();
-          const id = data._id;
-          let newResponse = await fetch(`${ADDRESS}/projects/${id}/uploadFile`, {
-            method: "POST",
-            body: file,
-          });
-          if (newResponse.ok) {
-            alert("Sucessfully posted");
-          }
-        } else {
-          console.log("File was not uploaded!");
-        }
-      } else {
-        console.log("project not created!");
-      }
+      console.log("Here");
 
-   
+      // if (file !== undefined) {
+
+      //   // const data = await response.json();
+      //   // const id = data._id;
+      //   // let newResponse = await fetch(`${ADDRESS}/projects/${id}/uploadFile`, {
+      //   //   method: "POST",
+      //   //   body: file,
+      //   // });
+
+      //   // if (newResponse.ok) {
+      //   //   alert("Sucessfully posted");
+      //   // }
+      // } else {
+      //   console.log("File was not uploaded!");
+      // }
+      alert("Sucessfully posted");
+      console.log("Sucessfully posted");
+      props.history.push("/dashboard");
+      } else {
+      console.log("project not created!");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -77,12 +82,12 @@ const PostProject = (props) => {
               <Form>
                 <Form.Group className="mb-3" controlId="formGridAddress1">
                   <Form.Label>Title</Form.Label>
-                  <Form.Control placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} type="text" />
+                  <Form.Control required placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} type="text" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGridAddress1">
                   <Form.Label>Summary</Form.Label>
-                  <Form.Control placeholder="a short description of project" value={summary} onChange={(e) => setSummary(e.target.value)} />
+                  <Form.Control placeholder="a short description of project" required value={summary} onChange={(e) => setSummary(e.target.value)} />
                 </Form.Group>
                 <Row className="">
                   <Form.Group as={Col} controlId="formGridEmail">
@@ -90,7 +95,7 @@ const PostProject = (props) => {
                   </Form.Group>
                 </Row>
                 <Form.Group as={Col} controlId="formGridEmail">
-                  <Form.Control type="text" placeholder="Where is the project to be delivered?" value={location} onChange={(e) => setLocation(e.target.value)} />
+                  <Form.Control required type="text" placeholder="Where is the project to be delivered?" value={location} onChange={(e) => setLocation(e.target.value)} />
                 </Form.Group>
                 <br />
                 <Row className="">
@@ -123,20 +128,21 @@ const PostProject = (props) => {
                     <Form.Label>Description</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="A more detailed description of your projects"
+                      placeholder="A more detailed description of your project"
                       as="textarea"
                       style={{ height: "150px" }}
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
+                      required
                     />
                   </Form.Group>
                 </Row>
 
-                <div className="d-flex justify-content-between align-items-center">
+                <div className="d-flex justify-content-end gap-1">
                   <Button variant="success" type="submit" onClick={postProject}>
                     Save
                   </Button>
-                  <Link to="/users/me">
+                  <Link to="/dashboard">
                     <Button variant="success" type="submit">
                       My Profile{" "}
                     </Button>
