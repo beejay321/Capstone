@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
-import { Card, Container, Row, Button, Form, Col, InputGroup, FormControl, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
+// import NavBar from "./components/NavBar";
 import LandingPage from "./components/LandingPage";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import Dashboard from "./components/DashBoard";
 import DetailPage from "./components/detailPage";
 import Register from "./components/Register";
@@ -18,13 +16,11 @@ import ChatBox from "./components/chatBox";
 import Login from "./components/Login";
 import Checkout from "./components/checkout";
 import PostProject from "./components/postProjects";
-import FreelancerProfile from "./profile/freelancerProfile";
-import PayPal from "./components/PayPal";
 import ConfirmDetails from "./components/confirmDetails";
 
 function App() {
-  const [LoggedIn, setLoggedIn] = useState(false);
-  const [sellerLoggedIn, setSellerLoggedIn] = useState(false);
+  // const [LoggedIn, setLoggedIn] = useState(false);
+  // const [sellerLoggedIn, setSellerLoggedIn] = useState(false);
 
   return (
     <>
@@ -32,12 +28,10 @@ function App() {
         {/* <NavBar /> */}
         <Route path="/" exact component={LandingPage} />
         <Route path="/dashboard" render={(routerProps) => <Dashboard {...routerProps} />} />
-        <Route path="/details/:projectId" render={(routerProps) => <DetailPage title="DETAILS" {...routerProps} />} />
-        <Route path="/freelancerProfile/:id" render={(routerProps) => <FreelancerProfile {...routerProps} />} />
-        <Route path="/postproject" render={(routerProps) => <PostProject {...routerProps} />} />
+        <Route path="/details/:projectId" render={(routerProps) => <DetailPage title="DETAILS" {...routerProps} />} />        <Route path="/postproject" render={(routerProps) => <PostProject {...routerProps} />} />
         <Route path="/aboutUs" component={AboutUs} />
-        <Route path="/login" render={(routerProps) => <Login LoggedIn={LoggedIn} {...routerProps} />} />
-        <Route path="/register" render={(routerProps) => <Register LoggedIn={LoggedIn} {...routerProps} />} />
+        <Route path="/login" render={(routerProps) => <Login  {...routerProps} />} />
+        <Route path="/register" render={(routerProps) => <Register  {...routerProps} />} />
         <Route path="/updateProfile" render={(routerProps) => <UpdateProfile {...routerProps} />} />
         <Route path="/users/:id" render={(routerProps) => <MyProfile {...routerProps} />} />
         <Route path="/chat" render={(routerProps) => <ChatBox {...routerProps} />} />
@@ -50,7 +44,7 @@ function App() {
 
 export default App;
 
-{
+
   /* <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -60,4 +54,4 @@ export default App;
           <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer"></a>
         </header>
       </div> */
-}
+

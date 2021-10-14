@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Form, Container, Row, Col, Button, Card, Image } from "react-bootstrap";
+import React from "react";
+import { Form, Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { connect  } from "react-redux";
 
 import { loggedInAction } from "../redux/actions";
 

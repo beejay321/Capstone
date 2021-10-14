@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Card, Container, Row, Button, Form, Col, InputGroup, FormControl, Image } from "react-bootstrap";
 import "../styles/dashboard.css";
 
 const ADDRESS = "http://localhost:3255";

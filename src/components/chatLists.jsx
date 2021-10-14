@@ -1,20 +1,22 @@
-import { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { Container, Col, Row, Card, Accordion, Button, FormControl, CloseButton, Image, InputGroup } from "react-bootstrap";
-import { MessageList, Input, SystemMessage, MessageBox, ChatList } from "react-chat-elements";
+import {  useEffect } from "react";
+import { Container, Col, Row,  CloseButton, Image} from "react-bootstrap";
+// import { MessageList, Input, SystemMessage, MessageBox, ChatList } from "react-chat-elements";
 import "react-chat-elements/dist/main.css";
 import "../styles/chatBox.css";
 import { io } from "socket.io-client";
-import InputEmoji from "react-input-emoji";
+// import InputEmoji from "react-input-emoji";
 import ChatBox from "./chatBox";
 
 const ADDRESS = "http://localhost:3255";
-const socket = io(ADDRESS, { transports: ["websocket"] });
+// const socket = io(ADDRESS, { transports: ["websocket"] });
 
-const ChatLists = ({ roomHistory, setShowChat, user, selectedRoom, firstname, lastname, setShowChatList, showChat, continueRoom, getRooms, chats }) => {
-  const [userName, setUserName] = useState("Liam");
-  const [currentMessage, setCurrentMessage] = useState("");
-  const [onlineUsers, setOnlineUsers] = useState([]);
-  const [chatHistory, setChatHistory] = useState([]);
+const ChatLists = ({ roomHistory, setShowChat, user, selectedRoom,
+  //  firstname, lastname, continueRoom,
+   setShowChatList, showChat,  getRooms, chats }) => {
+  // const [userName, setUserName] = useState("Liam");
+  // const [currentMessage, setCurrentMessage] = useState("");
+  // const [onlineUsers, setOnlineUsers] = useState([]);
+  // const [chatHistory, setChatHistory] = useState([]);
 
   useEffect(() => {
     getRooms();

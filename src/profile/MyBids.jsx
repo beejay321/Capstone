@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { Table, Container, Row, Button, Form, Col, InputGroup, FormControl, Image } from "react-bootstrap";
+import React from "react";
+import { Table } from "react-bootstrap";
 // import "./dashboard.css";
-import { Link } from "react-router-dom";
 import EditModal from "./EditModal";
 
 const MyBids = (props) => {
   return (
     <>
       <div className=" my-2 py-2 px-1 profileColumn " style={{ minHeight: "15rem" }}>
-        <div className=" mx-2 d-flex justify-content-between ">
+        <div className="mx-2 d-flex justify-content-between">
           <h4>{props.title}</h4>
           {localStorage.getItem("id") === props.user._id ? <EditModal title={props.title} /> : ""}
 

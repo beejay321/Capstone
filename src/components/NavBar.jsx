@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Container, Navbar, Nav, NavDropdown, Button, Row } from "react-bootstrap";
+import React from "react";
+import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
-import LoginModal from "./LoginModal";
+// import LoginModal from "./LoginModal";
 import "../styles/Login.css";
 import "../styles/navbar.css";
-import { connect, useDispatch, useSelector } from "react-redux";
+// import { connect, useDispatch, useSelector } from "react-redux";
 import { loggedInAction } from "../redux/actions";
 
-const mapDispatchToProps = (dispatch) => ({
-  isLogged: (user) => dispatch(loggedInAction(user)),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   isLogged: (user) => dispatch(loggedInAction(user)),
+// });
 
 const NavBar = (props) => {
-  const users = useSelector((s) => s.users);
+  // const users = useSelector((s) => s.users);
 
   const logOut = () => {
     localStorage.removeItem("username");
@@ -40,21 +40,21 @@ const NavBar = (props) => {
             </Navbar.Brand>
           </Link>
 
-          <Link className="navLink" to="/aboutUs">
-            <Nav.Link href="#howItWorks"> About Us</Nav.Link>
-          </Link>
+          {/* <Link className="navLink" to="/aboutUs"> */}
+          <Nav.Link href="/aboutUs"> About Us</Nav.Link>
+          {/* </Link> */}
 
-          <Link to="/dashboard" className="navLink">
-            <Nav.Link href="#dashboard">Find Projects</Nav.Link>
-          </Link>
+          {/* <Link to="/dashboard" className="navLink"> */}
+            <Nav.Link href="/dashboard">Find Projects</Nav.Link>
+          {/* </Link> */}
 
-          <Link to="/" className="navLink">
-            <Nav.Link href="#dashboard">FAQ</Nav.Link>
-          </Link>
+          {/* <Link to="/faq" className="navLink"> */}
+            <Nav.Link href="/faq">FAQ</Nav.Link>
+          {/* </Link> */}
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Link to="/postproject" className="navLink">
-              <Nav.Link href="#dashboard">Post a Project</Nav.Link>
+              <Nav.Link href="/postproject">Post a Project</Nav.Link>
             </Link>
             {/* {`${localStorage.getItem("accessToken")}`  ? ( */}
             <NavDropdown title={`${localStorage.getItem("username")}`} id="basic-nav-dropdown">

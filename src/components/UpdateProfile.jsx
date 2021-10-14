@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Form, Container, Row, Col, Button, Image, Card } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import React, { useState } from "react";
+import { Form, Container, Row, Col, Button, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 
 const UpdateProfile = (props) => {
-  const [showProfile, setShowProfile] = useState(false);
+  // const [showProfile, setShowProfile] = useState(false);
   const [name, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [description, setDescription] = useState("");
@@ -44,6 +45,8 @@ const UpdateProfile = (props) => {
 
   return (
     <>
+      <NavBar />
+
       <div>
         <Container className=" py-5">
           <h2>Update Profile</h2>
@@ -114,9 +117,7 @@ const UpdateProfile = (props) => {
 
             <div className="d-flex justify-content-between align-items-center">
               {/* <Link to="/myProfile"> */}
-              <Button variant="success" type="submit" onClick={updateProfile}
-               disabled = {name.length < 0 && lastname.length < 0 ? true : false}
->
+              <Button variant="success" type="submit" onClick={updateProfile} disabled={name.length < 0 && lastname.length < 0 ? true : false}>
                 Save
               </Button>
               {/* </Link> */}

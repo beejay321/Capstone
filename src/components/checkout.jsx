@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Card, Container, Row, Button, Form, Col, Alert, FormControl, Image } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import {  Container, Row, Button, Form, Col, Alert} from "react-bootstrap";
 import "../styles/checkout.css";
-import { Link } from "react-router-dom";
 import PayPal from "./PayPal";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
@@ -11,12 +10,12 @@ const ADDRESS = "http://localhost:3255";
 const Checkout = ({ match, history }) => {
   const [bidder, setBidder] = useState("");
   const [checkout, setCheckOut] = useState(false);
-  const [freelancer, setFreelancer] = useState(false);
-  const [description, setDescription] = useState("");
+  // const [freelancer, setFreelancer] = useState(false);
+  // const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [projectDetails, setProjectDetails] = useState("");
   const [project, setProject] = useState("");
-  const [bid, setBids] = useState("");
+  // const [bid, setBids] = useState("");
   const [hidePaypal, setHidePaypal] = useState(false);
 
   const getProject = async () => {
@@ -39,7 +38,7 @@ const Checkout = ({ match, history }) => {
         let result = await response.json();
         console.log(result);
         console.log(result[0].user);
-        setBids(result);
+        // setBids(result);
         const bidderId = result[0].user;
 
         try {

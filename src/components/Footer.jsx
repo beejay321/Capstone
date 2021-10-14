@@ -1,4 +1,4 @@
-import react from "react";
+// import react from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import "../styles/Footer.css";
 

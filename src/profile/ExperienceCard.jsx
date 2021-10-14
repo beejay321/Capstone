@@ -1,55 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { Form, Container, Row, Col, Button, Image, Card } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import React from "react";
+import {  Button,  Card } from "react-bootstrap";
 import "./profilepage.css";
 import EditModal from "./EditModal";
 
 const ExperienceCard = (props) => {
-  const [user, setUser] = useState("");
-  const [experience, setExperience] = useState("");
+  // const [user, setUser] = useState("");
+  // const [experience, setExperience] = useState("");
 
-  useEffect(() => {
-    const getProfile = async () => {
-      try {
-        let response = await fetch(`http://localhost:3255/users/me`, {
-          method: "GET",
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        });
-        if (response.ok) {
-          let data = await response.json();
-          console.log(data);
-          setUser(data);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getProfile();
-  }, []);
+  
 
-  const editExperience = async () => {
-    try {
-      const response = await fetch(`http://localhost:3255/users/me/experience`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(),
-      });
+  // const editExperience = async () => {
+  //   try {
+  //     const response = await fetch(`http://localhost:3255/users/me/experience`, {
+  //       method: "POST",
+  //       headers: {
+  //         "content-type": "application/json",
+  //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //       },
+  //       body: JSON.stringify(),
+  //     });
 
-      if (response.ok) {
-        console.log(response);
-        // props.history.push("/myProjects");
-      } else {
-        alert(" not successful");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     if (response.ok) {
+  //       console.log(response);
+  //       // props.history.push("/myProjects");
+  //     } else {
+  //       alert(" not successful");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <>

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Card, Container, Row, Button, Form, Col, Image, FormControl } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
-import DetailPage from "./detailPage";
+import { Container, Row, Button,  Image } from "react-bootstrap";
+// import { Link, withRouter } from "react-router-dom";
+// import DetailPage from "./detailPage";
 import MyLoginModal from "./Login";
-import LoginModal from "./LoginModal";
+// import LoginModal from "./LoginModal";
 import "../styles/Register.css";
-import { propTypes } from "react-bootstrap/esm/Image";
+// import { propTypes } from "react-bootstrap/esm/Image";
 
 const Register = (routerProps) => {
-  const [modalShow, setModalShow] = useState(false);
-  const [LoggedIn, setLoggedIn] = useState(false);
+  // const [modalShow, setModalShow] = useState(false);
+  // const [LoggedIn, setLoggedIn] = useState(false);
 
   return (
     <>

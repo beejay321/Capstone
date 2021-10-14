@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Card, Container, Row, Button, Form, Col, InputGroup, FormControl, Image } from "react-bootstrap";
+import {  Container, Row, Button, Col, Image } from "react-bootstrap";
 import BidModal from "./BidModal";
 import "../styles/detail.css";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 
 const DetailPage = ({ match, history }) => {
-  const [LoggedIn, setLoggedIn] = useState(false);
+  // const [LoggedIn, setLoggedIn] = useState(false);
   const [project, setProject] = useState("");
   const [bids, setBids] = useState("");
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
 
-  const Login = () => {
-    console.log("You need to Log in");
-    alert("You need to Log in");
-  };
+  // const Login = () => {
+  //   console.log("You need to Log in");
+  //   alert("You need to Log in");
+  // };
 
   useEffect(() => {
     const getProject = async () => {

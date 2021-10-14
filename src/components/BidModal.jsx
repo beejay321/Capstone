@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Form, Container, Row, Col, Button, Card, Image, Modal } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { Form,  Button,  Modal } from "react-bootstrap";
+import { connect } from "react-redux";
 
 import { loggedInAction } from "../redux/actions";
 
@@ -18,19 +17,16 @@ const mapDispatchToProps = (dispatch) => ({
 const ADDRESS = "http://localhost:3255";
 
 const BidModal = (props) => {
-  const [user, setUser] = useState(localStorage.getItem("id"));
-  const [password, setPassword] = useState("");
+  const [user, ] = useState(localStorage.getItem("id"));
   const [message, setMessage] = useState("");
   const [cost, setCost] = useState("");
   const [duration, setDuration] = useState("");
-  const [validated, setValidated] = useState(false);
   const [show, setShow] = useState(false);
-  const [LoggedIn, setLoggedIn] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const bid = async (event) => {
-    const form = event.currentTarget;
+    // const form = event.currentTarget;
     // if (form.checkValidity() === false) {
     //   event.preventDefault();
     //   event.stopPropagation();

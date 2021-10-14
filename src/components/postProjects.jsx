@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Form, Container, Row, Col, Button, Image, Card } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import React, { useState } from "react";
+import { Form, Container, Row, Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "../styles/postProject.css";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
@@ -8,7 +8,7 @@ import NavBar from "./NavBar";
 const ADDRESS = "http://localhost:3255";
 
 const PostProject = ({ history }) => {
-  const [seller, setSeller] = useState(localStorage.getItem("id"));
+  const [seller, ] = useState(localStorage.getItem("id"));
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
@@ -67,9 +67,9 @@ const PostProject = ({ history }) => {
 
   const selectImage = (e) => {
     e.preventDefault();
-    const file = e.target.files[0];
+    const data = e.target.files[0];
     let formData = new FormData();
-    formData.append("file", file);
+    formData.append("file", data);
     setFile(formData);
   };
 

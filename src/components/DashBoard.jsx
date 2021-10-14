@@ -1,9 +1,13 @@
 import React from "react";
-import {  Container, Row, Button, Form, Col, InputGroup, FormControl, Image } from "react-bootstrap";
+import { Container, Row, Button, Col, InputGroup, FormControl, Image } from "react-bootstrap";
 import "../styles/dashboard.css";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+
+// const ADDRESS = "http://localhost:3255";
+
+const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 class Dashboard extends React.Component {
   state = {
@@ -15,7 +19,13 @@ class Dashboard extends React.Component {
 
   componentDidMount = async () => {
     try {
-      let response = await fetch("http://localhost:3255/projects");
+      let response = await fetch(`${MY_APP_API_URL}/projects`, {
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
+
       if (response.ok) {
         let data = await response.json();
         console.log(data);
@@ -43,9 +53,9 @@ class Dashboard extends React.Component {
     }
   };
 
-  searchDesign = async () => {
+  searchCategory = async (category) => {
     try {
-      let response = await fetch(`http://localhost:3255/projects/search/design`);
+      let response = await fetch(`http://localhost:3255/projects?category=${category}`);
       let result = await response.json();
       console.log(result);
       this.setState({
@@ -91,25 +101,74 @@ class Dashboard extends React.Component {
           <Container>
             <Row xs={8} md={7}>
               <div className="categoryButtonsDiv py-2">
-                <Button className="categoryButtons " variant="light" id="button-addon2" onClick={this.searchDesign}>
+                <Button
+                  className="categoryButtons "
+                  variant="light"
+                  id="button-addon2"
+                  onClick={() => {
+                    this.searchCategory("Design");
+                  }}
+                >
                   Art & Design
                 </Button>
-                <Button className="categoryButtons " variant="light" id="button-addon2">
-                  Writing & Research
+                <Button
+                  className="categoryButtons "
+                  variant="light"
+                  id="button-addon2"
+                  onClick={() => {
+                    this.searchCategory("Education");
+                  }}
+                >
+                  Education
                 </Button>
-                <Button className="categoryButtons " variant="light" id="button-addon2">
+                <Button
+                  className="categoryButtons "
+                  variant="light"
+                  id="button-addon2"
+                  onClick={() => {
+                    this.searchCategory("Beauty");
+                  }}
+                >
                   Beauty & Lifestyle
                 </Button>
-                <Button className="categoryButtons " variant="light" id="button-addon2">
-                  Food Making
+                <Button
+                  className="categoryButtons "
+                  variant="light"
+                  id="button-addon2"
+                  onClick={() => {
+                    this.searchCategory("Catering");
+                  }}
+                >
+                  Catering{" "}
                 </Button>
-                <Button className="categoryButtons " variant="light" id="button-addon2">
-                  Music & Audio
+                <Button
+                  className="categoryButtons "
+                  variant="light"
+                  id="button-addon2"
+                  onClick={() => {
+                    this.searchCategory("Entertainment");
+                  }}
+                >
+                  Entertainment
                 </Button>
-                <Button className="categoryButtons " variant="light" id="button-addon2">
-                  Video Making
+                <Button
+                  className="categoryButtons "
+                  variant="light"
+                  id="button-addon2"
+                  onClick={() => {
+                    this.searchCategory("Business");
+                  }}
+                >
+                  Business
                 </Button>
-                <Button className="categoryButtons " variant="light" id="button-addon2">
+                <Button
+                  className="categoryButtons "
+                  variant="light"
+                  id="button-addon2"
+                  onClick={() => {
+                    this.searchCategory("Programming");
+                  }}
+                >
                   Programming
                 </Button>
               </div>

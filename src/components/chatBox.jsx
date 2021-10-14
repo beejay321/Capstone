@@ -1,18 +1,19 @@
-import { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { Container, Col, Row, Form, ListGroup, Button, FormControl, CloseButton, InputGroup } from "react-bootstrap";
-import { MessageList, Input, SystemMessage, MessageBox } from "react-chat-elements";
+import { useState, useEffect } from "react";
+import { Container, Col, Row, Button, FormControl, CloseButton, InputGroup } from "react-bootstrap";
+// import { MessageList, Input, SystemMessage, MessageBox } from "react-chat-elements";
 import "react-chat-elements/dist/main.css";
 import "../styles/chatBox.css";
 import { io } from "socket.io-client";
-import InputEmoji from "react-input-emoji";
+// import InputEmoji from "react-input-emoji";
 
 const ADDRESS = "http://localhost:3255";
 const socket = io(ADDRESS, { transports: ["websocket"] });
 
-const ChatBox = ({ setShowButton, selectedRoom, firstname, lastname, setShowChat, showChat }) => {
-  const [userName, setUserName] = useState("Liam");
+const ChatBox = ({ 
+  // setShowButton, 
+  selectedRoom, firstname, lastname, setShowChat, showChat }) => {
+  // const [userName, setUserName] = useState("Liam");
   const [currentMessage, setCurrentMessage] = useState("");
-  const [onlineUsers, setOnlineUsers] = useState([]);
   const [chatHistory, setChatHistory] = useState([]);
 
   useEffect(() => {

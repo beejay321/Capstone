@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Container, Row, Col, Button, Image, Card, ButtonGroup, ToggleButton } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import { Container, Row, Col, Button, Image, Card } from "react-bootstrap";
 import "./profilepage.css";
 import NavBar from "../components/NavBar";
 import MyProfileCard from "./myProfileCard";
@@ -25,9 +24,10 @@ const MyProfile = (props) => {
   const [skills, setSkills] = useState([]);
   const [language, setLanguage] = useState([]);
   const [client, setClient] = useState(false);
-  const [freelancer, setFreelancer] = useState(false);
+  // const [freelancer, setFreelancer] = useState(false);
   const [showChatList, setShowChatList] = useState(false);
   const [showChat, setShowChat] = useState(false);
+  const [showButton, setShowButton] = useState(true);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [roomHistory, setRoomHistory] = useState(null);
   const [chats, setChats] = useState(null);
@@ -97,6 +97,7 @@ const MyProfile = (props) => {
   };
 
   const showChatBox = () => {
+    setShowButton(false);
     setShowChat(true);
     createRoom();
   };
@@ -228,9 +229,10 @@ const MyProfile = (props) => {
                       Edit Profile
                     </Button>
                   ) : (
-                    <Button className="editButton" variant="primary" type="submit" onClick={showChatBox}>
-                      Message
-                    </Button>
+                    ""
+                    // <Button className="editButton" variant="primary" type="submit" onClick={showChatBox}>
+                    //   Message
+                    // </Button>
                   )}
                 </div>
               </Row>
@@ -241,6 +243,18 @@ const MyProfile = (props) => {
               <Row className=" my-3 profileColumn">
                 <MyProfileCard title="Cert" content={<CertificationCard title="Cert" user={user} />} />
               </Row>
+              <div className=" d-flex justify-content-center">
+                {localStorage.getItem("id") === user._id ? (
+                  <Button className="editButton" variant="primary" type="submit" onClick={() => props.history.push("/updateProfile/613109f216858d24880aaa2a")}>
+                    Edit Profile
+                  </Button>
+                ) : (
+                  ""
+                  // <Button className="editButton" variant="primary" type="submit" onClick={showChatBox}>
+                  //   Message
+                  // </Button>
+                )}
+              </div>
             </Col>
             <Col xs={7} className="">
               {client ? (
@@ -263,11 +277,26 @@ const MyProfile = (props) => {
               </div>
             </Col>
             <Col xs={3} className="">
-              <ChatBox selectedRoom={selectedRoom} roomHistory={roomHistory} showChat={showChat} setShowChat={setShowChat} user={user} firstname={user.firstname} lastname={user.lastname} />
+              {showButton && (
+                <Button className="chatButton" variant="primary" type="submit" onClick={showChatBox}>
+                  Message
+                </Button>
+              )}
+              <ChatBox
+                selectedRoom={selectedRoom}
+                roomHistory={roomHistory}
+                showChat={showChat}
+                setShowChat={setShowChat}
+                setShowButton={setShowButton}
+                user={user}
+                firstname={user.firstname}
+                lastname={user.lastname}
+              />
             </Col>
             {localStorage.getItem("id") === user._id ? (
               <ChatLists
                 setShowChatList={setShowChatList}
+                showChatList={showChatList}
                 chats={chats}
                 getRooms={getRooms}
                 continueRoom={continueRoom}

@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // import React, { Component } from "react";
-import { Modal, Button, Form, Col, Row, Card, Image } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import { Modal, Button, Form } from "react-bootstrap";
 import "./profilepage.css";
 
 
-const ApiUrl = process.env.REACT_APP_API_URL;
+// const ApiUrl = process.env.REACT_APP_API_URL;
 
 const EditModal = (props) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [validated, setValidated] = useState(false);
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [validated, setValidated] = useState(false);
   const [show, setShow] = useState(false);
-  const [LoggedIn, setLoggedIn] = useState(false);
+  // const [LoggedIn, setLoggedIn] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 

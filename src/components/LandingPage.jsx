@@ -1,30 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { Card, Container, Row, Button, Form, Col, InputGroup, FormControl, Image } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import React from "react";
+import {  Container, Row, Button,  Col,  Image } from "react-bootstrap";
 
-import DetailPage from "./detailPage";
-import MyLoginModal from "./Login";
+// import MyLoginModal from "./Login";
 import "../styles/HomePage.css";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 
 const LandingPage = (routerProps) => {
-  const [query, setQuery] = useState("");
-  const [projects, setProjects] = useState([]);
+ 
 
-  const searchProject = async (query) => {
-    try {
-      let response = await fetch(`http://localhost:3255/projects/search/${query}`);
-      console.log(response);
-      let result = await response.json();
-      console.log(result);
-      setProjects(result);
-      console.log(projects);
-      routerProps.history.push("/dashboard");
-    } catch (error) {
-      console.log("error");
-    }
-  };
+  
 
   const createProject = () => {
     if (localStorage.getItem("username")) {

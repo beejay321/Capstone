@@ -1,25 +1,23 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Card, Container, Row, Button, Form, Col, Alert, FormControl, Image } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Container, Row, Button,  Col, Alert} from "react-bootstrap";
 import "../styles/checkout.css";
-import { Link } from "react-router-dom";
-import PayPal from "./PayPal";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 
 const ADDRESS = "http://localhost:3255";
 
 const ConfirmDetails = ({ match, history }) => {
-  const [user, setUser] = useState("");
   const [bidder, setBidder] = useState("");
-  const [checkout, setCheckOut] = useState(false);
-  const [freelancer, setFreelancer] = useState(false);
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [projectDetails, setProjectDetails] = useState("");
   const [project, setProject] = useState("");
-  const [bid, setBids] = useState("");
-  const [status, setStatus] = useState("pending");
-  const [myBids, setMyBids] = useState(null);
+  // const [user, setUser] = useState("");
+  // const [checkout, setCheckOut] = useState(false);
+  // const [freelancer, setFreelancer] = useState(false);
+  // const [description, setDescription] = useState("");
+  // const [price, setPrice] = useState("");
+  // const [projectDetails, setProjectDetails] = useState("");
+  // const [bid, setBids] = useState("");
+  // const [status, setStatus] = useState("pending");
+  // const [myBids, setMyBids] = useState(null);
 
   const getProject = async () => {
     try {
@@ -45,7 +43,7 @@ const ConfirmDetails = ({ match, history }) => {
         let data = await response.json();
         console.log(data);
         setBidder(data);
-        setMyBids(data.myBids);
+        // setMyBids(data.myBids);
       }
     } catch (error) {
       console.log(error);
@@ -53,19 +51,19 @@ const ConfirmDetails = ({ match, history }) => {
   };
 
   useEffect(() => {
-    // getProject();
+    getProject();
     getProfile();
   }, []);
 
   const confirm = () => {
-    setStatus("confirmed");
+    // setStatus("confirmed");
     history.push(`/users/${match.params.bidderId}`);
     // delete project from dashboard
     // update status on bidder profile
   };
 
   const reject = () => {
-    setStatus("rejected");
+    // setStatus("rejected");
     history.push(`/users/${match.params.bidderId}`);
   };
 
