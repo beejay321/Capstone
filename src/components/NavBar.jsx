@@ -5,7 +5,7 @@ import { Link, withRouter } from "react-router-dom";
 import "../styles/Login.css";
 import "../styles/navbar.css";
 // import { connect, useDispatch, useSelector } from "react-redux";
-import { loggedInAction } from "../redux/actions";
+// import { loggedInAction } from "../redux/actions";
 
 // const mapDispatchToProps = (dispatch) => ({
 //   isLogged: (user) => dispatch(loggedInAction(user)),

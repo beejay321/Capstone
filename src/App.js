@@ -2,56 +2,20 @@ import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-// import NavBar from "./components/NavBar";
-import LandingPage from "./components/LandingPage";
-// import Footer from "./components/Footer";
-import Dashboard from "./components/DashBoard";
-import DetailPage from "./components/detailPage";
-import Register from "./components/Register";
-import UpdateProfile from "./components/UpdateProfile";
-import MyProfile from "./profile/MyProfile.jsx";
-// import MyProjects from "./profile/myProjects.jsx";
-import AboutUs from "./components/AboutUs";
-import ChatBox from "./components/chatBox";
-import Login from "./components/Login";
-import Checkout from "./components/checkout";
-import PostProject from "./components/postProjects";
-import ConfirmDetails from "./components/confirmDetails";
+
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 function App() {
-  // const [LoggedIn, setLoggedIn] = useState(false);
-  // const [sellerLoggedIn, setSellerLoggedIn] = useState(false);
-
   return (
     <>
       <Router>
-        {/* <NavBar /> */}
-        <Route path="/" exact component={LandingPage} />
-        <Route path="/dashboard" render={(routerProps) => <Dashboard {...routerProps} />} />
-        <Route path="/details/:projectId" render={(routerProps) => <DetailPage title="DETAILS" {...routerProps} />} />        <Route path="/postproject" render={(routerProps) => <PostProject {...routerProps} />} />
-        <Route path="/aboutUs" component={AboutUs} />
-        <Route path="/login" render={(routerProps) => <Login  {...routerProps} />} />
-        <Route path="/register" render={(routerProps) => <Register  {...routerProps} />} />
-        <Route path="/updateProfile" render={(routerProps) => <UpdateProfile {...routerProps} />} />
-        <Route path="/users/:id" render={(routerProps) => <MyProfile {...routerProps} />} />
-        <Route path="/chat" render={(routerProps) => <ChatBox {...routerProps} />} />
-        <Route path="/checkout/:projectId/:bidId" render={(routerProps) => <Checkout {...routerProps} />} />
-        <Route path="/confirmProjectDetails/:bidderId" render={(routerProps) => <ConfirmDetails {...routerProps} />} />
+        <NavBar />
+
+        <Footer />
       </Router>
     </>
   );
 }
 
 export default App;
-
-
-  /* <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer"></a>
-        </header>
-      </div> */
-
