@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
 
   searchProjects = async () => {
     try {
-      let response = await fetch(`http://localhost:3255/projects/search/${this.state.query}`);
+      let response = await fetch(`${MY_APP_API_URL}/projects/search/${this.state.query}`);
       let result = await response.json();
       console.log(result);
       this.setState({
@@ -55,7 +55,7 @@ class Dashboard extends React.Component {
 
   searchCategory = async (category) => {
     try {
-      let response = await fetch(`http://localhost:3255/projects?category=${category}`);
+      let response = await fetch(`${MY_APP_API_URL}/projects?category=${category}`);
       let result = await response.json();
       console.log(result);
       this.setState({
