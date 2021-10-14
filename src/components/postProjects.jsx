@@ -7,7 +7,7 @@ import NavBar from "./NavBar";
 
 const ADDRESS = "http://localhost:3255";
 
-const PostProject = (props) => {
+const PostProject = ({ history }) => {
   const [seller, setSeller] = useState(localStorage.getItem("id"));
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
@@ -22,6 +22,7 @@ const PostProject = (props) => {
         seller: seller,
         title: title,
         summary: summary,
+        category: category,
         location: location,
         Description: description,
       };
@@ -29,34 +30,35 @@ const PostProject = (props) => {
         method: "POST",
         headers: {
           "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
         body: JSON.stringify(service),
       });
       console.log(response);
       if (response.ok) {
-      console.log("Here");
+        console.log("Here");
 
-      // if (file !== undefined) {
+        //   // if (file !== undefined) {
 
-      //   // const data = await response.json();
-      //   // const id = data._id;
-      //   // let newResponse = await fetch(`${ADDRESS}/projects/${id}/uploadFile`, {
-      //   //   method: "POST",
-      //   //   body: file,
-      //   // });
+        //   //   // const data = await response.json();
+        //   //   // const id = data._id;
+        //   //   // let newResponse = await fetch(`${ADDRESS}/projects/${id}/uploadFile`, {
+        //   //   //   method: "POST",
+        //   //   //   body: file,
+        //   //   // });
 
-      //   // if (newResponse.ok) {
-      //   //   alert("Sucessfully posted");
-      //   // }
-      // } else {
-      //   console.log("File was not uploaded!");
-      // }
-      alert("Sucessfully posted");
-      console.log("Sucessfully posted");
-      props.history.push("/dashboard");
-      } else {
-      console.log("project not created!");
+        //   //   // if (newResponse.ok) {
+        //   //   //   alert("Sucessfully posted");
+        //   //   // }
+        //   // } else {
+        //   //   console.log("File was not uploaded!");
+        //   // }
+        alert("Sucessfully posted");
+        //   console.log("Sucessfully posted");
+        history.push("/dashboard");
+
+        // } else {
+        //   console.log("project not created!");
       }
     } catch (error) {
       console.log(error);
@@ -90,13 +92,35 @@ const PostProject = (props) => {
                   <Form.Control placeholder="a short description of project" required value={summary} onChange={(e) => setSummary(e.target.value)} />
                 </Form.Group>
                 <Row className="">
-                  <Form.Group as={Col} controlId="formGridEmail">
-                    <Form.Label>Location</Form.Label>
-                  </Form.Group>
+                  <Col>
+                    <Form.Group as={Col} controlId="formGridEmail">
+                      <Form.Label>Category</Form.Label>
+                    </Form.Group>
+
+                    <div className="form-row">
+                      <div className="form-group ">
+                        <select className="form-select" name="category" onChange={(e) => setCategory(e.target.value)}>
+                          <option selected>Select Category</option>
+                          <option value="Design">Design</option>
+                          <option value="Education"> Education</option>
+                          <option value="Beauty"> Beauty</option>
+                          <option value="Programming"> Programming</option>
+                          <option value="Catering"> Catering</option>
+                          <option value="Entertainment"> Entertainment</option>
+                          <option value="Business"> Business</option>
+                          <option value="Others"> Others</option>
+                        </select>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col>
+                    <Form.Group as={Col} controlId="">
+                      <Form.Label>Location</Form.Label>
+                      <Form.Control required type="text" placeholder="Where is the project to be delivered?" value={location} onChange={(e) => setLocation(e.target.value)} />
+                    </Form.Group>
+                  </Col>
                 </Row>
-                <Form.Group as={Col} controlId="formGridEmail">
-                  <Form.Control required type="text" placeholder="Where is the project to be delivered?" value={location} onChange={(e) => setLocation(e.target.value)} />
-                </Form.Group>
+                <Row></Row>
                 <br />
                 <Row className="">
                   <Form.Group as={Col} controlId="formGridEmail">
@@ -144,7 +168,7 @@ const PostProject = (props) => {
                   </Button>
                   <Link to="/dashboard">
                     <Button variant="success" type="submit">
-                      My Profile{" "}
+                      Go To projects
                     </Button>
                   </Link>
                 </div>
