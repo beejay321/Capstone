@@ -18,6 +18,7 @@ class Dashboard extends React.Component {
   };
 
   componentDidMount = async () => {
+    
     try {
       let response = await fetch(`${MY_APP_API_URL}/projects`, {
         headers: {

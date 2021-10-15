@@ -76,7 +76,7 @@ const DetailPage = ({ match, history }) => {
                   <hr />
                   {bids &&
                     bids.map((bid) => (
-                      <div>
+                      <div key = {bid._id}>
                         <Link to={`/users/${bid.user._id}`} className="sellerLink">
                           <div className="  d-flex  gap-1 ">
                             <div className="sellerImageDiv">

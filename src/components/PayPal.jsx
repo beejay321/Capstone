@@ -3,7 +3,7 @@ import "../styles/dashboard.css";
 
 const ADDRESS = "http://localhost:3255";
 
-const PayPal = ({ setHidePaypal, price, projectDetails, project, bidder }) => {
+const PayPal = ({paymentDetails, setHidePaypal, price, projectDetails, project, bidder }) => {
   const [madePayment, setMadePayment] = useState(false);
 
   const sendMail = async () => {
@@ -42,6 +42,7 @@ const PayPal = ({ setHidePaypal, price, projectDetails, project, bidder }) => {
     console.log(project.Description);
     console.log(bidder);
     console.log(price);
+    console.log(paymentDetails);
     window.paypal
       .Buttons({
         createOrder: (data, actions, err) => {
@@ -72,7 +73,6 @@ const PayPal = ({ setHidePaypal, price, projectDetails, project, bidder }) => {
   }, []);
 
   if (madePayment) {
-    alert("Time to hide paypal");
     setHidePaypal(true);
   } else {
     console.log("Payment not successful");
