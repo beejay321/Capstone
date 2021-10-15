@@ -19,10 +19,11 @@ const DetailPage = ({ match, history }) => {
   //   alert("You need to Log in");
   // };
 
+  const projectId = match.params.projectId
   useEffect(() => {
     const getProject = async () => {
       try {
-        let response = await fetch(`${MY_APP_API_URL}/projects/${match.params.projectId}`);
+        let response = await fetch(`${MY_APP_API_URL}/projects/${projectId}`);
         console.log(response);
         let result = await response.json();
         console.log(result);
@@ -34,7 +35,7 @@ const DetailPage = ({ match, history }) => {
       }
     };
     getProject();
-  });
+  }, [projectId]);
 
   return (
     <>
