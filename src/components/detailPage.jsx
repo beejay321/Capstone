@@ -19,7 +19,7 @@ const DetailPage = ({ match, history }) => {
   //   alert("You need to Log in");
   // };
 
-  const projectId = match.params.projectId
+  const projectId = match.params.projectId;
   useEffect(() => {
     const getProject = async () => {
       try {
