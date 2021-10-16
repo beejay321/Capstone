@@ -18,13 +18,15 @@ const ADDRESS = "http://localhost:3255";
 
 const MyProfile = (props) => {
   const [user, setUser] = useState("");
+  const [backgroundColor, setBackgroundColor] = useState("");
+  const [freelancebackgroundColor, setfreelancebackgroundColor] = useState("");
   const [education, setEducation] = useState("");
   const [experience, setExperience] = useState("");
   const [projects, setProject] = useState([]);
   const [skills, setSkills] = useState([]);
   const [language, setLanguage] = useState([]);
-  const [client, setClient] = useState(false);
-  // const [freelancer, setFreelancer] = useState(false);
+  const [client, setClient] = useState(true);
+  const [freelancer, setFreelancer] = useState(false);
   const [showChatList, setShowChatList] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [showButton, setShowButton] = useState(true);
@@ -150,80 +152,189 @@ const MyProfile = (props) => {
     }
   };
 
+  const asClient = () => {
+    setClient(true);
+    setFreelancer(false);
+    setBackgroundColor("success");
+    setfreelancebackgroundColor("secondary");
+  };
+  const asFreelancer = () => {
+    setClient(false);
+    setFreelancer(true);
+    setfreelancebackgroundColor("green");
+    setBackgroundColor("secondary");
+  };
+
   return (
     <>
       <NavBar />
       <div className="py-3 profilePage">
         <Container className="py-3 profilePage" style={{ minHeight: "100vh" }}>
           {/* <h2>My Profile </h2> */}
-          <Row className="my-0">
-            <Col xs={3}>
-              <Row>
-                <div className="d-flex ">
-                  <Button variant="outline-secondary" type="submit" onClick={() => setClient(false)}>
-                    As Freelancer
-                  </Button>
-                  <Button variant="outline-secondary" type="submit" onClick={() => setClient(true)}>
-                    As Client
-                  </Button>
-                </div>
+
+          <Row className="d-flex gap-2">
+            <Col xs={3} className=" ">
+              <Row className=" ">
+                <Col className=" clientColumn" onClick={asFreelancer} style={{ backgroundColor: { freelancebackgroundColor } }}>
+                  <span type="submit">As Freelancer</span>
+                </Col>
+                <Col className=" clientColumn" onClick={asClient}>
+                  <span type="submit">As a Client</span>
+                </Col>
               </Row>
             </Col>
+            <Col xs={7} className=""></Col>
           </Row>
-
-          <Row className="d-flex gap-1">
-            <Col xs={3} className="    ">
-              <Row className=" my-3 py-4 profileColumn">
-                <div className="  pb-2 d-flex justify-content-center">
-                  <div className="  profileImageDiv ">
-                    <Image className="profileImage" src={user.picture} fluid />
-                  </div>
-                </div>
-                <div className=" d-flex justify-content-center">
-                  <h5>{user.firstname}</h5>
-                  <h5 className="px-2">{user.lastname}</h5>
-                </div>
-                <div className=" d-flex justify-content-center ">
-                  <h6>{user.headline}</h6>
-                </div>
-                <div className="py-1">
-                  <p className="">{user.location}</p>
-                </div>
-
-                {language &&
-                  language.map((l) => (
-                    <div className=" py-1   ">
-                      <span className="   ">
-                        <strong>Languages</strong>
-                      </span>
-                      <p className=" py-1  summaryBox ">{user.languages}</p>
+          {client && (
+            <Row>
+              <Col xs={3} className=" ">
+                <Row className=" my-3 py-4 profileColumn">
+                  <div className="  pb-2 d-flex justify-content-center">
+                    <div className="  profileImageDiv ">
+                      <Image className="profileImage" src={user.picture} fluid />
                     </div>
-                  ))}
-                <hr className=" my-1 " />
-                <div className=" py-1   ">
-                  <div className="  d-flex justify-content-between ">
-                    <span className="   ">
-                      {" "}
-                      <strong>Open Projects</strong>{" "}
-                    </span>
-                    <p className="  px-1  ">2</p>
                   </div>
-                  <div className="  d-flex justify-content-between">
-                    <span className="   ">
-                      {" "}
-                      <strong>Finished Projects</strong>
-                    </span>
-                    <p className="px-1">2</p>
+                  <div className=" d-flex justify-content-center">
+                    <h5>{user.firstname}</h5>
+                    <h5 className="px-2">{user.lastname}</h5>
                   </div>
-                  <div className="d-flex justify-content-between ">
-                    <span className="   ">
-                      {" "}
-                      <strong>All Projects</strong>
-                    </span>
-                    <p className="px-1">2</p>
+                  <div className=" d-flex justify-content-center ">
+                    <h6>{user.headline}</h6>
                   </div>
-                </div>
-                <div className="d-flex justify-content-end">
+                  <div className="py-1">
+                    <p className="">{user.location}</p>
+                  </div>
+
+                  {language &&
+                    language.map((l) => (
+                      <div className=" py-1   ">
+                        <span className="   ">
+                          <strong>Languages</strong>
+                        </span>
+                        <p className=" py-1  summaryBox ">{user.languages}</p>
+                      </div>
+                    ))}
+                  <hr className=" my-1 " />
+                  <div className=" py-1   ">
+                    <div className="  d-flex justify-content-between ">
+                      <span className="   ">
+                        {" "}
+                        <strong>Open Projects</strong>{" "}
+                      </span>
+                      <p className="  px-1  ">2</p>
+                    </div>
+                    <div className="  d-flex justify-content-between">
+                      <span className="   ">
+                        {" "}
+                        <strong>Finished Projects</strong>
+                      </span>
+                      <p className="px-1">2</p>
+                    </div>
+                    <div className="d-flex justify-content-between ">
+                      <span className="   ">
+                        {" "}
+                        <strong>All Projects</strong>
+                      </span>
+                      <p className="px-1">2</p>
+                    </div>
+                  </div>
+                  <div className="d-flex justify-content-end">
+                    {localStorage.getItem("id") === user._id ? (
+                      <Button className="editButton" variant="primary" type="submit" onClick={() => props.history.push("/updateProfile/613109f216858d24880aaa2a")}>
+                        Edit Profile
+                      </Button>
+                    ) : (
+                      ""
+                      // <Button className="editButton" variant="primary" type="submit" onClick={showChatBox}>
+                      //   Message
+                      // </Button>
+                    )}
+                  </div>
+                </Row>
+              </Col>{" "}
+              <Col xs={7} className="">
+                {client ? (
+                  <MyProfileCard title="Projects" user={user} content={<MyProjects title="Projects" projects={projects} user={user} />} />
+                ) : (
+                  <MyProfileCard title="Projects" user={user} content={<MyBids title="Bids" myBids={myBids} user={user} />} />
+                )}
+              </Col>
+            </Row>
+          )}
+          {freelancer && (
+            <Row className="d-flex gap-1">
+              <Col xs={3} className=" ">
+                <Row className=" my-3 py-4 profileColumn">
+                  <div className="  pb-2 d-flex justify-content-center">
+                    <div className="  profileImageDiv ">
+                      <Image className="profileImage" src={user.picture} fluid />
+                    </div>
+                  </div>
+                  <div className=" d-flex justify-content-center">
+                    <h5>{user.firstname}</h5>
+                    <h5 className="px-2">{user.lastname}</h5>
+                  </div>
+                  <div className=" d-flex justify-content-center ">
+                    <h6>{user.headline}</h6>
+                  </div>
+                  <div className="py-1">
+                    <p className="">{user.location}</p>
+                  </div>
+
+                  {language &&
+                    language.map((l) => (
+                      <div className=" py-1   ">
+                        <span className="   ">
+                          <strong>Languages</strong>
+                        </span>
+                        <p className=" py-1  summaryBox ">{user.languages}</p>
+                      </div>
+                    ))}
+                  <hr className=" my-1 " />
+                  <div className=" py-1   ">
+                    <div className="  d-flex justify-content-between ">
+                      <span className="   ">
+                        {" "}
+                        <strong>Open Projects</strong>{" "}
+                      </span>
+                      <p className="  px-1  ">2</p>
+                    </div>
+                    <div className="  d-flex justify-content-between">
+                      <span className="   ">
+                        {" "}
+                        <strong>Finished Projects</strong>
+                      </span>
+                      <p className="px-1">2</p>
+                    </div>
+                    <div className="d-flex justify-content-between ">
+                      <span className="   ">
+                        {" "}
+                        <strong>All Projects</strong>
+                      </span>
+                      <p className="px-1">2</p>
+                    </div>
+                  </div>
+                  <div className="d-flex justify-content-end">
+                    {localStorage.getItem("id") === user._id ? (
+                      <Button className="editButton" variant="primary" type="submit" onClick={() => props.history.push("/updateProfile/613109f216858d24880aaa2a")}>
+                        Edit Profile
+                      </Button>
+                    ) : (
+                      ""
+                      // <Button className="editButton" variant="primary" type="submit" onClick={showChatBox}>
+                      //   Message
+                      // </Button>
+                    )}
+                  </div>
+                </Row>
+
+                <Row className="  profileColumn">
+                  <MyProfileCard title="Skills" content={<SkillsCard title="Skills" skills={skills} user={user} />} />
+                </Row>
+                <Row className=" my-3 profileColumn">
+                  <MyProfileCard title="Cert" content={<CertificationCard title="Cert" user={user} />} />
+                </Row>
+                <div className=" d-flex justify-content-center">
                   {localStorage.getItem("id") === user._id ? (
                     <Button className="editButton" variant="primary" type="submit" onClick={() => props.history.push("/updateProfile/613109f216858d24880aaa2a")}>
                       Edit Profile
@@ -235,47 +346,31 @@ const MyProfile = (props) => {
                     // </Button>
                   )}
                 </div>
-              </Row>
-
-              <Row className="  profileColumn">
-                <MyProfileCard title="Skills" content={<SkillsCard title="Skills" skills={skills} user={user} />} />
-              </Row>
-              <Row className=" my-3 profileColumn">
-                <MyProfileCard title="Cert" content={<CertificationCard title="Cert" user={user} />} />
-              </Row>
-              <div className=" d-flex justify-content-center">
-                {localStorage.getItem("id") === user._id ? (
-                  <Button className="editButton" variant="primary" type="submit" onClick={() => props.history.push("/updateProfile/613109f216858d24880aaa2a")}>
-                    Edit Profile
-                  </Button>
+              </Col>
+              <Col xs={7} className="">
+                {client ? (
+                  <MyProfileCard title="Projects" user={user} content={<MyProjects title="Projects" projects={projects} user={user} />} />
                 ) : (
-                  ""
-                  // <Button className="editButton" variant="primary" type="submit" onClick={showChatBox}>
-                  //   Message
-                  // </Button>
+                  <MyProfileCard title="Projects" user={user} content={<MyBids title="Bids" myBids={myBids} user={user} />} />
                 )}
-              </div>
-            </Col>
-            <Col xs={7} className="">
-              {client ? (
-                <MyProfileCard title="Projects" user={user} content={<MyProjects title="Projects" projects={projects} user={user} />} />
-              ) : (
-                <MyProfileCard title="Projects" user={user} content={<MyBids title="Bids" myBids={myBids} user={user} />} />
-              )}
 
-              <MyProfileCard title="Experience" user={user} content={<ExperienceCard title="Experience" user={user} experience={experience} />} />
-              <MyProfileCard title="Education" user={user} content={<EducationCard title="Education" user={user} education={education} />} />
-              <MyProfileCard title="Publication" user={user} content={<PublicationCard title="Publication" user={user} />} />
-              <div className="my-3 py-2 px-1 profileColumn " style={{ minHeight: "15rem" }}>
-                <div className="mx-2 ">
-                  <h4>Reviews</h4>
-                </div>{" "}
-                <hr className=" my-2 " />
-                <div className="    mt-5 d-flex justify-content-center ">
-                  <p>No Reviews Yet</p>
+                <MyProfileCard title="Experience" user={user} content={<ExperienceCard title="Experience" user={user} experience={experience} />} />
+                <MyProfileCard title="Education" user={user} content={<EducationCard title="Education" user={user} education={education} />} />
+                <MyProfileCard title="Publication" user={user} content={<PublicationCard title="Publication" user={user} />} />
+                <div className="my-3 py-2 px-1 profileColumn " style={{ minHeight: "15rem" }}>
+                  <div className="mx-2 ">
+                    <h4>Reviews</h4>
+                  </div>{" "}
+                  <hr className=" my-2 " />
+                  <div className="    mt-5 d-flex justify-content-center ">
+                    <p>No Reviews Yet</p>
+                  </div>
                 </div>
-              </div>
-            </Col>
+              </Col>
+            </Row>
+          )}
+
+          <Row>
             <Col xs={3} className="">
               {showButton && (
                 <Button className="chatButton" variant="primary" type="submit" onClick={showChatBox}>
