@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {  Container, Row, Button, Col, Image } from "react-bootstrap";
+import { Container, Row, Button, Col, Image } from "react-bootstrap";
 import BidModal from "./BidModal";
 import "../styles/detail.css";
 import NavBar from "./NavBar";
@@ -76,7 +76,7 @@ const DetailPage = ({ match, history }) => {
                   <hr />
                   {bids &&
                     bids.map((bid) => (
-                      <div key = {bid._id}>
+                      <div key={bid._id}>
                         <Link to={`/users/${bid.user._id}`} className="sellerLink">
                           <div className="  d-flex  gap-1 ">
                             <div className="sellerImageDiv">
