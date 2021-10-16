@@ -8,7 +8,7 @@ import NavBar from "./NavBar";
 const ADDRESS = "http://localhost:3255";
 
 const PostProject = ({ history }) => {
-  const [seller, ] = useState(localStorage.getItem("id"));
+  const [seller] = useState(localStorage.getItem("id"));
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
@@ -17,6 +17,7 @@ const PostProject = ({ history }) => {
   const [file, setFile] = useState([]);
 
   const postProject = async (e) => {
+    e.preventDefault();
     try {
       const service = {
         seller: seller,
@@ -29,7 +30,7 @@ const PostProject = ({ history }) => {
       const response = await fetch(`${ADDRESS}/projects`, {
         method: "POST",
         headers: {
-          "content-type": "application/json",
+          "Content-Type": "application/json",
           // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
         body: JSON.stringify(service),
@@ -164,13 +165,9 @@ const PostProject = ({ history }) => {
 
                 <div className="d-flex justify-content-end gap-1">
                   <Button variant="success" type="submit" onClick={postProject}>
-                    Save
+                    Create Project
                   </Button>
-                  <Link to="/dashboard">
-                    <Button variant="success" type="submit">
-                      Go To projects
-                    </Button>
-                  </Link>
+                  
                 </div>
               </Form>
             </Col>
