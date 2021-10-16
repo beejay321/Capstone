@@ -3,7 +3,7 @@ import "../styles/dashboard.css";
 
 const ADDRESS = "http://localhost:3255";
 
-const PayPal = ({paymentDetails, setHidePaypal, price, projectDetails, project, bidder }) => {
+const PayPal = ({ paymentDetails, setAlert, setHidePaypal, price, projectDetails, project, bidder }) => {
   const [madePayment, setMadePayment] = useState(false);
 
   const sendMail = async () => {
@@ -26,9 +26,12 @@ const PayPal = ({paymentDetails, setHidePaypal, price, projectDetails, project, 
         body: JSON.stringify(details),
       });
       if (response.ok) {
-        alert("Confirmation email has been sent to freelancer");
+        setAlert("emailSent");
+        // alert("Confirmation email has been sent to freelancer");
         setMadePayment(true);
       } else {
+        setAlert("emailNotSent");
+
         alert("Confirmation email not sent");
       }
     } catch (error) {
@@ -61,7 +64,8 @@ const PayPal = ({paymentDetails, setHidePaypal, price, projectDetails, project, 
         },
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
-          alert("Payment made succesfully");
+          setAlert("paymentMade");
+          // alert("Payment made succesfully");
           sendMail();
           console.log(order);
         },
@@ -75,6 +79,7 @@ const PayPal = ({paymentDetails, setHidePaypal, price, projectDetails, project, 
   if (madePayment) {
     setHidePaypal(true);
   } else {
+    setAlert("paymentNotMade");
     console.log("Payment not successful");
   }
 
