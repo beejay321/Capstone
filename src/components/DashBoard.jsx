@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Row, Button, Col, InputGroup, FormControl, Image } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Container, Row, Button, Col, InputGroup, FormControl, Image, Spinner } from "react-bootstrap";
 import "../styles/dashboard.css";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
@@ -9,178 +9,177 @@ import Footer from "./Footer";
 
 const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
-class Dashboard extends React.Component {
-  state = {
-    user: "",
-    projects: [],
-    query: null,
-    category: null,
-  };
+const Dashboard = () => {
+  const [user, setUser] = useState("");
+  const [query, setQuery] = useState("");
+  // const [category, setCategory] = useState("");
+  const [projects, setProjects] = useState([]);
+  const [isLoading, setIsLoading] = useState("");
 
-  componentDidMount = async () => {
-    
-    try {
-      let response = await fetch(`${MY_APP_API_URL}/projects`, {
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
-
-      if (response.ok) {
-        let data = await response.json();
-        console.log(data);
-        this.setState({
-          projects: data,
-          user: data[0].seller,
+  useEffect(() => {
+    setIsLoading(true);
+    const getProjects = async () => {
+      try {
+        let response = await fetch(`${MY_APP_API_URL}/projects`, {
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
         });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
-  searchProjects = async () => {
+        if (response.ok) {
+          let data = await response.json();
+          setIsLoading(false);
+          console.log(data);
+          setProjects(data);
+          setUser(data[0].seller);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getProjects();
+  }, []);
+
+  const searchProjects = async () => {
+    setIsLoading(true);
+
     try {
-      let response = await fetch(`http://localhost:3255/projects/search/${this.state.query}`);
+      let response = await fetch(`http://localhost:3255/projects/search/${query}`);
       let result = await response.json();
       console.log(result);
-      this.setState({
-        projects: result,
-      });
-      console.log(this.state.projects);
+      setIsLoading(false);
+      setProjects(result);
+      console.log(projects);
     } catch (error) {
       console.log("error");
     }
   };
 
-  searchCategory = async (category) => {
+  const searchCategory = async (category) => {
+    setIsLoading(true);
+
     try {
       let response = await fetch(`http://localhost:3255/projects?category=${category}`);
       let result = await response.json();
       console.log(result);
-      this.setState({
-        projects: result,
-      });
-      console.log(this.state.projects);
+      setIsLoading(false);
+      setProjects(result);
+      console.log(projects);
     } catch (error) {
       console.log("error");
     }
   };
 
-  render() {
-    return (
-      <>
-        <NavBar />
+  return (
+    <>
+      <NavBar />
 
-        <div id="searchDiv">
-          <Container className="mt-3 mb-0">
-            <Row>
-              <Col className="d-flex justify-content-between mb-0 gap-2 ">
-                <InputGroup className="searchInput">
-                  <FormControl
-                    value={this.state.query}
-                    onChange={(e) =>
-                      this.setState({
-                        query: e.target.value,
-                      })
-                    }
-                    placeholder="What are your searching for ?"
-                    aria-label="Search"
-                    aria-describedby="basic-addon2"
-                  />
-                </InputGroup>
+      <div id="searchDiv">
+        <Container className="mt-3 mb-0">
+          <Row>
+            <Col className="d-flex justify-content-between mb-0 gap-2 ">
+              <InputGroup className="searchInput">
+                <FormControl value={query} onChange={(e) => setQuery(e.target.value)} placeholder="What are your searching for ?" aria-label="Search" aria-describedby="basic-addon2" />
+              </InputGroup>
 
-                <Button id="button-addon2" variant="outline" className="searchButton " onClick={this.searchProjects}>
-                  Search
-                </Button>
-              </Col>
-            </Row>
-          </Container>
+              <Button id="button-addon2" variant="outline" className="searchButton " onClick={searchProjects}>
+                Search
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <div className="categoryButtonsDiv ">
+        <Container>
+          <Row xs={8} md={7}>
+            <div className="categoryButtonsDiv py-2">
+              <Button
+                className="categoryButtons "
+                variant="light"
+                id="button-addon2"
+                onClick={() => {
+                  searchCategory("Design");
+                }}
+              >
+                Art & Design
+              </Button>
+              <Button
+                className="categoryButtons "
+                variant="light"
+                id="button-addon2"
+                onClick={() => {
+                  searchCategory("Education");
+                }}
+              >
+                Education
+              </Button>
+              <Button
+                className="categoryButtons "
+                variant="light"
+                id="button-addon2"
+                onClick={() => {
+                  searchCategory("Beauty");
+                }}
+              >
+                Beauty & Lifestyle
+              </Button>
+              <Button
+                className="categoryButtons "
+                variant="light"
+                id="button-addon2"
+                onClick={() => {
+                  searchCategory("Catering");
+                }}
+              >
+                Catering{" "}
+              </Button>
+              <Button
+                className="categoryButtons "
+                variant="light"
+                id="button-addon2"
+                onClick={() => {
+                  searchCategory("Entertainment");
+                }}
+              >
+                Entertainment
+              </Button>
+              <Button
+                className="categoryButtons "
+                variant="light"
+                id="button-addon2"
+                onClick={() => {
+                  searchCategory("Business");
+                }}
+              >
+                Business
+              </Button>
+              <Button
+                className="categoryButtons "
+                variant="light"
+                id="button-addon2"
+                onClick={() => {
+                  searchCategory("Programming");
+                }}
+              >
+                Programming
+              </Button>
+            </div>
+          </Row>
+        </Container>
+      </div>
+      {isLoading ? (
+        <div className=" py-5 d-flex justify-content-center ">
+          <Spinner animation="border" size="sm" />
+          <Spinner animation="border" />
+          <Spinner animation="grow" size="sm" />
+          <Spinner animation="grow" />
         </div>
-        <div className="categoryButtonsDiv ">
-          <Container>
-            <Row xs={8} md={7}>
-              <div className="categoryButtonsDiv py-2">
-                <Button
-                  className="categoryButtons "
-                  variant="light"
-                  id="button-addon2"
-                  onClick={() => {
-                    this.searchCategory("Design");
-                  }}
-                >
-                  Art & Design
-                </Button>
-                <Button
-                  className="categoryButtons "
-                  variant="light"
-                  id="button-addon2"
-                  onClick={() => {
-                    this.searchCategory("Education");
-                  }}
-                >
-                  Education
-                </Button>
-                <Button
-                  className="categoryButtons "
-                  variant="light"
-                  id="button-addon2"
-                  onClick={() => {
-                    this.searchCategory("Beauty");
-                  }}
-                >
-                  Beauty & Lifestyle
-                </Button>
-                <Button
-                  className="categoryButtons "
-                  variant="light"
-                  id="button-addon2"
-                  onClick={() => {
-                    this.searchCategory("Catering");
-                  }}
-                >
-                  Catering{" "}
-                </Button>
-                <Button
-                  className="categoryButtons "
-                  variant="light"
-                  id="button-addon2"
-                  onClick={() => {
-                    this.searchCategory("Entertainment");
-                  }}
-                >
-                  Entertainment
-                </Button>
-                <Button
-                  className="categoryButtons "
-                  variant="light"
-                  id="button-addon2"
-                  onClick={() => {
-                    this.searchCategory("Business");
-                  }}
-                >
-                  Business
-                </Button>
-                <Button
-                  className="categoryButtons "
-                  variant="light"
-                  id="button-addon2"
-                  onClick={() => {
-                    this.searchCategory("Programming");
-                  }}
-                >
-                  Programming
-                </Button>
-              </div>
-            </Row>
-          </Container>
-        </div>
-
+      ) : (
         <Container className=" mb-3">
           <Row className="projectDiv pt-5">
-            {this.state.projects &&
-              this.state.projects.reverse().map((p) => (
+            {projects &&
+              projects.reverse().map((p) => (
                 <Col xs={3} className="py-3" key={p._id}>
                   <div className=" projectBox">
                     <Link to={`/details/${p._id}`} className="projectLink">
@@ -190,7 +189,6 @@ class Dashboard extends React.Component {
                     </Link>
                     <div className="py-1  my-1  ">
                       <span className="text">{p.summary}</span>
-                      {/* <span>I would like a a skiiled graphic designer to design a logo for my startup. </span> */}
                     </div>
                     <div className=" sellerDiv px-1 ">
                       {p.seller && (
@@ -211,9 +209,11 @@ class Dashboard extends React.Component {
               ))}
           </Row>
         </Container>
-        <Footer />
-      </>
-    );
-  }
-}
+      )}
+
+      <Footer />
+    </>
+  );
+};
+
 export default Dashboard;
