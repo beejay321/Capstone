@@ -75,11 +75,11 @@ const NavBar = (props) => {
               </Link>{" "}
             </NavDropdown>
             {/* ) : ( */}
-            {/* <Link to="/login">
+            <Link to="/login">
               <Button>
                 Login
               </Button>
-            </Link> */}
+            </Link>
             {/* )} */}
           </Navbar.Collapse>
         </Container>
