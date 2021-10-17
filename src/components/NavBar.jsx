@@ -1,7 +1,6 @@
 import React from "react";
-import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
-// import LoginModal from "./LoginModal";
 import "../styles/Login.css";
 import "../styles/navbar.css";
 // import { connect, useDispatch, useSelector } from "react-redux";
@@ -45,11 +44,11 @@ const NavBar = (props) => {
           {/* </Link> */}
 
           {/* <Link to="/dashboard" className="navLink"> */}
-            <Nav.Link href="/dashboard">Find Projects</Nav.Link>
+          <Nav.Link href="/dashboard">Find Projects</Nav.Link>
           {/* </Link> */}
 
           {/* <Link to="/faq" className="navLink"> */}
-            <Nav.Link href="/faq">FAQ</Nav.Link>
+          <Nav.Link href="/faq">FAQ</Nav.Link>
           {/* </Link> */}
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
@@ -76,9 +75,7 @@ const NavBar = (props) => {
             </NavDropdown>
             {/* ) : ( */}
             <Link to="/login">
-              <Button>
-                Login
-              </Button>
+              <Button>Login</Button>
             </Link>
             {/* )} */}
           </Navbar.Collapse>
