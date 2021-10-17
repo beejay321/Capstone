@@ -19,7 +19,7 @@ const ExperienceCard = (props) => {
             <div>
               {props.experience &&
                 props.experience.map((exp) => (
-                  <div className=" mx-2 py-2 d-flex justify-content-between ">
+                  <div key = {exp._id} className=" mx-2 py-2 d-flex justify-content-between ">
                     <div>
                       <Card className="profileCards" style={{ width: "18rem" }}>
                         <Card.Body className="profileCards">

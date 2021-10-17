@@ -2,8 +2,7 @@ import React from "react";
 import "./profilepage.css";
 import EditModal from "./EditModal";
 
-const SkillsCard = (props) => { 
-
+const SkillsCard = (props) => {
   return (
     <>
       <div className="  px-1 summaryBox " style={{ minHeight: "15rem" }}>
@@ -16,7 +15,7 @@ const SkillsCard = (props) => {
           <div>
             {props.skills &&
               props.skills.map((skill) => (
-                <div>
+                <div key={skill._id}>
                   <p>{skill}</p>
                   <p>Photoshop</p>
                   <p>Adobe Indesign</p>
