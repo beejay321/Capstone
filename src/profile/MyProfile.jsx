@@ -194,7 +194,7 @@ const MyProfile = (props) => {
 
                 {language &&
                   language.map((l) => (
-                    <div className=" py-1   ">
+                    <div key={l._id} className=" py-1   ">
                       <span className="   ">
                         <strong>Languages</strong>
                       </span>
