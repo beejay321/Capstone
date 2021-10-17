@@ -12,6 +12,13 @@
 //   };
 // };
 
+const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+
+
+
+
+
+
 export const loggedInAction = (user) => {
   return async (dispatch) => {
     dispatch({
@@ -24,7 +31,7 @@ export const loggedInAction = (user) => {
         password: user.password,
       };
 
-      const res = await fetch(`http://localhost:3255/users/login`, {
+      const res = await fetch(`${MY_APP_API_URL}/users/login`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

@@ -22,16 +22,48 @@ class Login extends React.Component {
     // isLoggedIn: false,
   };
 
-  login = () => {
+  MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+
+  login = async (e) => {
     try {
-      if (this.props.isLoggedIn) {
+      const details = {
+        email: this.state.user.username,
+        password: this.state.user.password,
+      };
+      const res = await fetch(`${this.MY_APP_API_URL}/users/login`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(details),
+      });
+      if (res.ok) {
+        const json = await res.json();
+        console.log(json);
+        localStorage.setItem("accessToken", json.accessToken);
+        localStorage.setItem("refreshToken", json.refreshToken);
+        localStorage.setItem("username", json.username);
+        localStorage.setItem("id", json._id);
+        alert("successfully logged in");
         this.props.history.push("/dashboard");
+      } else {
+        console.log("there is an error");
       }
     } catch (error) {
       console.log(error);
-      alert(error);
     }
   };
+
+  // login = () => {
+  //   try {
+  //     if (this.props.isLoggedIn) {
+  //       this.props.history.push("/dashboard");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     alert(error);
+  //   }
+  // };
 
   handleChange = (e) => {
     let id = e.target.id;
@@ -75,7 +107,7 @@ class Login extends React.Component {
                     variant="primary"
                     size="lg"
                     type="button"
-                    onClick={(this.props.isLogged(this.state.user), this.login())}
+                    onClick={this.login}
                     // disabled={username.length < 0 && password.length < 0 ? true : false}
                   >
                     Login
