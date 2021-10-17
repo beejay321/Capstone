@@ -1,0 +1,89 @@
+.profilePage {
+  /* background-color: #c8d8e4; */
+
+  background-color: #f2f2f2;
+}
+
+.projectTitle {
+  border: solid 2px rgb(218, 218, 218);
+  border-radius: 15px;
+  /* background-color: #c8d8e4; */
+}
+.profileColumn {
+  /* border: solid 1px rgb(218, 218, 218); */
+  border-radius: 5px;
+  width: 100%;
+  background-color: #dee4e9;
+}
+
+.profileCards {
+  border: none;
+  background-color: #dee4e9;
+  padding: 0% !important
+}
+
+
+.profileImageDiv {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profileImage {
+  width: auto;
+  height: 100%;
+}
+
+.editButton {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #2b6777 !important;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  border-color: #2b6777;
+  color: #c8d8e4;
+}
+.editButton :hover {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #2b6777 !important;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  border-color: #2b6777 !important;
+  color: #c8d8e4;
+
+}
+
+.projectLink {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #2b6777;
+}
+.projectLink :hover {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 650;
+  color: #2b6777;
+}
+
+.chatButton {
+  font-size: 20px;
+  background-color: #2b6777 !important;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  border-color: #2b6777 !important;
+  color: #c8d8e4;
+  position: fixed;
+  z-index: 10;
+  right: 50px;
+  bottom: 20px;
+  width: 150px;
+  border: 0.5px inset #2b6777;
+}
