@@ -17,7 +17,7 @@ const MyProjects = (props) => {
         {props.projects ? (
           <div>
             {props.projects.map((p) => (
-              <div className=" mx-2 d-flex justify-content-between ">
+              <div key={p._id} className=" mx-2 d-flex justify-content-between ">
                   <div className="py-1  my-1  ">
                 <Link className="projectLink" to={`/details/${p._id}`}>
                     <span>{p.title}</span>
