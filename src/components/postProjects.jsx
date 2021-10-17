@@ -17,6 +17,7 @@ const PostProject = ({ history }) => {
   const [file, setFile] = useState([]);
 
   const postProject = async (e) => {
+    e.preventDefault();
     try {
       const service = {
         seller: seller,
