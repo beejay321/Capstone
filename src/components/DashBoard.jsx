@@ -10,7 +10,7 @@ import Footer from "./Footer";
 const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 const Dashboard = () => {
-  const [user, setUser] = useState("");
+  // const [user, setUser] = useState("");
   const [query, setQuery] = useState("");
   // const [category, setCategory] = useState("");
   const [projects, setProjects] = useState([]);
@@ -32,7 +32,7 @@ const Dashboard = () => {
           setIsLoading(false);
           console.log(data);
           setProjects(data);
-          setUser(data[0].seller);
+          // setUser(data[0].seller);
         }
       } catch (error) {
         console.log(error);
@@ -45,7 +45,7 @@ const Dashboard = () => {
     setIsLoading(true);
 
     try {
-      let response = await fetch(`http://localhost:3255/projects/search/${query}`);
+      let response = await fetch(`${MY_APP_API_URL}/projects/search/${query}`);
       let result = await response.json();
       console.log(result);
       setIsLoading(false);
@@ -60,7 +60,7 @@ const Dashboard = () => {
     setIsLoading(true);
 
     try {
-      let response = await fetch(`http://localhost:3255/projects?category=${category}`);
+      let response = await fetch(`${MY_APP_API_URL}/projects?category=${category}`);
       let result = await response.json();
       console.log(result);
       setIsLoading(false);
