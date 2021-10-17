@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import AboutUs from "./components/AboutUs";
+import Faq from "./components/Faq";
 import Dashboard from "./components/DashBoard";
 import PostProject from "./components/postProjects";
 import DetailPage from "./components/detailPage";
@@ -14,7 +15,6 @@ import Login from "./components/Login";
 // import UpdateProfile from "./components/UpdateProfile";
 // import ChatBox from "./components/chatBox";
 
-
 function App() {
   return (
     <>
@@ -22,6 +22,7 @@ function App() {
         {/* <NavBar /> */}
         <Route path="/" exact component={LandingPage} />
         <Route path="/aboutUs" component={AboutUs} />
+        <Route path="/faq" component={Faq} />
         <Route path="/dashboard" render={(routerProps) => <Dashboard {...routerProps} />} />
         <Route path="/postproject" render={(routerProps) => <PostProject {...routerProps} />} />
         <Route path="/login" render={(routerProps) => <Login {...routerProps} />} />
