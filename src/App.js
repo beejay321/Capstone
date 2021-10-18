@@ -9,7 +9,7 @@ import Dashboard from "./components/DashBoard";
 import PostProject from "./components/postProjects";
 import DetailPage from "./components/detailPage";
 import Checkout from "./components/checkout";
-// import ConfirmDetails from "./components/confirmDetails";
+import ConfirmDetails from "./components/confirmDetails";
 import Login from "./components/Login";
 import MyProfile from "./profile/MyProfile.jsx";
 // import UpdateProfile from "./components/UpdateProfile";
@@ -28,7 +28,7 @@ function App() {
         <Route path="/login" render={(routerProps) => <Login {...routerProps} />} />
         <Route path="/details/:projectId" render={(routerProps) => <DetailPage title="DETAILS" {...routerProps} />} />
         <Route path="/checkout/:projectId/:bidId" render={(routerProps) => <Checkout {...routerProps} />} />
-        {/* <Route path="/confirmProjectDetails/:bidderId" render={(routerProps) => <ConfirmDetails {...routerProps} />} /> */}
+        <Route path="/confirmProjectDetails/:bidderId" render={(routerProps) => <ConfirmDetails {...routerProps} />} />
         <Route path="/users/:id" render={(routerProps) => <MyProfile {...routerProps} />} />
         {/* <Route path="/updateProfile" render={(routerProps) => <UpdateProfile {...routerProps} />} /> */}
         {/* <Route path="/chat" render={(routerProps) => <ChatBox {...routerProps} />} /> */}
