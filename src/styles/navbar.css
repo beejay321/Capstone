@@ -12,6 +12,7 @@
   font-weight: 500;
   color: #2b6777;
   text-decoration: none;
+  margin-right: 5px;
 }
 
 .nav-link :hover {
