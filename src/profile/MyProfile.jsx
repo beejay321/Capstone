@@ -60,18 +60,18 @@ const MyProfile = (props) => {
         }
       } catch (error) {
         console.log(error);
-        console.log(selectedRoom);
-        console.log(showChat);
-        console.log(roomHistory);
       }
     };
     getProfile();
-  }, []);
+  }, [props.match.params.id]);
 
   const id = localStorage.getItem("id");
 
   const createRoom = async (user) => {
     console.log("user");
+    console.log(selectedRoom);
+    console.log(showChat);
+    console.log(roomHistory);
     const response = await fetch(`${MY_APP_API_URL}/room/user/${props.match.params.id}`, {
       method: "GET",
       headers: {
