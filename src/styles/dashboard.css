@@ -56,17 +56,17 @@
   position: relative;
 }
 
-.projectLink {
+.projectL {
   text-decoration: none;
   font-size: 18px;
 }
-.projectTitle {
+.projectName {
   font-size: 18px;
   font-weight: bold;
   border: none !important;
   color: #2b6777;
 }
-.projectTitle :hover {
+.projectName :hover {
   border: none !important;
   font-size: 18px !important ;
   font-weight: bold !important ;
