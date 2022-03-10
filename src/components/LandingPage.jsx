@@ -1,16 +1,13 @@
 import React from "react";
-import {  Container, Row, Button,  Col,  Image } from "react-bootstrap";
-
-// import MyLoginModal from "./Login";
+import { Container, Row, Button, Col, Image } from "react-bootstrap";
+import click from "../assets/images/click.jpg";
+import form from "../assets/images/fill_form.png";
+import project from "../assets/images/project_icon.png";
 import "../styles/HomePage.css";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 
 const LandingPage = (routerProps) => {
- 
-
-  
-
   const createProject = () => {
     if (localStorage.getItem("username")) {
       routerProps.history.push("/postproject");
@@ -24,8 +21,8 @@ const LandingPage = (routerProps) => {
       <NavBar />
       <Container fluid>
         <Row className="d-flex">
-          <Col className="searchSection  ">
-            <div className=" p-5 searchContainer  ">
+          <Col className=" startSection ">
+            <div className=" p-5 startContainer  ">
               <h2 className=" py-3 ">Find your perfect project match </h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -47,30 +44,29 @@ const LandingPage = (routerProps) => {
         </Row>
       </Container>
 
-      <div id="">
+      <div id="" className=" howItWorksSection ">
         <Container>
-          <Row className=" py-5 ">
-            <div className=" py-3 howItWorksSection">
+          <Row className=" py-3 ">
+            <div className=" pb-2 ">
               <h2 className="howItWorksText">How It Works</h2>
             </div>
-            <div className="howItWorksSection">
+            <div className="">
               <h4 className="howItWorksText">Its very simple, get people to work on your project in few steps. </h4>
             </div>
-
-            <div className="howItWorksBox py-4">
-              <div className="howItWorksCard py-3">
-                <Image src="https://via.placeholder.com/200" />
-                <p className="howItWorksText py-3">Click on Post Project</p>
-              </div>
-              <div className="howItWorksCard py-3">
-                <Image src="https://via.placeholder.com/200" />
-                <p className="howItWorksText py-3">Fill in Project Details</p>
-              </div>
-              <div className="howItWorksCard py-3">
-                <Image src="https://via.placeholder.com/200" />
-                <p className="howItWorksText py-3">Create Project </p>
-              </div>
-            </div>
+          </Row>
+          <Row className=" py-5 d-flex justify-content-center">
+            <Col className="howItWorksCard py-3 ">
+              <Image src={click} width="250" />
+              <p className="howItWorksText py-3">Click on Post Project</p>
+            </Col>
+            <Col className="howItWorksCard py-3 ">
+              <Image src={form} width="250" />
+              <p className="howItWorksText py-3">Fill in Project Details</p>
+            </Col>
+            <Col className="howItWorksCard py-3 ">
+              <Image src={project} width="250" />
+              <p className="howItWorksText py-3">Create Project </p>
+            </Col>
           </Row>
         </Container>
       </div>
