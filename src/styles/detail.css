@@ -10,6 +10,10 @@
   background-color: #dddddd;
   min-height: 80%;
 }
+.detail-div {
+  /* background-color: #dddddd; */
+  min-height: 80vh;
+}
 
 .projectTitle {
   font-size: 20px;
