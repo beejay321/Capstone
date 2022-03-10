@@ -74,7 +74,7 @@ const PayPal = ({ paymentDetails, setAlert, setHidePaypal, price, projectDetails
         },
       })
       .render(paypalRef.current);
-  }, [price, project.Description, setAlert]);
+  }, [price, project.Description, setAlert, paymentDetails.title]);
 
   if (madePayment) {
     // alert("Time to hide paypal");
