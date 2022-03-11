@@ -180,32 +180,42 @@ const Dashboard = () => {
           <Row className="projectDiv pt-5">
             {projects &&
               projects.reverse().map((p) => (
-                <Col xs={3} className="py-3" key={p._id}>
-                  <div className=" projectBox">
-                    <Link to={`/details/${p._id}`} className="projectLink">
-                      <div className="py-1  ">
-                        <span className="projectTitle">{p.title}</span>
-                      </div>
-                    </Link>
-                    <div className="py-1  my-1  ">
-                      <span className="text">{p.summary}</span>
-                    </div>
-                    <div className=" sellerDiv px-1 ">
-                      {p.seller && (
-                        <div className="  d-flex  gap-1 ">
-                          <div className="sellerImageDiv">
-                            <Image className="sellerImage" src={p.seller.picture} fluid />
-                          </div>
-                          <span className="text  ">{p.seller.firstname}</span>
-                          <span className="d-flex text ">{p.seller.lastname} </span>
+                <>
+                  <Col xs={3} className="py-3" key={p._id}>
+                    {/* <Link to={`/details/${p._id}`} className="projectL"> */}
+                    <div className=" projectBox ">
+                      <Link to={`/details/${p._id}`} className="projectL">
+                        <div className="py-1 px-2 ">
+                          <span className="projectName">{p.title}</span>
                         </div>
-                      )}
-                      <div className=" mt-1  ">
-                        <span className="text">{p.location}</span>
+                      </Link>
+                      <div className="py-1  my-1 px-2  ">
+                        <span className="text">{p.summary}</span>
+                      </div>
+                      <div className=" sellerDiv px-2 ">
+                        {p.seller && (
+                          <div className="  d-flex  gap-1  ">
+                            <div className="sellerImageDiv mt-2">
+                              <Image className="sellerImage" src={p.seller.picture} fluid />
+                            </div>
+                            <div>
+                              <div className="  d-flex  gap-1 ">
+                                <span className="text  ">{p.seller.firstname}</span>
+                                <span className="d-flex text ">{p.seller.lastname} </span>
+                              </div>
+
+                              <span className="text">{p.location}</span>
+                            </div>
+                          </div>
+                        )}
+                        {/* <div className=" mt-1  ">
+                          <span className="text">{p.location}</span>
+                        </div> */}
                       </div>
                     </div>
-                  </div>
-                </Col>
+                    {/* </Link> */}
+                  </Col>
+                </>
               ))}
           </Row>
         </Container>

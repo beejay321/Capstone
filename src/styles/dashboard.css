@@ -49,11 +49,12 @@
 }
 
 .projectBox {
-  border: inset 2px #2b6777;
-  border-radius: 7px;
+  /* border: inset 2px #2b6777; */
+  /* border-radius: 7px; */
   padding: 5px !important;
-  min-height: 180px;
+  min-height: 200px;
   position: relative;
+  background-color: #eef0f1;
 }
 
 .projectL {
