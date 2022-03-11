@@ -24,60 +24,41 @@ const NavBar = (props) => {
 
   return (
     <>
-      <Navbar id="navbox">
+      <Navbar expand="lg" id="navbox">
         <Container>
-          <Link to="/" id="navlogo">
-            <Navbar.Brand href="#home">
-              <img
-                alt=""
-                src="https://res.cloudinary.com/dvyids286/image/upload/v1633950808/Capstone/sqpxzpmoq4nq0hpcbjpc.jpg
+          <Navbar.Brand href="/">
+            <img
+              alt=""
+              src="https://res.cloudinary.com/dvyids286/image/upload/v1633950808/Capstone/sqpxzpmoq4nq0hpcbjpc.jpg
 "
-                width="45"
-                height="50"
-                className="d-inline-block align-top"
-              />{" "}
-            </Navbar.Brand>
-          </Link>
+              width="45"
+              height="50"
+              className="d-inline-block align-top"
+            />{" "}
+          </Navbar.Brand>{" "}
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="/dashboard">Find Projects</Nav.Link>
+              <Nav.Link href="/aboutUs"> About Us</Nav.Link>
+              <Nav.Link href="/faq">FAQ</Nav.Link>
+            </Nav>
 
-          {/* <Link className="navLink" to="/aboutUs"> */}
-          <Nav.Link href="/aboutUs"> About Us</Nav.Link>
-          {/* </Link> */}
-
-          {/* <Link to="/dashboard" className="navLink"> */}
-          <Nav.Link href="/dashboard">Find Projects</Nav.Link>
-          {/* </Link> */}
-
-          {/* <Link to="/faq" className="navLink"> */}
-          <Nav.Link href="/faq">FAQ</Nav.Link>
-          {/* </Link> */}
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Link to="/postproject" className="navLink">
+            <Nav className="justify-content-end">
               <Nav.Link href="/postproject">Post a Project</Nav.Link>
-            </Link>
-            {/* {`${localStorage.getItem("accessToken")}`  ? ( */}
-            <NavDropdown title={`${localStorage.getItem("username")}`} id="basic-nav-dropdown">
-              <Link to={`/users/${localStorage.getItem("id")}`} className="navLink">
-                <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
-              </Link>{" "}
-              <NavDropdown.Divider />
-              <Link to="/register" className="navLink">
-                <NavDropdown.Item href="#action/3.4">Register a Skill</NavDropdown.Item>
-              </Link>{" "}
-              <Link to="/myProjects" className="navLink">
-                <NavDropdown.Item href="#action/3.4">My Projects</NavDropdown.Item>
-              </Link>{" "}
-              <Link to="/" className="navLink">
-                <NavDropdown.Item href="#action/3.4" onClick={logOut}>
+              <NavDropdown title={`${localStorage.getItem("username")}`} id="basic-nav-dropdown">
+                <NavDropdown.Item href={`/users/${localStorage.getItem("id")}`}>My Profile</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/register">Register a Skill</NavDropdown.Item>
+                <NavDropdown.Item href="/myProjects">My Projects</NavDropdown.Item>
+                <NavDropdown.Item href="/" onClick={logOut}>
                   Log out
                 </NavDropdown.Item>
-              </Link>{" "}
-            </NavDropdown>
-            {/* ) : ( */}
-            <Link to="/login">
-              <Button>Login</Button>
-            </Link>
-            {/* )} */}
+              </NavDropdown>
+              <Link to="/login">
+                <Button>Login</Button>
+              </Link>
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>

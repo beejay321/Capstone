@@ -18,7 +18,7 @@ const PayPal = ({ paymentDetails, setAlert, setHidePaypal, price, projectDetails
         to: bidder.email,
         title: project.title,
         description: projectDetails,
-        price: price,
+        price: paymentDetails.total,
       };
       const response = await fetch(`${MY_APP_API_URL}/projects/sendmail/${bidder._id}`, {
         method: "POST",
@@ -52,10 +52,10 @@ const PayPal = ({ paymentDetails, setAlert, setHidePaypal, price, projectDetails
             intent: "CAPTURE",
             purchase_units: [
               {
-                description: project.Description,
+                description: paymentDetails.title,
                 amount: {
                   currency_code: "EUR",
-                  value: price,
+                  value: paymentDetails.total,
                 },
               },
             ],
@@ -74,7 +74,7 @@ const PayPal = ({ paymentDetails, setAlert, setHidePaypal, price, projectDetails
         },
       })
       .render(paypalRef.current);
-  }, [price, project.Description, setAlert]);
+  }, [price, project.Description, setAlert, paymentDetails.title, paymentDetails.total]);
 
   if (madePayment) {
     // alert("Time to hide paypal");

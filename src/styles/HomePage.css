@@ -1,18 +1,18 @@
-.searchSection {
+.startSection {
   display: flex;
   justify-content: center;
   min-height: 80vh;
   background: #2b6777;
 }
-.searchContainer {
+.startContainer {
   transform: translate(0%, 25%);
   margin-left: 150px;
 }
-.searchContainer h2 {
+.startContainer h2 {
   font-weight: bold;
   color: rgb(255, 255, 255);
 }
-.searchContainer p {
+.startContainer p {
   font-weight: 450;
   color: rgb(255, 255, 255);
 }
@@ -23,6 +23,27 @@
   min-height: 50vh;
   /* background: rgb(211, 206, 206); */
 }
+.howItWorksSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  /* background: rgb(211, 206, 206); */
+}
+.howItWorksCard {
+  height: 300px;
+  width: 300px;
+  display: grid;
+  justify-content: center;
+}
+.howItWorksText {
+  /* font-size: 18px; */
+  font-weight: bold;
+  color: #2b6777;
+  display: grid;
+  justify-content: center;
+}
+
 .homeButtonsSection {
   display: flex;
   /* flex-direction: row; */
@@ -52,10 +73,4 @@
   background: url("../assets/images/world_1.jpg");
   background-size: cover;
   min-height: "100vh";
-}
-
-.howItWorksText {
-  /* font-size: 18px; */
-  font-weight: bold;
-  color: #2b6777;
 }

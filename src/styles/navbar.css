@@ -5,20 +5,17 @@
   background-color: rgb(255, 255, 255);
   padding-bottom: 10px;
   padding-top: 10px;
-  
 }
 
 .nav-link {
   font-size: 18px;
   font-weight: 500;
   color: #2b6777;
-}
-
-.navLink {
   text-decoration: none;
+  margin-right: 5px;
 }
 
-.navLink :hover {
+.nav-link :hover {
   text-decoration: none;
   font-weight: 500;
   color: #52ab98;
@@ -29,22 +26,20 @@
   color: #52ab98 !important;
 }
 
-#navbox > div > div > a:nth-child(3) > button {
-  background-color: #3d8092;
+#basic-navbar-nav > div.justify-content-end.navbar-nav > a:nth-child(3) > button {
+  background-color: #52ab98;
   width: 80px;
   font-size: 15px;
   font-weight: bold;
   border: none;
-
 }
-#navbox > div > div > a:nth-child(3) > button :hover {
-  background-color: #2b6777;
+#basic-navbar-nav > div.justify-content-end.navbar-nav > a:nth-child(3) > button :hover {
+  background-color: #52ab98;
   width: 80px;
   font-size: 16px;
   font-weight: bold;
   border: none;
   outline: none;
 
-  border-color:  #2b6777;
-
+  border-color: #52ab98;
 }
