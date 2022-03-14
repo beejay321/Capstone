@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Button, Col } from "react-bootstrap";
-i
+
 import "../styles/HomePage.css";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
