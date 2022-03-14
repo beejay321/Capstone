@@ -1,8 +1,6 @@
 import React from "react";
-import { Container, Row, Button, Col, Image } from "react-bootstrap";
-import click from "../assets/images/click.jpg";
-import form from "../assets/images/fill_form.png";
-import project from "../assets/images/project_icon.png";
+import { Container, Row, Button, Col } from "react-bootstrap";
+i
 import "../styles/HomePage.css";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
