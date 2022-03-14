@@ -6,12 +6,12 @@ const Footer = () => {
   return (
     <>
       <div id="footer">
-        <Container className=" ">
+        <Container className=" py-4">
           <Row className=" footerbox ">
             <Col xs={4} className="footercolumns">
               <ul className="footerText">
                 <li className="footerlist">FAQ</li>
-                <li className="footerlist">Community Guidelines</li>
+                <li className="footerlist">Guidelines</li>
                 <li className="footerlist">Privacy & Terms </li>
                 <li className="footerlist">Safety Center</li>
               </ul>
@@ -48,6 +48,9 @@ const Footer = () => {
                 </li>
               </ul>
             </Col>
+          </Row>
+          <Row className="footerText mt-2">
+            <p className="d-flex justify-content-center copyright">© 2021-2022 BusolaDev | All Rights reserved</p>
           </Row>
         </Container>
       </div>

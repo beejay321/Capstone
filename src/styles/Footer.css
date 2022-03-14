@@ -9,7 +9,7 @@ body {
 #footer {
   background: #dce6ee;
   bottom: 0px;
-  height: 25vh;
+  min-height: 25vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,4 +32,16 @@ body {
 }
 .footerText li {
   padding-bottom: 12px;
+}
+.copyright{
+  text-align: center;
+}
+
+@media only screen and (max-width: 992px) {
+  #footer {
+    min-height: 10vh;
+  }
+  .footerbox {
+    display: none;
+  }
 }
