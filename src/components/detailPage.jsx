@@ -9,15 +9,9 @@ import Footer from "./Footer";
 const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 const DetailPage = ({ match, history }) => {
-  // const [LoggedIn, setLoggedIn] = useState(false);
   const [project, setProject] = useState("");
   const [bids, setBids] = useState("");
-  // const [cart, setCart] = useState([]);
-
-  // const Login = () => {
-  //   console.log("You need to Log in");
-  //   alert("You need to Log in");
-  // };
+  
 
   const projectId = match.params.projectId;
   useEffect(() => {
