@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Button, Col, Image } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 import click from "../assets/images/click.jpg";
 import form from "../assets/images/fill_form.png";
 import project from "../assets/images/project_icon.png";
