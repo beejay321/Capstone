@@ -4,7 +4,7 @@
   <h1 >CLIENTCONNECT</h1>
 
   <h3 >
-   A Fullstack marketplace website(MERN stack)
+   A Fullstack marketplace website (MERN stack)
   </h3>
  <br />
 
@@ -12,11 +12,11 @@
 
 <!-- ABOUT THE PROJECT -->
 
-## About The Project:-
+## About The Project :
 
 Clientconnect is a MERN stack marketplace website to connect freelancers to clients that have freelance jobs to offer. Freelancers have the ability to bid for projects they believe they are qualified for and the clients will choose which freelancers they feel suit best.
 
-#### The common funtionalities are:-
+#### The common funtionalities are :
 
 - The user as a client can post jobs
 - The user can create account either as a freelancer or client
@@ -24,14 +24,14 @@ Clientconnect is a MERN stack marketplace website to connect freelancers to clie
 - The user as a freelancer can bid for jobs that they feel fits their profile
 - The user as client can chat with freelancers that bid on their projects
 
-### This project was built with:-
+### This project was built with :
 
 - #### React
 - #### Node js
 - #### Express js
 - #### MongoDb
 
-### This project is hosted:-
+### This project is hosted :
 
 - Frontend - Vercel
 - Backend - Heroku
@@ -44,10 +44,10 @@ This project was bootstrapped with [Create React App](https://reactjs.org/).
 
 ## Available Scripts
 
-### To run project:-
+### To run project :
 
 ### `npm start`
 
-### To build project:-
+### To build project :
 
 ### `npm run build`
