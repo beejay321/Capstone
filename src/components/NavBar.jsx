@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Container, Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
+import {
+  Container,
+  Navbar,
+  Nav,
+  Button,
+  // NavDropdown,  Image
+} from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import "../styles/Login.css";
 import "../styles/navbar.css";
@@ -60,7 +66,8 @@ const NavBar = (props) => {
 
             <Nav className="justify-content-end">
               <Nav.Link href="/postproject">Post a Project</Nav.Link>
-              <NavDropdown title={`${userName}`} id="basic-nav-dropdown">
+              {/* <NavDropdown title={`${userName}`} id="basic-nav-dropdown"> */}
+              {/* <NavDropdown title={<Image src="https://via.placeholder.com/30x30" class="card-img-top" alt="..." roundedCircle />} id="basic-nav-dropdown">
                 <NavDropdown.Item href={`/users/${localStorage.getItem("id")}`}>My Profile</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/register">Register a Skill</NavDropdown.Item>
@@ -68,9 +75,9 @@ const NavBar = (props) => {
                 <NavDropdown.Item href="/" onClick={logOut}>
                   Log out
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
               <Link to="/login">
-                <Button>Login</Button>
+                <Button className="loginBtn"> Login</Button>
               </Link>
             </Nav>
           </Navbar.Collapse>
