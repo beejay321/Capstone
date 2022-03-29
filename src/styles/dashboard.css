@@ -27,6 +27,13 @@
   background-color: rgb(241, 241, 241);
 }
 
+@media only screen and (max-width: 992px) {
+  .categoryButtonsDiv {
+    display: none;
+    background-color: rgb(241, 241, 241);
+  }
+}
+
 .categoryButtons {
   border-radius: 5px;
   width: 14%;

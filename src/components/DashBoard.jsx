@@ -179,9 +179,9 @@ const Dashboard = () => {
         <Container className=" mb-3">
           <Row className="projectDiv pt-5">
             {projects &&
-              projects.reverse().map((p) => (
+              projects.map((p) => (
                 <>
-                  <Col xs={3} className="py-3" key={p._id}>
+                  <Col xs={6} sm={6} md={4} lg={3} className="py-3" key={p._id}>
                     {/* <Link to={`/details/${p._id}`} className="projectL"> */}
                     <div className=" projectBox ">
                       <Link to={`/details/${p._id}`} className="projectL">
