@@ -24,10 +24,7 @@ const LandingPage = (routerProps) => {
             <Col className=" startSection ">
               <div className="  startContainer  ">
                 <h2 className=" py-3 ">Find your perfect project match </h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit
-                  esse cillum dolore eu fugiat nulla pariatur.{" "}
-                </p>
+
                 <div className="  gap-2 homeButtonsSection ">
                   <Button className="homeButtons" variant="outline-secondary" id="button-addon2" onClick={createProject}>
                     Create Project{" "}
@@ -44,8 +41,8 @@ const LandingPage = (routerProps) => {
           </Row>
         </Container>
       </div>
-        <HowItWorks />
-        
+      <HowItWorks />
+
       <Footer />
     </>
   );
