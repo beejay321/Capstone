@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import "../styles/Login.css";
@@ -11,7 +11,21 @@ import "../styles/navbar.css";
 // });
 
 const NavBar = (props) => {
+  const [userName, setUserName] = useState("");
+
   // const users = useSelector((s) => s.users);
+  useEffect(() => {
+    const setUser = async () => {
+      let user = "";
+      if (localStorage.getItem("username") === null) {
+        user = "Guest";
+      } else {
+        user = localStorage.getItem("username");
+      }
+      setUserName(user);
+    };
+    setUser();
+  }, []);
 
   const logOut = () => {
     localStorage.removeItem("username");
@@ -46,7 +60,7 @@ const NavBar = (props) => {
 
             <Nav className="justify-content-end">
               <Nav.Link href="/postproject">Post a Project</Nav.Link>
-              <NavDropdown title={`${localStorage.getItem("username")}`} id="basic-nav-dropdown">
+              <NavDropdown title={`${userName}`} id="basic-nav-dropdown">
                 <NavDropdown.Item href={`/users/${localStorage.getItem("id")}`}>My Profile</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/register">Register a Skill</NavDropdown.Item>
