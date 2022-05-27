@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Form,  Button,  Modal } from "react-bootstrap";
+import { Form, Button, Modal } from "react-bootstrap";
 import { connect } from "react-redux";
 
-import { loggedInAction } from "../redux/actions";
+import { loggedInAction } from "../../redux/actions";
 
 const mapStateToProps = (state) => ({
   isLoggedIn: state.users.isLoggedIn,
@@ -14,13 +14,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-// const ADDRESS = "http://localhost:3255";
+const MY_APP_API_URL = "http://localhost:3255";
 
-const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
-
+// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 const BidModal = (props) => {
-  const [user, ] = useState(localStorage.getItem("id"));
+  const [user] = useState(localStorage.getItem("id"));
   const [message, setMessage] = useState("");
   const [cost, setCost] = useState("");
   const [duration, setDuration] = useState("");
@@ -33,6 +32,7 @@ const BidModal = (props) => {
     // if (form.checkValidity() === false) {
     //   event.preventDefault();
     //   event.stopPropagation();
+    console.log(props.match.params);
     // }
 
     try {
