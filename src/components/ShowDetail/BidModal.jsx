@@ -28,10 +28,8 @@ const BidModal = (props) => {
   const handleShow = () => setShow(true);
 
   const bid = async (event) => {
-    // const form = event.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
+    // event.preventDefault();
+    let userId = localStorage.getItem("id");
     console.log(props.match.params);
     // }
 
@@ -44,7 +42,7 @@ const BidModal = (props) => {
         cost: cost,
         duration: duration,
       };
-      const response = await fetch(`${MY_APP_API_URL}/projects/${props.match.params.projectId}/bids`, {
+      const response = await fetch(`${MY_APP_API_URL}/projects/${props.match.params.projectId}/${userId}/bids`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -69,7 +67,7 @@ const BidModal = (props) => {
   return (
     <>
       <Button variant="outline-success" onClick={handleShow}>
-        Bid On this Job{" "}
+        Make an Offer{" "}
       </Button>
 
       <Modal show={show} onHide={handleClose}>
