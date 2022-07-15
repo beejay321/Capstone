@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Row, Col, Image } from "react-bootstrap";
-import click from "../assets/images/click.jpg";
-import form from "../assets/images/fill_form.png";
-import project from "../assets/images/project_icon.png";
-import "../styles/HomePage.css";
+import click from "../../assets/images/click.jpg";
+import form from "../../assets/images/fill_form.png";
+import project from "../../assets/images/project_icon.png";
+import "../../styles/HomePage.css";
 
 function HowItWorks(props) {
     return (

@@ -1,14 +1,14 @@
 import React from "react";
 import { Container, Row, Button, Col } from "react-bootstrap";
-
-import "../styles/HomePage.css";
-import NavBar from "./NavBar";
-import Footer from "./Footer";
+import classes from "./LandingPage.module.css";
+// import "../styles/HomePage.css";
+import NavBar from "../NavBar";
+import Footer from "../Footer";
 import HowItWorks from "./HowItWorks";
 
 const LandingPage = (routerProps) => {
   const createProject = () => {
-    if (localStorage.getItem("username")) {
+    if (localStorage.getItem("id")) {
       routerProps.history.push("/postproject");
     } else {
       routerProps.history.push("/login");
@@ -21,13 +21,10 @@ const LandingPage = (routerProps) => {
       <div id="homeDiv">
         <Container fluid>
           <Row className="d-flex">
-            <Col className=" startSection ">
+            <Col className={classes.startSection}>
               <div className="  startContainer  ">
                 <h2 className=" py-3 ">Find your perfect project match </h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit
-                  esse cillum dolore eu fugiat nulla pariatur.{" "}
-                </p>
+
                 <div className="  gap-2 homeButtonsSection ">
                   <Button className="homeButtons" variant="outline-secondary" id="button-addon2" onClick={createProject}>
                     Create Project{" "}
@@ -44,8 +41,8 @@ const LandingPage = (routerProps) => {
           </Row>
         </Container>
       </div>
-        <HowItWorks />
-        
+      <HowItWorks />
+
       <Footer />
     </>
   );

@@ -43,3 +43,11 @@
 
   border-color: #52ab98;
 }
+.loginBtn {
+  margin-top: 2px;
+  margin-left: 2rem;
+  border-color: #52ab98;
+  background-color: #52ab98;
+  width: 6em;
+  font-weight: 700;
+}
