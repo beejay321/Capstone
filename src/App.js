@@ -11,8 +11,8 @@ import DetailPage from "./components/ShowDetail/DetailPage";
 import Checkout from "./components/Checkout/Checkout";
 import ConfirmDetails from "./components/confirmDetails";
 import RegisterPage from "./components/Register/RegisterPage";
-// import MyProfile from "./profile/MyProfile.jsx";
-// import UpdateProfile from "./profile/UpdateProfile";
+import MyProfile from "./profile/MyProfile.jsx";
+import UpdateProfile from "./profile/UpdateProfile";
 // import Messages from "./components/Message/Messages";
 // import Login from "./components/Register/Login";
 // import EditProject from "./components/ShowDetail/EditProject.jsx";
@@ -33,8 +33,8 @@ function App() {
         <Route path="/details/:projectId" render={(routerProps) => <DetailPage title="DETAILS" {...routerProps} />} />
         <Route path="/checkout/:projectId/:bidId" render={(routerProps) => <Checkout {...routerProps} />} />
         <Route path="/confirmProjectDetails/:bidderId" render={(routerProps) => <ConfirmDetails {...routerProps} />} />
-        {/* <Route path="/users/:id" render={(routerProps) => <MyProfile {...routerProps} />} /> */}
-        {/* <Route path="/updateProfile/:id" render={(routerProps) => <UpdateProfile {...routerProps} />} /> */}
+        <Route path="/users/:id" render={(routerProps) => <MyProfile {...routerProps} />} />
+        <Route path="/updateProfile/:id" render={(routerProps) => <UpdateProfile {...routerProps} />} />
         {/* <Route path="/editproject/:projectId" render={(routerProps) => <EditProject {...routerProps} />} /> */}
         {/* <Route path="/me/messages" render={(routerProps) => <Messages {...routerProps} />} /> */}
         {/* <Route path="/chat" render={(routerProps) => <ChatBox {...routerProps} />} /> */}
