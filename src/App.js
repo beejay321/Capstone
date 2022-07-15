@@ -15,7 +15,7 @@ import RegisterPage from "./components/Register/RegisterPage";
 // import Login from "./components/Register/Login";
 // import MyProfile from "./profile/MyProfile.jsx";
 // import EditProject from "./components/ShowDetail/EditProject.jsx";
-import UpdateProfile from "./profile/UpdateProfile";
+// import UpdateProfile from "./profile/UpdateProfile";
 
 // import ChatBox from "./components/chatBox";
 
@@ -35,7 +35,7 @@ function App() {
         <Route path="/checkout/:projectId/:bidId" render={(routerProps) => <Checkout {...routerProps} />} />
         <Route path="/confirmProjectDetails/:bidderId" render={(routerProps) => <ConfirmDetails {...routerProps} />} />
         {/* <Route path="/users/:id" render={(routerProps) => <MyProfile {...routerProps} />} /> */}
-        <Route path="/updateProfile/:id" render={(routerProps) => <UpdateProfile {...routerProps} />} />
+        {/* <Route path="/updateProfile/:id" render={(routerProps) => <UpdateProfile {...routerProps} />} /> */}
         {/* <Route path="/me/messages" render={(routerProps) => <Messages {...routerProps} />} /> */}
         {/* <Route path="/chat" render={(routerProps) => <ChatBox {...routerProps} />} /> */}
         {/* <Footer /> */}
