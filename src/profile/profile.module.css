@@ -1,0 +1,18 @@
+.formRow{
+    display: flex;
+    margin: 0px 0px 10px;
+    gap: 1rem;
+}
+
+.formDiv{
+    background-color: aliceblue;
+}
+
+.formWindow  {
+    border: solid 2px rgb(156, 156, 156);
+}
+.topRow{
+    background-color: #2b6777;
+    height: 50px;
+    position: static;
+}
