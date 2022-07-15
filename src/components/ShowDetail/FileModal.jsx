@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Form, Button, Modal, Image, Carousel } from "react-bootstrap";
+import { Modal, Image, Carousel } from "react-bootstrap";
 
 function FileModal({ images }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [modalShow, setModalShow] = useState(false);
+  // const [modalShow, setModalShow] = useState(false);
 
   return (
     <>
