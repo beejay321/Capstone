@@ -1,7 +1,7 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 // import "./dashboard.css";
-import EditModal from "./EditModal";
+import Edit from "./Edit";
 
 const MyBids = (props) => {
   return (
@@ -9,8 +9,7 @@ const MyBids = (props) => {
       <div className=" my-2 py-2 px-1 profileColumn " style={{ minHeight: "15rem" }}>
         <div className="mx-2 d-flex justify-content-between">
           <h4>{props.title}</h4>
-          {localStorage.getItem("id") === props.user._id ? <EditModal title={props.title} /> : ""}
-
+          {localStorage.getItem("id") === props.user._id ? <Edit title={props.title} /> : ""}
         </div>
         <hr className=" my-2 " />
         {props.myBids ? (
@@ -24,11 +23,11 @@ const MyBids = (props) => {
                   <th>Status</th>
                 </tr>
               </thead>
-              {props.myBids.map((b) => (
-                <tbody>
+              {props.myBids.map((b, i) => (
+                <tbody key={i}>
                   <tr>
                     <td>{b.projectTitle}</td>
-                    <td>Lenny Mills</td>
+                    <td>#</td>
                     <td>Approved</td>
                     <td>Confirmed</td>
                   </tr>
