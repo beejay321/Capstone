@@ -1,35 +1,48 @@
 import React from "react";
-// import "./dashboard.css";
+import "./profilepage.css";
+import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import EditModal from "./EditModal";
+import "bootstrap-icons/font/bootstrap-icons.css";
+
+// const MY_APP_API_URL = "http://localhost:3255";
 
 const MyProjects = (props) => {
- 
-
   return (
     <>
       <div className=" my-2 py-2 px-1 profileColumn " style={{ minHeight: "15rem" }}>
         <div className=" mx-2 d-flex justify-content-between ">
           <h4>{props.title}</h4>
-          <EditModal title={props.title} />
+          {localStorage.getItem("id") === props.user._id ? (
+            <Link to={`/postProject`}>
+              <i className="bi bi-plus-lg" style={{ fontSize: "1.5rem", color: "#2b6777",  }}></i>
+            </Link>
+          ) : (
+            ""
+          )}
         </div>
         <hr className=" my-2 " />
         {props.projects ? (
           <div>
-            {props.projects.map((p) => (
-              <div key={p._id} className=" mx-2 d-flex justify-content-between ">
-                  <div className="py-1  my-1  ">
-                <Link className="projectLink" to={`/details/${p._id}`}>
-                    <span>{p.title}</span>
-                </Link>
-                  </div>
-                <div className="py-1  my-1  ">
-                  <span>{p.summary} </span>
-                </div>
-                <div className=" py-1  my-1  ">
-                  <span>Germany</span>
-                </div>
-              </div>
+            {props.projects.map((p, i) => (
+              <>
+                <Row className="px-2" key={i}>
+                  <Col xs={12}>
+                    <Link className="projectLink" to={`/details/${p._id}`}>
+                      <Row className="px-2 py-1">
+                        <Col xs={4} className="py-2">
+                          <span>{p.title}</span>
+                        </Col>
+                        <Col xs={5} className="py-2">
+                          <span>{p.location}</span>
+                        </Col>
+                        <Col xs={3} className="py-2">
+                          <span>{p.category}</span>
+                        </Col>
+                      </Row>
+                    </Link>
+                  </Col>
+                </Row>
+              </>
             ))}
           </div>
         ) : (
