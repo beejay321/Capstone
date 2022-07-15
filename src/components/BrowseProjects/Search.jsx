@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row, Button, Col, InputGroup, FormControl, Image, Spinner } from "react-bootstrap";
+import React from "react";
+import { Container, Row, Button, Col, InputGroup, FormControl} from "react-bootstrap";
 
 function Search(props) {
 //   const [query, setQuery] = useState("");
