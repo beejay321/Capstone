@@ -15,9 +15,9 @@ import { useRouteMatch } from "react-router-dom/cjs/react-router-dom.min";
 // import Message from "../components/Message/Message";
 import Reviews from "./Reviews";
 
-const MY_APP_API_URL = "http://localhost:3255";
+// const MY_APP_API_URL = "http://localhost:3255";
 
-// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 const MyProfile = (props) => {
   const [user, setUser] = useState("");
