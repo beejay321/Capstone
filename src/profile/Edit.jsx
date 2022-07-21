@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-// import React, { Component } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import "./profilepage.css";
 
-
 // const ApiUrl = process.env.REACT_APP_API_URL;
 
-const EditModal = (props) => {
+const Edit = (props) => {
   // const [username, setUsername] = useState("");
   // const [password, setPassword] = useState("");
   // const [validated, setValidated] = useState(false);
@@ -15,18 +13,17 @@ const EditModal = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  
-
   return (
     <>
-      <Button className = "editButton" variant="" id="button-addon2" onClick={handleShow}>
-        Add 
-        {/* {props.title} */}
-      </Button>
+      {props.title === "Edit" ? (
+        <i className="bi bi-pencil" onClick={handleShow} style={{ fontSize: "1.25rem", color: "#2b6777", marginTop: "5px" }}></i>
+      ) : (
+        <i class="bi bi-plus-lg" onClick={handleShow} style={{ fontSize: "1.5rem", color: "#2b6777" }}></i>
+      )}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{props.formType === "edit" ? "Edit Experience" : "Add Experience"}</Modal.Title>
+          <Modal.Title>{props.title === "Edit" ? "Edit Experience" : "Add Experience"}</Modal.Title>
         </Modal.Header>
         <Form onSubmit={props.handleSubmit}>
           <Modal.Body>
@@ -66,4 +63,4 @@ const EditModal = (props) => {
   );
 };
 
-export default EditModal;
+export default Edit;

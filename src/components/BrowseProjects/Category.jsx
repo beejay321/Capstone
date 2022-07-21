@@ -1,14 +1,15 @@
-import React  from "react";
-import { Container, Row, Button} from "react-bootstrap";
+import React from "react";
+import { Container, Row, Button } from "react-bootstrap";
+import styles from "./dashboard.module.css";
 
 function Category(props) {
   return (
-    <div className="categoryButtonsDiv ">
+    <div className={styles.categoryButtonsDiv}>
       <Container>
         <Row xs={8} md={7}>
-          <div className="categoryButtonsDiv py-2">
+          <div className=" ">
             <Button
-              className="categoryButtons "
+              className={styles.categoryButtons}
               variant="light"
               id="button-addon2"
               onClick={() => {
@@ -18,7 +19,7 @@ function Category(props) {
               Art & Design
             </Button>
             <Button
-              className="categoryButtons "
+              className={styles.categoryButtons}
               variant="light"
               id="button-addon2"
               onClick={() => {
@@ -28,7 +29,7 @@ function Category(props) {
               Education
             </Button>
             <Button
-              className="categoryButtons "
+              className={styles.categoryButtons}
               variant="light"
               id="button-addon2"
               onClick={() => {
@@ -38,7 +39,7 @@ function Category(props) {
               Beauty & Lifestyle
             </Button>
             <Button
-              className="categoryButtons "
+              className={styles.categoryButtons}
               variant="light"
               id="button-addon2"
               onClick={() => {
@@ -48,7 +49,7 @@ function Category(props) {
               Catering{" "}
             </Button>
             <Button
-              className="categoryButtons "
+              className={styles.categoryButtons}
               variant="light"
               id="button-addon2"
               onClick={() => {
@@ -58,7 +59,7 @@ function Category(props) {
               Entertainment
             </Button>
             <Button
-              className="categoryButtons "
+              className={styles.categoryButtons}
               variant="light"
               id="button-addon2"
               onClick={() => {
@@ -68,7 +69,7 @@ function Category(props) {
               Business
             </Button>
             <Button
-              className="categoryButtons "
+              className={styles.categoryButtons}
               variant="light"
               id="button-addon2"
               onClick={() => {

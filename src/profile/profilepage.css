@@ -1,7 +1,14 @@
+.topRow {
+  background-color: #2b6777;
+  height: 50px;
+  /* position: fixed;
+  margin-bottom: 500px; */
+}
+
 .profilePage {
   /* background-color: #c8d8e4; */
 
-  background-color: #f2f2f2;
+  background-color: #ffffff;
 }
 
 .projectTitle {
@@ -13,15 +20,17 @@
   /* border: solid 1px rgb(218, 218, 218); */
   border-radius: 5px;
   width: 100%;
-  background-color: #dee4e9;
+  /* background-color: #dee4e9; */
+  background-color: #e4e4e4;
 }
 
 .profileCards {
   border: none;
-  background-color: #dee4e9;
-  padding: 0% !important
-}
+  /* background-color: #dee4e9; */
+  background-color: #e4e4e4;
 
+  padding: 0% !important;
+}
 
 .profileImageDiv {
   display: inline-block;
@@ -56,7 +65,6 @@
   font-weight: bold;
   border-color: #2b6777 !important;
   color: #c8d8e4;
-
 }
 
 .projectLink {
@@ -67,9 +75,12 @@
 }
 .projectLink :hover {
   text-decoration: none;
-  font-size: 16px;
-  font-weight: 650;
+  font-size: 15px;
+  font-weight: 500;
   color: #2b6777;
+  background-color: #c7d4df !important;
+  color: #52ab98 !important;
+  cursor: pointer;
 }
 
 .chatButton {
@@ -86,4 +97,36 @@
   bottom: 20px;
   width: 150px;
   border: 0.5px inset #2b6777;
+}
+
+.tabs :hover {
+  /* background-color: #c0d4e2 !important; */
+  color: #52ab98 !important;
+  cursor: pointer;
+}
+
+.skills{
+  
+  /* margin: 8px ; */
+ 
+  display: flex;
+  /* justify-content: center; */
+}
+.skills div{
+  border: 1px solid rgb(194, 194, 194);
+  border-radius: 50px;
+  background-color: rgb(194, 194, 194);
+  margin: 8px 6px;
+  padding: 0px 6px;
+  display: flex;
+  justify-content: center;
+}
+
+.eachReview{
+  display: block;
+  justify-content: center;
+  margin: 12px 5px 5px;
+  padding: 5px 5px ;
+  background-color:rgb(239, 239, 239) ;
+  font-size: .8rem;
 }

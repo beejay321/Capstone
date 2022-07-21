@@ -1,17 +1,18 @@
 import React from "react";
-import {  Button,  Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import "./profilepage.css";
-import EditModal from "./EditModal";
+import EditExperience from "./EditExperience";
 
 const ExperienceCard = (props) => {
-  
-
   return (
     <>
       <div className=" my-2 py-2 px-1 profileColumn " style={{ minHeight: "15rem" }}>
         <div className=" mx-2 d-flex justify-content-between ">
           <h4>{props.title}</h4>
-          {localStorage.getItem("id") === props.user._id ? <EditModal title={props.title} /> : ""}
+          <div className=" mx-1 d-flex gap-3 ">
+            {localStorage.getItem("id") === props.user._id ? <EditExperience title="Add" user={props.user} /> : ""}
+            {localStorage.getItem("id") === props.user._id ? <EditExperience title="Edit" /> : ""}
+          </div>
         </div>
         <hr className=" my-2 " />
         <div>
@@ -19,7 +20,7 @@ const ExperienceCard = (props) => {
             <div>
               {props.experience &&
                 props.experience.map((exp) => (
-                  <div key = {exp._id} className=" mx-2 py-2 d-flex justify-content-between ">
+                  <div key={exp._id} className=" mx-2 py-2 d-flex justify-content-between ">
                     <div>
                       <Card className="profileCards" style={{ width: "18rem" }}>
                         <Card.Body className="profileCards">
@@ -32,9 +33,6 @@ const ExperienceCard = (props) => {
                         </Card.Body>
                       </Card>
                     </div>
-                    <div>
-                      <Button className="editButton">edit</Button>
-                    </div>{" "}
                   </div>
                 ))}
             </div>

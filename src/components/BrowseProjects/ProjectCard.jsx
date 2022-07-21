@@ -1,38 +1,40 @@
 import React from "react";
-import {  Col, Image, Card } from "react-bootstrap";
+import { Col, Image, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import styles from "./dashboard.module.css";
 
 function ProjectCard({ p }) {
   return (
     <>
-      <Col xs={12} sm={6} lg={4} xl={3} className="py-3 justify-content-center" key={p._id}>
-        <Card>
-          <Card.Img variant="top" src="https://via.placeholder.com/80" />
-          <div className=" projectBox ">
-            <Link to={`/details/${p._id}`} className="projectL">
-              <div className="py-1 px-2 ">
-                <span className="projectName">{p.title}</span>
+      <Col xs={12} sm={6} lg={4} xl={3} key={p._id}>
+        <Card className={styles.projectCard}>
+          {p.files ? <Card.Img variant="top" src={p.files[0]} /> : <Card.Img variant="top" src="https://via.placeholder.com/80" />}
+          <div className={styles.cardBody}>
+            <div className={styles.cardTitle}>
+              <Link to={`/details/${p._id}`} className={styles.projectL}>
+                <span className={styles.projectName}>{p.title}</span>
+              </Link>
+              <div className={styles.like}>
+                {/* <i className="bi bi-star like"></i> */}
+                <i className="bi bi-heart-fill "></i>
               </div>
-            </Link>
-            <div className="py-1  my-1 px-2  ">
-              <span className="text">{p.summary}</span>
             </div>
-            <div className=" sellerDiv px-2 ">
-              {p.seller && (
-                <div className="  d-flex  gap-1  ">
-                  <div className="sellerImageDiv mt-2">
-                    <Image className="sellerImage" src={p.seller.picture} fluid />
-                  </div>
-                  <div>
-                    <div className="  d-flex  gap-1 ">
-                      <span className="text  ">{p.seller.firstname}</span>
-                      <span className="d-flex text ">{p.seller.lastname} </span>
-                    </div>
+            <div className={styles.summary}>
+              <span className=""> {`${p.summary.substring(0, 69)}${p.summary.length > 68 ? "..." : ""}`}</span>
+            </div>
+            <hr className="m-0" />
 
-                    <span className="text">{p.location}</span>
-                  </div>
+            <div className={styles.projectProp}>
+              <div className={styles.sellerImageDiv}>
+                <Image className={styles.sellerImage} src={p.seller.picture} fluid />
+              </div>
+
+              <div className="">
+                <div className={styles.projectOwner}>
+                  {p.seller.firstname} {p.seller.lastname}
                 </div>
-              )}
+                <div className={styles.text}>{p.location}</div>
+              </div>
             </div>
           </div>
         </Card>

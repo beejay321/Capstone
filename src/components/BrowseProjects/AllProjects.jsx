@@ -1,19 +1,22 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
 import ProjectCard from "./ProjectCard";
+import styles from "./dashboard.module.css";
 
 function AllProjects(props) {
   return (
-    <Container className=" mb-3">
-      <Row className="projectDiv pt-5">
-        {props.projects &&
-          props.projects.map((p) => (
-            // <>
-            <ProjectCard p={p} key={p._id} />
-            // </>
-          ))}
-      </Row>
-    </Container>
+    <div className={styles.projectDiv}>
+      <Container className="">
+        <Row className="pt-5">
+          {props.projects &&
+            props.projects.map((p) => (
+              // <>
+              <ProjectCard p={p} key={p._id} />
+              // </>
+            ))}
+        </Row>
+      </Container>
+    </div>
   );
 }
 

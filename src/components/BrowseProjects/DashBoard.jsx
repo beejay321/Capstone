@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Spinner } from "react-bootstrap";
-
-import "../../styles/dashboard.css";
+import  styles from "./dashboard.module.css";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
 import Search from "./Search";
 import Category from "./Category";
 import AllProjects from "./AllProjects";
 
-// const ADDRESS = "http://localhost:3255";
-
-const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "http://localhost:3255";
+// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 const Dashboard = () => {
   // const [user, setUser] = useState("");
@@ -46,7 +44,6 @@ const Dashboard = () => {
 
   const searchProjects = async () => {
     setIsLoading(true);
-
     try {
       let response = await fetch(`${MY_APP_API_URL}/projects/search/${query}`);
       let result = await response.json();
@@ -61,7 +58,6 @@ const Dashboard = () => {
 
   const searchCategory = async (category) => {
     setIsLoading(true);
-
     try {
       let response = await fetch(`${MY_APP_API_URL}/projects?category=${category}`);
       let result = await response.json();
@@ -80,7 +76,7 @@ const Dashboard = () => {
       <Search query={query} searchProjects={searchProjects} setQuery={setQuery} />
       <Category searchCategory={searchCategory} />
       {isLoading ? (
-        <div className="projectDiv  py-5 d-flex justify-content-center ">
+        <div className={styles.spinner}>
           <Spinner animation="border" size="sm" />
           <Spinner animation="border" />
           <Spinner animation="grow" size="sm" />

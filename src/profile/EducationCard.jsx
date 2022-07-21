@@ -1,7 +1,8 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import "./profilepage.css";
-import EditModal from "./EditModal";
+// import EditModal from "./EditModal";
+import EditEducation from "./EditEducation";
 
 const EducationCard = (props) => {
   return (
@@ -9,7 +10,11 @@ const EducationCard = (props) => {
       <div className=" my-2 py-2 px-1 profileColumn " style={{ minHeight: "15rem" }}>
         <div className=" mx-2 d-flex justify-content-between ">
           <h4>{props.title}</h4>
-          {localStorage.getItem("id") === props.user._id ? <EditModal title={props.title} /> : ""}
+          {/* {localStorage.getItem("id") === props.user._id ? <EditModal title={props.title} /> : ""} */}
+          <div className=" mx-1 d-flex gap-3 ">
+            {localStorage.getItem("id") === props.user._id ? <EditEducation title="Add" user={props.user} /> : ""}
+            {localStorage.getItem("id") === props.user._id ? <EditEducation title="Edit" /> : ""}
+          </div>
         </div>
         <hr className=" my-2 " />
         {props.education ? (
@@ -29,9 +34,6 @@ const EducationCard = (props) => {
                       </Card.Body>
                     </Card>
                   </div>
-                  <div>
-                    <Button className="editButton">edit</Button>
-                  </div>{" "}
                 </div>
               ))}
           </div>
