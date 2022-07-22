@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import BidModal from "./BidModal";
@@ -8,69 +8,51 @@ import EditProject from "./EditProject";
 import { useHistory } from "react-router-dom";
 import FileModal from "./FileModal";
 
-const images = [
-  "https://via.placeholder.com/50",
-  "https://via.placeholder.com/50",
-  "https://via.placeholder.com/50",
-  "https://via.placeholder.com/50",
-  "https://via.placeholder.com/50",
-  "https://via.placeholder.com/50",
-];
-
 function DetailOfProject({ project, match }) {
+  const [showBids, setShowBids] = useState(true);
+ 
   let history = useHistory();
+
+  useEffect(() => {
+    console.log(project);
+  }, []);
 
   return (
     <>
       <div className={styles.detailtopRow}>
-        <div className=" py-3 d-flex justify-content-between">
-          <h5 className={styles.projectTitle}>{project.summary}</h5>
-          {localStorage.getItem("id") === project.seller._id && <EditProject project={project} history={history} />}
+        <div className={styles.files}>
+          <div className={styles.imageFill}>
+            <FileModal images={project.files} />
+          </div>{" "}
         </div>
-        <div className="d-flex">
-          <div>
+        {/*  */}
+        <div className={styles.projectDetails}>
+          <div className={styles.projectHead}>
             <Link to={`/users/${project.seller._id}`} className={styles.sellerLink}>
               <div className={styles.sellerImageDiv}>
                 <Image className={styles.sellerImage} src={project.seller.picture} fluid />
               </div>
-              <span className=" ">{project.seller.firstname}</span>
-              <span className="d-flex ">{project.seller.lastname} </span>
+              <div>
+                <span className=" ">
+                  {project.seller.firstname} {project.seller.lastname}
+                </span>
+              </div>
             </Link>
-            <p className={styles.projectText}>{project.Description} </p>
-            <p className="  ">{project.skills}</p>
-            <div className="d-flex ">
-              <p className={styles.projectText}>{project.location}</p>
+          </div>
+          <div className={styles.projectHead}>
+            <h5 className={styles.projectTitle}>{project.summary}</h5>
+          </div>{" "}
+          <div>
+            <div className={styles.projectText}>
+              <p>{project.Description} </p>
+              <p className={styles.projectLocation}>{project.location}</p>
             </div>
           </div>
-          <FileModal images={images} />
+          <div className={styles.bidOffer}>
+            {localStorage.getItem("id") === project.seller._id ? <EditProject project={project} history={history} /> : <BidModal match={match} project={project} />}
+          </div>{" "}
         </div>
-
-        <div className={styles.bidButton}>{localStorage.getItem("id") === project.seller._id ? "" : <BidModal match={match} project={project} />}</div>
       </div>
-      {/* <div className={styles.detailtopRow}>
-        <div className=" py-3 d-flex justify-content-between">
-          <h5 className={styles.projectTitle}>{project.summary}</h5>
-          {localStorage.getItem("id") === project.seller._id && <EditProject project={project} history={history} />}
-        </div>
-        <Link to={`/users/${project.seller._id}`} className={styles.sellerLink}>
-          <div className={styles.sellerImageDiv}>
-            <Image className={styles.sellerImage} src={project.seller.picture} fluid />
-          </div>
-          <span className=" ">{project.seller.firstname}</span>
-          <span className="d-flex ">{project.seller.lastname} </span>
-        </Link>
-        <Row className="d-flex justify-content-between mt-1">
-          <Col xs={5}>
-            <p className={styles.projectText}>{project.Description} </p>
-            <p className="">{project.skills}</p>
-            <p className={styles.projectText}>{project.location}</p>
-          </Col>
-          <Col xs={5} className="d-grid justify-content-end mx-4">
-            <FileModal images={images} />
-        <div className={styles.bidButton}>{localStorage.getItem("id") === project.seller._id ? "" : <BidModal match={match} project={project} />}</div>
-          </Col>
-        </Row>
-      </div> */}
     </>
   );
 }
