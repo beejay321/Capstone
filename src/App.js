@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import LandingPage from "./components/HomePage/LandingPage";
 import AboutUs from "./components/AboutUs";
-import Faq from "./components/Faq";
+import Faq from "./components/FAQs/Faq";
 import Dashboard from "./components/BrowseProjects/DashBoard";
 import PostProject from "./components/postProjects";
 import DetailPage from "./components/ShowDetail/DetailPage";

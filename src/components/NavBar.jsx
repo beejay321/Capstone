@@ -56,7 +56,6 @@ const NavBar = (props) => {
               <Nav.Link href="/dashboard">Find Projects</Nav.Link>
               <Nav.Link href="/aboutUs"> About Us</Nav.Link>
               <Nav.Link href="/faq">FAQ</Nav.Link>
-              <Nav.Link href="/me/messages">My Messages</Nav.Link>
             </Nav>
 
             <Nav className="justify-content-end">
@@ -68,8 +67,8 @@ const NavBar = (props) => {
                 <NavDropdown title={<Image src="https://via.placeholder.com/30x30" className="card-img-top" alt="..." roundedCircle />} id="basic-nav-dropdown">
                   <NavDropdown.Item href={`/users/${localStorage.getItem("id")}`}>My Profile</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/register">Register a Skill</NavDropdown.Item>
                   <NavDropdown.Item href="/myProjects">My Projects</NavDropdown.Item>
+                  <NavDropdown.Item href="/me/messages">My Messages</NavDropdown.Item>
                   <NavDropdown.Item href="/" onClick={logOut}>
                     Log out
                   </NavDropdown.Item>

@@ -1,21 +1,28 @@
 import React from "react";
-import {  Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
+import "../styles/aboutUs.css";
 
 const AboutUs = (props) => {
   return (
     <>
       <NavBar />
+      <div className="aboutUsTopRow"></div>
 
-      <Container className="py-5" style={{ minHeight: "100vh", width: "1000px" }}>
-        <h3>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </h3>
-      </Container>
-      <Footer/>
+      <div className="aboutUsDiv">
+        <Container>
+          <div className="aboutUsContainer ">
+            <h3 className="pt-3 d-flex justify-content-center ">About Us </h3>
+            <p className="pt-3 ">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+              non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </div>
+        </Container>
+      </div>
+      <Footer />
     </>
   );
 };

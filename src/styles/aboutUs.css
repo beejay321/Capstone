@@ -1,0 +1,16 @@
+.aboutUsTopRow {
+  background-color: #aac7d0;
+  min-height: 100px;
+}
+.aboutUsDiv {
+  background-color: #aac7d0;
+  min-height: calc(100vh - 81px - 100px - 99px);
+}
+.aboutUsContainer {
+  background-color: #ffffff;
+  margin: 0px 100px;
+  padding: 50px 100px;
+ 
+  min-height: calc(100vh - 81px - 100px - 99px - 100px ) ;
+  border-radius: 15px;
+}
