@@ -1,166 +1,215 @@
+.spinner {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0px;
+}
 
+/********** SEARCH **************/
 
-.spinner{
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    margin: 30px 0px;
-  }
+.searchDiv {
+  height: 300px;
+  background-color: #cedade;
+  background-image: url("https://res.cloudinary.com/dvyids286/image/upload/v1658883082/CapstoneProjects/wkzf3i3ng8ryfc98srxe.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchDivText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchInputDiv {
+  position: relative;
+  border-radius: 25px;
+  width: 60%;
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+.searchInput {
+  border: none;
+  border-radius: 50px;
+  height: 40px;
+  padding: 18px;
+  outline: none;
+  margin-right: 2px;
+}
+.searchButton {
+  width: 15%;
+  min-width: 90px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #2b6777;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 1.2px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchButton:hover {
+  transform: scale(1.03);
+  font-weight: 600;
+}
 
-#searchDiv {
-    background-color: #2b6777;
-    padding: 20px 0px 40px;
-  }
-.searchContainer{
-    margin: 20px 0px 0px;
-    display: flex;
-    justify-content: center;
-    column-gap: 8px ;
-  }
-  .searchInput {
-    border-radius: 5px;
-    width: 100%;
-    border: 0;
-    outline: none;
-  }  
-  .searchButton {
-    width: 15%;
-    border-radius: 5px;
-    background-color: #c8d8e4;
-    font-weight: bold;
-    border-color: #c8d8e4;
-    color: #2b6777;
-  }
-  .searchButton :hover {
-    width: 30%;
-    border-radius: 5px;
-    background-color: #c8d8e4;
-    font-weight: bold;
-    border-color: #c8d8e4;
-    color: #2b6777;
-  }
-  
+/********** CATEGORY **************/
+
+.categoryButtonsDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  padding: 5px 0px;
+}
+
+@media only screen and (max-width: 992px) {
   .categoryButtonsDiv {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: rgb(255, 255, 255);
-    padding: 5px 0px ;
+    display: none;
+    background-color: rgb(241, 241, 241);
   }
-  
-  @media only screen and (max-width: 992px) {
-    .categoryButtonsDiv {
-      display: none;
-      background-color: rgb(241, 241, 241);
-    }
-  }
-  
-  .categoryButtons {      
-    border-radius: 5px;
-    width: 14%;
-    background-color: rgb(255, 255, 255);
-    font-weight: bold;
-    /* border-color: #c8d8e4; */
-    color: #2b6777;
-  }
-  .categoryButtons:hover {
-    border-radius: 5px;
-    width: 14%;
-    background-color: rgb(244, 244, 244);
-    font-weight: bold;
-    /* border-color: #c8d8e4; */
-    color: #2b6777;
-  }
-  
-  .projectDiv {
-    min-height: calc(100vh - 81px - 118px - 48px);
-    background-color: rgb(235, 235, 235);  
+}
 
-  }
-  .projectCard{    
-    margin: 0px 0px 20px;
-    box-shadow: 0px 5px 5px 5px #dedede;  
+.categoryButtons {
+  border-radius: 20px;
+  width: 14%;
+  background-color: rgb(255, 255, 255);
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #2b6777;
+  border: none;
+}
+.categoryButtons:hover {
+  border-radius: 20px;
+  background-color: rgb(244, 244, 244);
+  font-weight: 600;
+  color: #2b6777;
+}
+/********** PROJECTS **************/
 
-  }
-  .cardTitle {
-    display: flex ;
-    justify-content: space-between; 
-    padding: 12px;
-  }
-  .like{
-      font-size: 1.5rem;
-      color: #ffbe5b; /* onclick */
-      color: #b5b6ba; /*  */
-      cursor: pointer;
-  }
+.projectDiv {
+  min-height: calc(100vh - 81px - 118px - 48px);
+  background-color: rgb(235, 235, 235);
+}
+.projectCard {
+  margin: 0px 0px 20px;
+  box-shadow: 0px 5px 5px 5px #dedede;
+}
+.projectSkeleton{
+  line-height: 5;
+  
+}
 
+.cardTitle {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+}
+.like {
+  font-size: 1.5rem;
+  color: red;
+  cursor: pointer;
+}
+.like:hover {
+  transform: scale(1.15);
+}
 
-  
-  .projectBox {    
-    padding: 5px !important;
-    height: 200px;
-    position: relative;
-    background-color: rgb(241, 241, 241);  
-    box-shadow: 8px 5px 10px #c4b9b9;  
-  }
-  
-  .projectL {
-      display: flex;
-    text-decoration: none;
-    font-size: 18px;
-    align-items: center;
+.projectBox {
+  padding: 5px !important;
+  height: 200px;
+  position: relative;
+  background-color: rgb(241, 241, 241);
+  box-shadow: 8px 5px 10px #c4b9b9;
+}
 
-  }
-  .projectName {
-    font-size: 18px;
-    font-weight: bold;
-    border: none !important;
-    color: #2b6777;
-  }
-  .projectName :hover {
-    border: none !important;
-    font-size: 18px !important ;
-    font-weight: bold !important ;
-    color: #2b6777;
-  }
-  .summary {
-    font-size: 15px;
-    font-weight: 500;
-    height: 75px;
-    padding: 10px 15px;
-  }
-  .projectProp{    
-    display: flex;
-    gap: 0.5rem; 
-    height: 65px;
-    padding: 12px 15px 0px ;
-  }
-  .projectOwner {
-    font-size: 15px;
-    font-weight: 500;
-  }
-  .text {
-    font-size: 12px;
-    font-weight: 400;
-  }
-  
-  .sellerDiv {
-    position: absolute;
-    bottom: 5px;
-  }
- 
-  
-  .sellerImageDiv {
-    display: inline-block;
-    position: relative;
-    width: 33px;
-    height: 33px;
-    overflow: hidden;
-    border-radius: 50%;
-    margin-top: 4px;
-  }
-  .sellerImage {
-    width: auto;
-    height: 100%;
-  }
-  
+.projectL {
+  display: flex;
+  text-decoration: none;
+  font-size: 18px;
+  align-items: center;
+}
+
+.projectName {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border: none !important;
+  color: #2b6777;
+}
+.projectName:hover {
+  transform: scale(1.05); 
+  color: #2b6777;
+}
+.summary {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(44, 44, 44);
+  height: 75px;
+  padding: 10px 12px;
+}
+.projectProp {
+  display: flex;
+  gap: 0.5rem;
+  height: 65px;
+  padding: 12px 12px 0px;
+}
+.projectOwner {
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(44, 44, 44);
+}
+.projectOwnerDiv {
+  padding-top: 5px;
+}
+.projectOwnerDiv:hover {
+  padding-top: 5px;
+  text-decoration: underline;
+}
+.text {
+  font-family: "Poppins", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  color: rgb(44, 44, 44);
+}
+
+.sellerDiv {
+  position: absolute;
+  bottom: 5px;
+}
+
+.sellerImageDiv {
+  display: inline-block;
+  position: relative;
+  width: 33px;
+  height: 33px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+.sellerImage {
+  width: auto;
+  height: 100%;
+}
+.hor {
+  color: #c3d2ce;
+}
