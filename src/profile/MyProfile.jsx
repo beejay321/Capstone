@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import "./profilepage.css";
+import styles from "./profile.module.css";
 import NavBar from "../components/NavBar";
 import MyProfileCard from "./MyProfileCard";
 import ExperienceCard from "./ExperienceCard";
@@ -11,9 +12,10 @@ import CertificationCard from "./Certification";
 import MyProjects from "./MyProjects";
 import MyBids from "./MyBids";
 import Footer from "../components/Footer";
-import { useRouteMatch } from "react-router-dom/cjs/react-router-dom.min";
-// import Message from "../components/Message/Message";
+import Message from "../components/Message/Message";
 import Reviews from "./Reviews";
+import Messages from "../components/Message/Messages";
+import { useRouteMatch } from "react-router-dom/cjs/react-router-dom.min";
 
 // const MY_APP_API_URL = "http://localhost:3255";
 
@@ -24,17 +26,16 @@ const MyProfile = (props) => {
   const [education, setEducation] = useState("");
   const [experience, setExperience] = useState("");
   const [projects, setProject] = useState([]);
-  // const [skills, setSkills] = useState([]);
-  const [language, setLanguage] = useState([]);
   const [profile, setProfile] = useState("profile");
-  // const [showChatList, setShowChatList] = useState(false);
   const [myBids, setMyBids] = useState([]);
+  // const [skills, setSkills] = useState([]);
+  // const [showChatList, setShowChatList] = useState(false);
+  // const [language, setLanguage] = useState([]);
   // const [selectedRoom, setSelectedRoom] = useState(null);
   // const [roomHistory, setRoomHistory] = useState(null);
   // const [chats, setChats] = useState(null);
 
   let match = useRouteMatch();
-  // let history = useHistory;
 
   useEffect(() => {
     const getProfile = async () => {
@@ -52,8 +53,6 @@ const MyProfile = (props) => {
           console.log(data.projects);
           setProject(data.projects);
           setMyBids(data.myBids);
-          // setSkills(data.skills);
-          setLanguage(data.languages);
           setEducation(data.education);
           setExperience(data.experience);
         }
@@ -64,167 +63,93 @@ const MyProfile = (props) => {
     getProfile();
   }, [match.params.id]);
 
-  // const id = localStorage.getItem("id");
-
-  // const getRooms = async () => {
-  // const response = await fetch(`${MY_APP_API_URL}/users/${user._id}/chats`, {
-  //   method: "GET",
-  //   headers: {
-  //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-  //   },
-  // });
-  // const Chats = await response.json();
-  // console.log("chatsNames:", Chats);
-  // setChats(Chats);
-  // console.log(chats);
-  // const chatsNames = Chats.map((item) => {
-  //   return {
-  //     ...item,
-  //     title: item.members.map((item) => {
-  //       if (item._id !== id) return item.username;
-  //     }),
-  //   };
-  //   return { ...item, onClick: continueRoom }
-  // });
-  // console.log("chatsNames:", chatsNames);
-  // setChats(chatsNames);
-
-  // setDataSource(Chats);
-  // };
-
   return (
     <>
       <NavBar />
-      <Container fluid className="topRow">
+      <Container fluid className={styles.topRow}>
         <div></div>
       </Container>
-      <div className="py-3 profilePage">
-        <Container className="py-3 profilePage" style={{ minHeight: "100vh" }}>
-          <Row className="my-0">
-            <Col xs={3}></Col>
-          </Row>
-
-          <Row className="d-flex gap-1">
-            <Col xs={3} className="    ">
-              <Row className=" my-3 py-4 profileColumn">
-                <div className="d-flex justify-content-end">
-                  {localStorage.getItem("id") === user._id ? (
-                    <i className="bi bi-pencil-square" onClick={() => props.history.push(`/updateProfile/${user._id}`)} style={{ fontSize: "1.8rem", color: "#2b6777" }}></i>
-                  ) : (
-                    ""
-                  )}
-                </div>
-                <div className="  pb-2 d-flex justify-content-center">
-                  <div className="  profileImageDiv ">
-                    <Image className="profileImage" src={user.avatar} fluid />
+      <div className={styles.profilePage}>
+        <Container className="" style={{ minHeight: "100vh" }}>
+          <Row className={styles.profileRow}>
+            <div className={styles.profileDashboard}>
+              <div className={styles.profileOwner}>
+                <div className={styles.profileOwnerImage}>
+                  <div className={styles.profileImageDiv}>
+                    <Image className={styles.profileImage} src={user.avatar} fluid />
                   </div>
                 </div>
-                <div className=" d-flex justify-content-center">
-                  <h5>{user.firstname}</h5>
-                  <h5 className="px-2">{user.lastname}</h5>
+                <div className={`d-flex justify-content-center ${styles.title}`}>
+                  <h5>
+                    {user.firstname} {user.lastname}
+                  </h5>
                 </div>
-                <div className=" d-flex justify-content-center ">
+                <div className={`d-flex justify-content-center ${styles.text}`}>
                   <h6>{user.occupation}</h6>
                 </div>
-                <div className="py-1">
-                  <p className="">{user.location}</p>
+                <div className={`d-flex justify-content-center ${styles.name}`}>{user.location}</div>
+                <div className={styles.editBtn}>
+                  <i className="bi bi-pencil-fill" onClick={() => props.history.push(`/updateProfile/${user._id}`)}></i>
                 </div>
+              </div>
 
-                {language &&
-                  language.map((l) => (
-                    <div key={l._id} className=" py-1   ">
-                      <span className="   ">
-                        <strong>Languages</strong>
-                      </span>
-                      <p className=" py-1  summaryBox ">{user.languages}</p>
-                    </div>
-                  ))}
-                <hr className=" my-1 " />
+              {/*                Thetabs                 */}
+              <div className={styles.tabsDiv}>
+                <div className={styles.tabs} onClick={() => setProfile("profile")}>
+                  <p className="">Professional Summary</p>
+                </div>
+                <div className={styles.tabs} onClick={() => setProfile("projects")}>
+                  <p className="">Projects</p>
+                </div>
+                <div className={styles.tabs} onClick={() => setProfile("bids")}>
+                  <p className="">Offers</p>
+                </div>
+              </div>
+              {/*            Reviews               */}
+              <div>
+                <Reviews user={user} />
+              </div>
 
-                <div className=" tabs p-0  " onClick={() => setProfile("profile")}>
-                  <p className=" px-3  " onClick={() => setProfile("profile")}>
-                    <strong>Professional Summary</strong>
-                  </p>
+              <div className={styles.mapouter}>
+                <div className={styles.gmapCanvas}>
+                  <iframe
+                    width="370"
+                    height="500"
+                    id="gmap_canvas"
+                    src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0"
+                    scrolling="no"
+                    marginheight="0"
+                    marginwidth="0"
+                  ></iframe>
+                  <br />
                 </div>
-                <hr className=" my-1 " />
-                <div className=" tabs p-0  ">
-                  <p className=" px-3   " onClick={() => setProfile("projects")}>
-                    <strong>Projects</strong>
-                  </p>
-                </div>
-                <hr className=" my-1 " />
+              </div>
+            </div>
 
-                <div className=" tabs p-0  ">
-                  <p className=" px-3   " onClick={() => setProfile("bids")}>
-                    <strong>Bids/Offers</strong>
-                  </p>
-                </div>
-                <hr className=" my-1 " />
-              </Row>
-              <Reviews user={user} />
-            </Col>
-            <Col xs={7} className="">
+            {/********************** Profile details *************************/}
+            <div className={styles.profileColumn}>
               {profile === "projects" && <MyProfileCard title="Projects" user={user} content={<MyProjects title="Projects" projects={projects} user={user} />} />}
               {profile === "bids" && <MyProfileCard title="Projects" user={user} content={<MyBids title="Bids" myBids={myBids} user={user} />} />}
               {profile === "profile" && (
                 <>
                   <MyProfileCard title="Experience" user={user} content={<ExperienceCard title="Experience" user={user} experience={experience} />} />
+                  <hr className="" />
                   <MyProfileCard title="Education" user={user} content={<EducationCard title="Education" user={user} education={education} />} />
+                  <hr className="" />
                   <MyProfileCard title="Skills" user={user} content={<SkillsCard title="Skills" user={user} />} />
+                  <hr className="" />
                   <MyProfileCard title="Publication" user={user} content={<PublicationCard title="Publication" user={user} />} />
+                  <hr className="" />
                   <MyProfileCard title="Certification" content={<CertificationCard title="Certifications" user={user} />} />
                 </>
               )}
-            </Col>
-            {/* <i className="bi bi-pencil-square" onClick={() => props.history.push(`/updateProfile/${user._id}`)} style={{ fontSize: "1.8rem", color: "#2b6777" }}></i> */}
-
-            {/* <Button className="chatButton" variant="primary" type="submit" onClick={() => props.history.push(`/me/messages`)}>
-              Message
-            </Button> */}
-            {/* <Message user={user} history={props.history} /> */}
-
-            {/* {
-              localStorage.getItem("id") !== user._id && (
-                <Col xs={3} className="">
-                  {showButton && (
-                    <Button className="chatButton" variant="primary" type="submit" onClick={showChatBox}>
-                      Message
-                    </Button>
-                  )}
-                  <ChatBox
-                    selectedRoom={selectedRoom}
-                    roomHistory={roomHistory}
-                    showChat={showChat}
-                    setShowChat={setShowChat}
-                    setShowButton={setShowButton}
-                    user={user}
-                    firstname={user.firstname}
-                    lastname={user.lastname}
-                  />
-                </Col>
-              )
-            
-            } */}
-
-            {/* {localStorage.getItem("id") === user._id ? (
-              <ChatLists
-                setShowChatList={setShowChatList}
-                showChatList={showChatList}
-                chats={chats}
-                getRooms={getRooms}
-                continueRoom={continueRoom}
-                selectedRoom={selectedRoom}
-                roomHistory={roomHistory}
-                showChat={showChat}
-                setShowChat={setShowChat}
-                user={user}
-                firstname={user.firstname}
-                lastname={user.lastname}
-              />
-            ) : (
-              ""
-            )} */}
+              {profile === "messages" && <Messages />}
+            </div>
+            <Message user={user} history={props.history} />
           </Row>
+
+          <Row></Row>
         </Container>
       </div>
       <Footer />
