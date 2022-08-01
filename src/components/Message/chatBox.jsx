@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Container, Col, Row, Button, FormControl, CloseButton, InputGroup } from "react-bootstrap";
 import { MessageBox } from "react-chat-elements";
 import "react-chat-elements/dist/main.css";
 import "../../styles/chatBox.css";
