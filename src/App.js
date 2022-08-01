@@ -9,7 +9,7 @@ import Dashboard from "./components/BrowseProjects/DashBoard";
 import PostProject from "./components/CreateProject/postProjects";
 import DetailPage from "./components/ShowDetail/DetailPage";
 import Checkout from "./components/Checkout/Checkout";
-import ConfirmDetails from "./components/confirmDetails";
+import ConfirmDetails from "./components/Checkout/confirmDetails";
 import RegisterPage from "./components/Register/RegisterPage";
 import MyProfile from "./profile/MyProfile.jsx";
 import UpdateProfile from "./profile/UpdateProfile";
