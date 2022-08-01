@@ -1,7 +1,102 @@
 .startSection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-    background: #2b6777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: #2b6777;
+}
+#homeDiv {
+  height: 80vh;
+}
+.startSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: #2b6777;
+}
+.startContainer {
+  margin-left: 150px;
+  width: 50vh;
+}
+.startContainer h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  color: rgb(255, 255, 255);
+}
+
+.landingImage {
+  background: url("https://res.cloudinary.com/dvyids286/image/upload/v1659151316/CapstoneProjects/cdo9kdqyxmh7igscmenb.jpg");
+  background-size: cover;
+  min-height: "100vh";
+}
+.homeButtons {
+  width: 18%;
+  border-radius: 5px;
+  background-color: #c8d8e4;
+  border-color: #c8d8e4;
+  color: #2b6777;
+  font-size: 36px;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  padding: 8px;
+}
+.homeButtons:hover {
+  background-color: #c8d8e4;
+  border-color: #c8d8e4;
+  color: #2b6777;
+  transform: scale(1.06);
+}
+
+.homeButtonsSection {
+  display: flex;
+
+  gap: 24px;
+}
+
+@media only screen and (max-width: 992px) {
+  .landingImage {
+    display: none;
   }
+  .startContainer {
+    margin-left: 10px;
+  }
+}
+
+.howItWorksSection {
+  padding: 90px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+.howItWorksCardDiv {
+  display: flex;
+  justify-content: center;
+  gap: 72px;
+  padding: 32px 0px 16px;
+}
+.howItWorksCard {
+  display: grid;
+  justify-content: center;
+  border: 0.1px solid #efefef;
+  box-shadow: 0px 5px 5px 3px #dbdbdb;
+}
+.howItWorksTitle {
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  padding: 16px;
+  color: #2b6777;
+  justify-content: center;
+  text-align: center;
+}
+.howItWorksText {
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  padding: 16px;
+  color: rgb(44, 44, 44);
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
