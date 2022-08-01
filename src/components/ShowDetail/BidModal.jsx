@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { connect } from "react-redux";
-
 import { loggedInAction } from "../../redux/actions";
+import styles from "./ProjectDetail.module.css";
 
 const mapStateToProps = (state) => ({
   isLoggedIn: state.users.isLoggedIn,
@@ -15,7 +15,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const MY_APP_API_URL = "http://localhost:3255";
-
 // const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 const BidModal = (props) => {
@@ -56,7 +55,7 @@ const BidModal = (props) => {
         alert("bid successful");
         setShow(false);
       } else {
-        alert("bid unsuccessful");
+        alert("Please check all fields");
       }
     } catch (error) {
       console.log(error);
@@ -66,13 +65,16 @@ const BidModal = (props) => {
 
   return (
     <>
-      <Button variant="outline-success" onClick={handleShow}>
-        Make an Offer{" "}
-      </Button>
+      <div className={styles.bidButton} onClick={handleShow}>
+        <span>Make an Offer</span>
+      </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
           <Modal.Title>Bid for this Project</Modal.Title>
+          <div onClick={handleClose} className={styles.close}>
+            <i className="bi bi-x-lg close"></i>
+          </div>
         </Modal.Header>
 
         <Modal.Body>
@@ -99,11 +101,8 @@ const BidModal = (props) => {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={bid}>
-            Save Changes
+          <Button className={styles.saveBtn} variant="primary" onClick={bid}>
+            Submit
           </Button>
         </Modal.Footer>
       </Modal>
