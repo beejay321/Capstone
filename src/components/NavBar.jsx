@@ -41,7 +41,7 @@ const NavBar = (props) => {
                 Post a Project
               </NavLink>
             </Nav>
-            <Nav className="">
+            <Nav className=" ">
               {localStorage.getItem("id") ? (
                 <NavDropdown
                   end
