@@ -7,14 +7,19 @@ import "react-multi-carousel/lib/styles.css";
 import EditProject from "./EditProject";
 import { useHistory } from "react-router-dom";
 import FileModal from "./FileModal";
-
+let userId = localStorage.getItem("id");
 function DetailOfProject({ project, match }) {
-  const [showBids, setShowBids] = useState(true);
- 
+  const [bidExists, setBidExists] = useState(true);
+
   let history = useHistory();
 
   useEffect(() => {
-    console.log(project);
+    console.log(project.bids);
+    let bidded = project.bids.filter((b) => b.user._id === userId);
+    console.log(bidded.length)
+    if (bidded.length === 0) {
+      setBidExists(false);
+    }
   }, []);
 
   return (
@@ -45,11 +50,12 @@ function DetailOfProject({ project, match }) {
           <div>
             <div className={styles.projectText}>
               <p>{project.Description} </p>
-              <p className={styles.projectLocation}>{project.location}</p>
             </div>
+
+            <p className={styles.projectLocation}>{project.location}</p>
           </div>
           <div className={styles.bidOffer}>
-            {localStorage.getItem("id") === project.seller._id ? <EditProject project={project} history={history} /> : <BidModal match={match} project={project} />}
+            {localStorage.getItem("id") === project.seller._id ? <EditProject project={project} history={history} /> : <div>{!bidExists && <BidModal match={match} project={project} />}</div>}
           </div>{" "}
         </div>
       </div>
