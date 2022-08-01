@@ -1,36 +1,54 @@
 import React from "react";
 import { Row, Image } from "react-bootstrap";
 import "./profilepage.css";
+import styles from "./profile.module.css";
+
 function Reviews({ user }) {
   return (
     <>
-      <Row className="profileColumn">
-        <div className=" py-2 px-1 profileColumn " style={{ minHeight: "20rem" }}>
-          <div className="mx-2 ">
-            <h4>Reviews</h4>
+      <Row className="">
+        <div className="  " style={{ minHeight: "20rem" }}>
+          <div className={styles.reviewHeading}>
+            <h4 className={styles.reviewTitle}>Reviews</h4>
+            <div className={styles.likes}>
+              <span>
+                <i class="bi bi-star-fill"></i>
+              </span>
+              <span>
+                <i class="bi bi-star-fill"></i>
+              </span>
+              <span>
+                <i class="bi bi-star-fill"></i>
+              </span>
+              <span>
+                <i class="bi bi-star-half"></i>{" "}
+              </span>
+
+              <span>
+                <i class="bi bi-star"></i>
+              </span>
+            </div>
           </div>{" "}
-          <hr className="my-2" />
-          <div className=" eachReview">
-            <div className="d-flex gap-2">
+          <div className="  eachReview">
+            <div className="d-flex gap-2 pt-2">
               <div className="sellerImageDiv">
-                <Image className="sellerImage" src="https://via.placeholder.com/30x30" fluid />
+                <Image className="sellerImage" src="https://via.placeholder.com/30x30" fluid roundedCircle />
               </div>
-              <span className="mb-3 ">Timi Savage</span>
+              <span className={styles.name}>Timi Savage</span>
             </div>
-            <h6 className="">Excellent Communication</h6>
-            <p className="">Project Title</p>
-            <p className="">Communication with Temmy was professional. He delivered on time, And work was excellently done. I would definitelly recommend him to anyone. </p>
-          </div>
-          <div className="eachReview">
-            <div className="d-flex gap-2">
+            <h6 className={styles.title}>Excellent Communication</h6>
+            <p className={styles.text}>Project Title</p>
+            <p className={styles.text}>Communication with Temmy was professional. He delivered on time, And work was excellently done. I would definitelly recommend him to anyone. </p>
+
+            <div className="d-flex gap-2 pt-2">
               <div className="sellerImageDiv">
-                <Image className="sellerImage" src="https://via.placeholder.com/30x30" fluid />
+                <Image className="sellerImage" src="https://via.placeholder.com/30x30" fluid roundedCircle />
               </div>
-              <span className="mb-3">Timi Savage</span>
+              <span className={styles.name}>Timi Savage</span>
             </div>
-            <h6 className="">Excellent Communication</h6>
-            <p className="">Project Title</p>
-            <p className="">Communication with Temmy was professional. He delivered on time, And work was excellently done. I would definitelly recommend him to anyone. </p>
+            <h6 className={styles.title}>Excellent Communication</h6>
+            <p className={styles.text}>Project Title</p>
+            <p className={styles.text}>Communication with Temmy was professional. He delivered on time, And work was excellently done. I would definitelly recommend him to anyone. </p>
           </div>
         </div>
       </Row>
