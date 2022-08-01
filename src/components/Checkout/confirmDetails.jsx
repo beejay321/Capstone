@@ -4,17 +4,17 @@ import "../../styles/checkout.css";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
 
-// const ADDRESS = "http://localhost:3255";
-const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "http://localhost:3255";
+// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 const ConfirmDetails = ({ match, history }) => {
   const [bidder, setBidder] = useState("");
   const [project, setProject] = useState("");
+  const [price, setPrice] = useState("");
   // const [user, setUser] = useState("");
   // const [checkout, setCheckOut] = useState(false);
   // const [freelancer, setFreelancer] = useState(false);
   // const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
   // const [projectDetails, setProjectDetails] = useState("");
   // const [bid, setBids] = useState("");
   // const [status, setStatus] = useState("pending");
@@ -99,8 +99,7 @@ const ConfirmDetails = ({ match, history }) => {
     history.push(`/users/${match.params.bidderId}`);
     // delete project from dashboard
     // update status on bidder profile
-    console.log(price)
-
+    console.log(price);
   };
 
   const reject = () => {
