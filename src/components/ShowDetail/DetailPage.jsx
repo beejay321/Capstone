@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Skeleton from "react-loading-skeleton";
-import "../../styles/detail.css";
 import styles from "./ProjectDetail.module.css";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
