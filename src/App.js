@@ -6,7 +6,7 @@ import LandingPage from "./components/HomePage/LandingPage";
 import AboutUs from "./components/AboutUs";
 import Faq from "./components/FAQs/Faq";
 import Dashboard from "./components/BrowseProjects/DashBoard";
-import PostProject from "./components/postProjects";
+import PostProject from "./components/CreateProject/postProjects";
 import DetailPage from "./components/ShowDetail/DetailPage";
 import Checkout from "./components/Checkout/Checkout";
 import ConfirmDetails from "./components/confirmDetails";
@@ -27,7 +27,7 @@ function App() {
         <Route path="/" exact component={LandingPage} />
         <Route path="/aboutUs" component={AboutUs} />
         <Route path="/faq" component={Faq} />
-        <Route path="/dashboard" render={(routerProps) => <Dashboard {...routerProps} />} />
+        <Route path="/projects" render={(routerProps) => <Dashboard {...routerProps} />} />
         <Route path="/postproject" render={(routerProps) => <PostProject {...routerProps} />} />
         <Route path="/register" render={(routerProps) => <RegisterPage {...routerProps} />} />
         <Route path="/details/:projectId" render={(routerProps) => <DetailPage title="DETAILS" {...routerProps} />} />
