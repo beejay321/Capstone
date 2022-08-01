@@ -1,13 +1,11 @@
 import React from "react";
-import {  Button, Col } from "react-bootstrap";
+import { Button, Col } from "react-bootstrap";
 import "../../styles/checkout.css";
-// import classes from "./ProjectDetail.module.css";
+import styles from "./checkout.module.css";
 import { useHistory } from "react-router-dom";
-// import { useRouteMatch } from "react-router-dom/cjs/react-router-dom.min";
 
 function PaymentMade({ project, projectDetails, paymentDetails, bidder }) {
   let history = useHistory();
-  // let match = useRouteMatch();
 
   return (
     <>

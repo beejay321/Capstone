@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Spinner } from "react-bootstrap";
-import  styles from "./dashboard.module.css";
+import { Container, Card, Row, Col } from "react-bootstrap";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import styles from "./dashboard.module.css";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
 import Search from "./Search";
@@ -11,11 +13,10 @@ const MY_APP_API_URL = "http://localhost:3255";
 // const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 const Dashboard = () => {
-  // const [user, setUser] = useState("");
   const [query, setQuery] = useState("");
-  // const [category, setCategory] = useState("");
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState("");
+  const [loaders, setLoader] = useState([1, 2, 3, 4]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,7 +34,6 @@ const Dashboard = () => {
           setIsLoading(false);
           console.log(data);
           setProjects(data);
-          // setUser(data[0].seller);
         }
       } catch (error) {
         console.log(error);
@@ -76,14 +76,40 @@ const Dashboard = () => {
       <Search query={query} searchProjects={searchProjects} setQuery={setQuery} />
       <Category searchCategory={searchCategory} />
       {isLoading ? (
-        <div className={styles.spinner}>
-          <Spinner animation="border" size="sm" />
-          <Spinner animation="border" />
-          <Spinner animation="grow" size="sm" />
-          <Spinner animation="grow" />
+        <div className={styles.projectDiv}>
+          <Container className="pt-5">
+            <Row>
+              {loaders.map((l) => (
+                <Col xs={3}>
+                  <Card className={styles.projectCard}>
+                  <Skeleton className={styles.projectSkeleton} height={200}  />
+
+                    <div className={styles.cardBody}>
+                      <div className={styles.cardTitle}>
+                        <Skeleton width={100} />
+                      </div>
+                      <div className={styles.summary}>
+                        <Skeleton count={2} />
+                      </div>
+                      <div className={styles.projectProp}>
+                        <div className={styles.sellerImageDiv}>
+                          <Skeleton circle height="100%" containerClassName="avatar-skeleton" />
+                        </div>
+                        <div className="">
+                          <Skeleton count={2} width={80} />
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </Container>
         </div>
       ) : (
-        <AllProjects projects={projects} />
+        <>
+          <AllProjects projects={projects} />
+        </>
       )}
 
       <Footer />

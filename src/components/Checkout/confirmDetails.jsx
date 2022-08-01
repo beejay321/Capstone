@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Button, Col, Alert } from "react-bootstrap";
-import "../styles/checkout.css";
-import NavBar from "./NavBar";
-import Footer from "./Footer";
+import "../../styles/checkout.css";
+import NavBar from "../NavBar";
+import Footer from "../Footer";
 
-// const ADDRESS = "http://localhost:3255";
-const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "http://localhost:3255";
+// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 const ConfirmDetails = ({ match, history }) => {
   const [bidder, setBidder] = useState("");
   const [project, setProject] = useState("");
+  const [price, setPrice] = useState("");
   // const [user, setUser] = useState("");
   // const [checkout, setCheckOut] = useState(false);
   // const [freelancer, setFreelancer] = useState(false);
   // const [description, setDescription] = useState("");
-  // const [price, setPrice] = useState("");
   // const [projectDetails, setProjectDetails] = useState("");
   // const [bid, setBids] = useState("");
   // const [status, setStatus] = useState("pending");
@@ -39,6 +39,38 @@ const ConfirmDetails = ({ match, history }) => {
     };
     getProject();
   }, [match.params.projectId]);
+
+  useEffect(() => {
+    const getBid = async () => {
+      try {
+        let response = await fetch(`${MY_APP_API_URL}/projects/${match.params.projectId}/bids/${match.params.bidId}`);
+        console.log(response);
+        if (response.ok) {
+          let result = await response.json();
+          console.log(result);
+          setPrice(result.cost);
+          const bidderId = result.user;
+
+          try {
+            let response = await fetch(`${MY_APP_API_URL}/users/${bidderId}`, {
+              method: "GET",
+              headers: {
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              },
+            });
+            if (response.ok) {
+              let data = await response.json();
+              console.log(data);
+              setBidder(data);
+            }
+          } catch (error) {}
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getBid();
+  }, [match.params.projectId, match.params.bidId]);
 
   useEffect(() => {
     const getProfile = async () => {
@@ -67,6 +99,7 @@ const ConfirmDetails = ({ match, history }) => {
     history.push(`/users/${match.params.bidderId}`);
     // delete project from dashboard
     // update status on bidder profile
+    console.log(price);
   };
 
   const reject = () => {
@@ -98,7 +131,7 @@ const ConfirmDetails = ({ match, history }) => {
               </div>
               <div>
                 <p className="m-1">Price</p>
-                <p className="fixedValue">{project.price}</p>
+                <p className="fixedValue">50.00</p>
               </div>
               <div>
                 <p className="m-1">Bid Details</p>

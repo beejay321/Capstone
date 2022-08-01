@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import "./profilepage.css";
+import styles from "./profile.module.css";
+
 const MY_APP_API_URL = "http://localhost:3255";
 
 // const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
@@ -48,13 +50,13 @@ function EditEducation(props) {
 
   return (
     <>
-      {props.title === "Edit" ? (
-        <i className="bi bi-pencil" onClick={handleShow} style={{ fontSize: "1.25rem", color: "#2b6777", marginTop: "5px" }}></i>
-      ) : (
-        <i class="bi bi-plus-lg" onClick={handleShow} style={{ fontSize: "1.5rem", color: "#2b6777" }}></i>
-      )}
-
-      
+      <div className="">
+        {props.title === "Edit" ? (
+          <i className="bi bi-pencil" onClick={handleShow} style={{ fontSize: "1.25rem", color: "#2b6777", marginTop: "5px" }}></i>
+        ) : (
+          <i class="bi bi-plus-lg" onClick={handleShow} style={{ fontSize: "1.5rem", color: "#2b6777" }}></i>
+        )}
+      </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

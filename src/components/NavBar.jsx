@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Navbar, Nav, Button, NavDropdown, Image } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, NavLink } from "react-router-dom";
 import "../styles/Login.css";
 import "../styles/navbar.css";
 // import { connect, useDispatch, useSelector } from "react-redux";
@@ -11,22 +11,6 @@ import "../styles/navbar.css";
 // });
 
 const NavBar = (props) => {
-  // const [userName, setUserName] = useState("");
-
-  // const users = useSelector((s) => s.users);
-  // useEffect(() => {
-  //   const setUser = async () => {
-  //     let user = "";
-  //     if (localStorage.getItem("username") === null) {
-  //       user = "Guest";
-  //     } else {
-  //       user = localStorage.getItem("username");
-  //     }
-  //     setUserName(user);
-  //   };
-  //   setUser();
-  // }, []);
-
   const logOut = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("accessToken");
@@ -39,36 +23,34 @@ const NavBar = (props) => {
   return (
     <>
       <Navbar expand="lg" id="navbox">
-        <Container>
-          <Navbar.Brand href="/">
-            <img
-              alt=""
-              src="https://res.cloudinary.com/dvyids286/image/upload/v1633950808/Capstone/sqpxzpmoq4nq0hpcbjpc.jpg
-"
-              width="45"
-              height="50"
-              className="d-inline-block align-top"
-            />{" "}
-          </Navbar.Brand>{" "}
+        <Container className="p-0">
+          <Navbar.Brand className="" href="/">
+            <img alt="" src="https://res.cloudinary.com/dvyids286/image/upload/v1659043493/CapstoneProjects/wvc3mfop7l7qyjtckwqy.png" height="50" className="d-inline-block align-top" />{" "}
+          </Navbar.Brand>
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="/dashboard">Find Projects</Nav.Link>
-              <Nav.Link href="/aboutUs"> About Us</Nav.Link>
-              <Nav.Link href="/faq">FAQ</Nav.Link>
+            <Nav className="me-auto navLink">
+              <NavLink to="/projects">Browse Projects</NavLink>
+              <NavLink to="/aboutUs"> About Us</NavLink>
+              <NavLink to="/faq">FAQ</NavLink>
             </Nav>
 
-            <Nav className="justify-content-end">
-              <Nav.Link href="/postproject" className="mt-2">
+            <Nav className="justify-content-end navLink">
+              <NavLink to="/postproject" className="">
                 Post a Project
-              </Nav.Link>
+              </NavLink>
+            </Nav>
+            <Nav className=" ">
               {localStorage.getItem("id") ? (
-                // <NavDropdown title={`${userName}`} id="basic-nav-dropdown">
-                <NavDropdown title={<Image src="https://via.placeholder.com/30x30" className="card-img-top" alt="..." roundedCircle />} id="basic-nav-dropdown">
+                <NavDropdown
+                  end
+                  title={<Image src="https://gravatar.com/avatar/127ecc1066b3208f58459e4a488bd764?s=30&d=mp&r=x" height="35" width="35" className="" alt="..." roundedCircle />}
+                  align="right"
+                >
                   <NavDropdown.Item href={`/users/${localStorage.getItem("id")}`}>My Profile</NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="/myProjects">My Projects</NavDropdown.Item>
                   <NavDropdown.Item href="/me/messages">My Messages</NavDropdown.Item>
+                  <NavDropdown.Divider />
                   <NavDropdown.Item href="/" onClick={logOut}>
                     Log out
                   </NavDropdown.Item>

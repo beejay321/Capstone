@@ -1,32 +1,15 @@
-.topRow {
-  background-color: #2b6777;
-  height: 50px;
-  /* position: fixed;
-  margin-bottom: 500px; */
-}
-
-.profilePage {
-  /* background-color: #c8d8e4; */
-
-  background-color: #ffffff;
-}
-
 .projectTitle {
   border: solid 2px rgb(218, 218, 218);
   border-radius: 15px;
-  /* background-color: #c8d8e4; */
 }
 .profileColumn {
-  /* border: solid 1px rgb(218, 218, 218); */
   border-radius: 5px;
   width: 100%;
-  /* background-color: #dee4e9; */
   background-color: #e4e4e4;
 }
 
 .profileCards {
   border: none;
-  /* background-color: #dee4e9; */
   background-color: #e4e4e4;
 
   padding: 0% !important;
@@ -99,20 +82,15 @@
   border: 0.5px inset #2b6777;
 }
 
-.tabs :hover {
-  /* background-color: #c0d4e2 !important; */
+.tabs:hover {
   color: #52ab98 !important;
   cursor: pointer;
 }
 
-.skills{
-  
-  /* margin: 8px ; */
- 
+.skills {
   display: flex;
-  /* justify-content: center; */
 }
-.skills div{
+.skills div {
   border: 1px solid rgb(194, 194, 194);
   border-radius: 50px;
   background-color: rgb(194, 194, 194);
@@ -122,11 +100,10 @@
   justify-content: center;
 }
 
-.eachReview{
+.eachReview {
   display: block;
   justify-content: center;
-  margin: 12px 5px 5px;
-  padding: 5px 5px ;
-  background-color:rgb(239, 239, 239) ;
-  font-size: .8rem;
+  padding: 25px 10px 15px 20px;
+  font-size: 0.8rem;
+  border-top: 1px solid rgb(235, 235, 235);
 }

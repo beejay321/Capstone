@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../styles/dashboard.css";
 
 // const ADDRESS = "http://localhost:3255";
 const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";

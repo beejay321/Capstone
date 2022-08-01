@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { Form, Row, Col, Button, Modal } from "react-bootstrap";
-// import { useRouteMatch, useHistory } from "react-router-dom";
+import styles from "./ProjectDetail.module.css";
 
 const MY_APP_API_URL = "http://localhost:3255";
 // const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 function EditProject(props) {
-  // const [user, setUser] = useState("");
-  // const [updatedProjects, setProject] = useState("");
   const [seller] = useState(localStorage.getItem("id"));
   const [title, setTitle] = useState(props.project.title);
   const [category, setCategory] = useState(props.project.category);
@@ -17,11 +15,8 @@ function EditProject(props) {
   // const [file, setFile] = useState([]);
 
   const [show, setShow] = useState(false);
-  // const [LoggedIn, setLoggedIn] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // let match = useRouteMatch();
-  // let history = useHistory();
 
   const editProject = async (e) => {
     try {
@@ -37,7 +32,7 @@ function EditProject(props) {
         method: "PUT",
         headers: {
           "content-type": "application/json",
-          // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
         body: JSON.stringify(projectDetails),
       });
@@ -72,9 +67,9 @@ function EditProject(props) {
 
   return (
     <>
-      <div className="editProject">
-        <i className="bi bi-pencil-square " onClick={handleShow} style={{ fontSize: "1.8rem", color: "#2b6777" }}></i>
-      </div>{" "}
+      <div className={styles.bidButton} onClick={handleShow}>
+        <span>Edit Project</span>
+      </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Project</Modal.Title>

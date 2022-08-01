@@ -2,38 +2,36 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import "../../styles/checkout.css";
 import PayPal from "../PayPal";
-// import NavBar from "../NavBar";
-// import Footer from "../Footer";
-// import PaymentMade from "./PaymentMade";
+import styles from "./checkout.module.css";
 
 function ProjectSummary({ paymentDetails, showPaymentDiv, setHidePaypal, setAlert, project, bidder, price, projectDetails }) {
   return (
     <>
       {paymentDetails && showPaymentDiv && (
         <>
-          <Col className=" CheckoutBox my-3 py-3">
-            <h3 className="pb-2">Project Summary</h3>
+          <div className={styles.paymentDiv}>
+            <h3 className={styles.projectCheckoutTitle}>Project Summary</h3>
             <Row>
               <Col xs={9}>
                 <div className="pb-2 d-flex justify-content-between">
-                  <p>Subtotal </p>
+                  <p className={styles.formLabel}>Subtotal </p>
                 </div>{" "}
               </Col>
               <Col xs={3}>
                 <div className="pb-2 d-flex justify-content-between">
-                  <p>€ {paymentDetails.price} </p>
+                  <p className={styles.text}>€{paymentDetails.price} </p>
                 </div>{" "}
               </Col>
             </Row>
             <Row>
               <Col xs={9}>
                 <div className="pb-2 d-flex justify-content-between">
-                  <p>Service Fee</p>
+                  <p className={styles.formLabel}>Service Fee</p>
                 </div>{" "}
               </Col>
               <Col xs={3}>
                 <div className="pb-2 d-flex justify-content-between">
-                  <p>€ 2.00 </p>
+                  <p className={styles.text}>€2.00 </p>
                 </div>{" "}
               </Col>
             </Row>
@@ -41,25 +39,20 @@ function ProjectSummary({ paymentDetails, showPaymentDiv, setHidePaypal, setAler
             <Row>
               <Col xs={9}>
                 <div className="pb-2 d-flex justify-content-between">
-                  <p>Total </p>
+                  <p className={styles.formLabel}>Total </p>
                 </div>{" "}
               </Col>
               <Col xs={3}>
                 <div className="pb-2 d-flex justify-content-between">
-                  <p>€ {paymentDetails.total}.00 </p>
+                  <p className={styles.text}>€{paymentDetails.total}.00 </p>
                 </div>{" "}
               </Col>
             </Row>
-
-            <h3 className="pb-2">Payment Method</h3>
-
+            <h3 className={styles.projectCheckoutTitle}>Payment Method</h3>
             <div>
-              {/* {checkout && ( */}
               <PayPal setAlert={setAlert} paymentDetails={paymentDetails} setHidePaypal={setHidePaypal} project={project} bidder={bidder} price={price} projectDetails={projectDetails} />
-              {/* )} */}
             </div>
-            {/* </div> */}
-          </Col>
+          </div>
         </>
       )}
     </>
