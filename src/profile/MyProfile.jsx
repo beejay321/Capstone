@@ -144,7 +144,7 @@ const MyProfile = (props) => {
                   <MyProfileCard title="Certification" content={<CertificationCard title="Certifications" user={user} />} />
                 </>
               )}
-              {profile === "messages" && <Messages />}
+              {/* {profile === "messages" && <Messages />} */}
             </div>
             <Message user={user} history={props.history} />
           </Row>
