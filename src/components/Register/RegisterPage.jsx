@@ -73,8 +73,8 @@ function RegisterPage(props) {
         localStorage.setItem("refreshToken", json.refreshToken);
         localStorage.setItem("username", json.username);
         localStorage.setItem("id", json._id);
-        alert("successfully logged in");
-        props.history.push("/dashboard");
+        // alert("successfully logged in");
+        props.history.push("/");
       } else {
         console.log("there is an error");
       }
