@@ -29,3 +29,9 @@
 #post-file {
   width: 0;
 }
+
+.editProject{
+  color: #2b6777;
+  margin-right: 5px;
+  cursor: pointer;
+}
