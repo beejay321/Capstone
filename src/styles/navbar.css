@@ -1,25 +1,72 @@
+.navDiv {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: rgb(255, 255, 255);
+  padding: 10px 60px;
+  display: flex;
+  justify-content: space-between;
+}
+.navLinkDiv {
+  display: flex;
+  gap: 50px;
+}
+.navLink {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  color: #416974;
+}
+
+.navLink a {
+  text-decoration: none;
+  color: #416974;
+  font-size: 18px;
+  padding: 21px 0px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+}
+.navLink a:hover {
+  transform: scale(1.02);
+  font-weight: 300;
+}
+.navLink a.active {
+  transform: scale(1.02);
+  color: #52ab99;
+  border-bottom: 3px solid #52ab99;
+  font-weight: 500;
+}
+.menuRight {
+  height: 80px;
+  position: absolute;
+  right: 0;
+}
+
+.dropdown-item:active {
+  background-color: #e9ecef;
+}
+
+/**********NavBar*************/
 #navbox {
   position: sticky;
   top: 0;
   z-index: 5;
   background-color: rgb(255, 255, 255);
-  padding-bottom: 10px;
-  padding-top: 10px;
+  padding: 0px 0px;
 }
-
+.navbar-brand {
+  margin: 0px 50px 0px 0px;
+}
 .nav-link {
   font-size: 18px;
   font-weight: 500;
   color: #2b6777;
   text-decoration: none;
-  margin-right: 5px;
+  margin: 0px 5px 0px 50px;
+  padding: 0px;
 }
 
-.nav-link :hover {
-  text-decoration: none;
-  font-weight: 500;
-  color: #52ab98;
-}
 #basic-nav-dropdown :hover {
   text-decoration: none;
   font-weight: 500;
@@ -49,5 +96,12 @@
   border-color: #52ab98;
   background-color: #52ab98;
   width: 6em;
+  border: none;
+  outline: none;
+  font-family: "Poppins" sans-serif;
   font-weight: 700;
+}
+.loginBtn:hover {
+  transform: scale(1.05);
+  background-color: #52ab98;
 }
