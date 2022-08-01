@@ -14,7 +14,7 @@ import MyBids from "./MyBids";
 import Footer from "../components/Footer";
 import Message from "../components/Message/Message";
 import Reviews from "./Reviews";
-import Messages from "../components/Message/Messages";
+// import Messages from "../components/Message/Messages";
 import { useRouteMatch } from "react-router-dom/cjs/react-router-dom.min";
 
 // const MY_APP_API_URL = "http://localhost:3255";
