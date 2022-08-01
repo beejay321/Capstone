@@ -46,7 +46,6 @@
 .messageList {
   overflow-y: auto;
   height: calc(100vh - 71px - 160px - 99px - 65px);
-  /* background-color: rgb(187, 21, 21); */
 }
 .chatList {
   display: flex;
@@ -96,7 +95,7 @@
   font-weight: 400;
   color: rgb(44, 44, 44);
 }
-.newMsg { 
+.newMsg {
   height: 50%;
   width: 50%;
   padding-top: 3px;
@@ -120,18 +119,11 @@
   padding: 0% !important;
 }
 /*  */
-/*  */
-/*  */
-/*  */
 
 .chatBox {
-  /* padding: 10px 0px 10px; */
   height: calc(100vh - 71px - 160px - 99px - 65px - 60px);
-  /* height: 597px; */
-  /* position: relative; */
-  /* overflow-y: auto; */
+
   background-color: rgb(243, 243, 243);
-  /* border: 0.01px solid rgb(208, 23, 23); */
 }
 .noList {
   display: flex;
@@ -148,13 +140,10 @@
   color: #52ab99;
   font-size: 24px;
   height: 100%;
-  /* background-color: rgb(243, 243, 243); */
   font-family: "Poppins", sans-serif;
   font-weight: 800px;
 }
 
-/* .chatMessages {
-} */
 .chatForm {
   display: flex;
   position: absolute;
@@ -190,7 +179,6 @@
 .chatButton {
   position: fixed;
   background-color: #52ab99;
-  /* background-color: #52ab99; */
   outline: none;
   border: none;
   right: 25px;
@@ -211,16 +199,3 @@
 .closeBtn {
   cursor: pointer;
 }
-/* .chatcomp {
-  overflow-y: auto;
-  border: 0.01px solid rgb(208, 23, 23);
-  height: calc(100vh - 71px - 160px - 99px - 100px);
-
-  margin: 8px 0px 0px;
-  padding: 0px 5px 0px;
-  display: block;
-  justify-content: space-between;
-  overflow-y: auto;
-  background-color: rgb(233, 233, 233);
-  background-color: #c5e1e8;
-} */
