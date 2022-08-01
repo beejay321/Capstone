@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {  Image } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -9,7 +9,6 @@ const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 function SimilarProjects(props) {
   const [projects, setProjects] = useState([]);
-  // const [isLoading, setIsLoading] = useState("");
 
   useEffect(() => {
     // setIsLoading(true);
@@ -27,7 +26,6 @@ function SimilarProjects(props) {
           // setIsLoading(false);
           console.log(data);
           setProjects(data);
-          // setUser(data[0].seller);
         }
       } catch (error) {
         console.log(error);
@@ -38,7 +36,6 @@ function SimilarProjects(props) {
 
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 5,
     },
@@ -59,50 +56,51 @@ function SimilarProjects(props) {
   return (
     <>
       {projects && (
-        <div className={styles.carousel}>
-          <div>
+        <>
+          <div className={styles.carouselTitle}>
             <h5 className={styles.sectionTitle}>People also searched for</h5>
-            <hr />
           </div>
-
-          <Carousel responsive={responsive}>
-            {projects &&
-              projects.map((p) => (
-                <>
-                  <div className={styles.carouselDiv} key={p._id}>
-                    {/* <Link to={`/details/${p._id}`} className="projectL"> */}
-                    <div className={styles.projectBox}>
+          <div>
+            <Carousel responsive={responsive}>
+              {projects &&
+                projects.map((p) => (
+                  <>
+                    <div className={styles.carouselDiv} key={p._id}>
+                      {/* <Link to={`/details/${p._id}`} className="projectL"> */}
                       <Link to={`/details/${p._id}`} className={styles.projectLink}>
-                        <div className="py-1 px-2 ">
-                          <span className="projectName">{p.title}</span>
+                        <div className={styles.projectBox}>
+                          <div className={styles.projectName}>
+                            <span>{p.title}</span>
+                          </div>
+                          <div className={styles.text}>
+                            <span>{p.summary}</span>
+                          </div>
+                          <div className={styles.sellerDiv}>
+                            {p.seller && (
+                              <div className="  d-flex  gap-1  ">
+                                <div className={styles.sellerImageDiv}>
+                                  <Image className={styles.sellerImage} src={p.seller.picture} fluid />
+                                </div>
+                                <div>
+                                  <div className="d-flex  gap-1">
+                                    <span className={styles.name}>
+                                      {p.seller.firstname} {p.seller.lastname}
+                                    </span>
+                                  </div>
+
+                                  <span className={styles.location}>{p.location}</span>
+                                </div>
+                              </div>
+                            )}
+                          </div>
                         </div>
                       </Link>
-                      <div className="py-1  my-1 px-2  ">
-                        <span className="text">{p.summary}</span>
-                      </div>
-                      <div className=" sellerDiv px-2 ">
-                        {p.seller && (
-                          <div className="  d-flex  gap-1  ">
-                            <div className="sellerImageDiv mt-2">
-                              <Image className="sellerImage" src={p.seller.picture} fluid />
-                            </div>
-                            <div>
-                              <div className="  d-flex  gap-1 ">
-                                <span className="text  ">{p.seller.firstname}</span>
-                                <span className="d-flex text ">{p.seller.lastname} </span>
-                              </div>
-
-                              <span className="text">{p.location}</span>
-                            </div>
-                          </div>
-                        )}
-                      </div>
                     </div>
-                  </div>
-                </>
-              ))}
-          </Carousel>
-        </div>
+                  </>
+                ))}
+            </Carousel>
+          </div>
+        </>
       )}
     </>
   );
