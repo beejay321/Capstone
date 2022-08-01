@@ -1,14 +1,4 @@
-.chatBoxComp {
-  background-color: #f2f2f2;
-  position: fixed;
-  z-index: 10;
-  right: 250px;
-  bottom: 2px;
-  height: 50vh;
-  width: 350px;
-  border: 0.5px inset #2b6777;
-  border-radius: 10px;
-}
+
 .messageBox {
   border-radius: 5px;
   background-color: rgb(255, 255, 255);
@@ -21,14 +11,49 @@
   position: fixed;
   right: 5px;
   bottom: 2px;
-  height: 90vh;
+  height: 83vh;
   width: 300px;
-  border-radius: 15px;
+  border-radius: 8px;
+  /* margin-top: 50px; */
 }
+.chatbox{
+  height: 39vh;
+  margin : 5px 0px 5px;
+  padding : 0px 0px ;
+  display: block;
+  justify-content: space-between;
+  /* background-color: rgb(228, 226, 226); */
+  background-color: rgb(246, 245, 245);
+  overflow-y: scroll;
+}
+.chatcomp{
+  height: 70vh;
+  margin : 8px 0px 0px ;
+  padding : 0px 5px ;
+  display: block;
+  justify-content: space-between;
+  /* background-color: rgb(228, 226, 226); */
+  /* background-color: rgb(246, 245, 245); */
+  /* overflow-y: scroll; */
+}
+
+
 .chatInput {
   /* display: grid; */
-  position: absolute;
-  bottom: 20px;
-  width: 320px;
+  /* margin:0px 5px; */
+  bottom: 0px;
+  width: 100;
+}
+
+.closeBtn{
+  padding: 0px 10px;
+  cursor: pointer;
+}
+
+.messageList{
+  margin:8px 0px 0px;
+  height: 73.8vh;
+  overflow-y: scroll;
+  background-color: rgb(255, 255, 255);
 }
 
