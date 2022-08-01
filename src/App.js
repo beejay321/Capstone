@@ -13,7 +13,7 @@ import ConfirmDetails from "./components/Checkout/confirmDetails";
 import RegisterPage from "./components/Register/RegisterPage";
 import MyProfile from "./profile/MyProfile.jsx";
 import UpdateProfile from "./profile/UpdateProfile";
-// import Messages from "./components/Message/Messages";
+import Messages from "./components/Message/Messages";
 // import Login from "./components/Register/Login";
 // import EditProject from "./components/ShowDetail/EditProject.jsx";
 
@@ -36,7 +36,7 @@ function App() {
         <Route path="/users/:id" render={(routerProps) => <MyProfile {...routerProps} />} />
         <Route path="/updateProfile/:id" render={(routerProps) => <UpdateProfile {...routerProps} />} />
         {/* <Route path="/editproject/:projectId" render={(routerProps) => <EditProject {...routerProps} />} /> */}
-        {/* <Route path="/me/messages" render={(routerProps) => <Messages {...routerProps} />} /> */}
+        <Route path="/me/messages" render={(routerProps) => <Messages {...routerProps} />} />
         {/* <Route path="/chat" render={(routerProps) => <ChatBox {...routerProps} />} /> */}
         {/* <Footer /> */}
       </Router>
