@@ -13,10 +13,10 @@ const PostProject = () => {
   const [seller] = useState(localStorage.getItem("id"));
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
+  // const [description, setDescription] = useState("");
   const [summary, setSummary] = useState("");
   const [location, setLocation] = useState("");
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState(undefined);
   const [images, setImage] = useState("https://res.cloudinary.com/dvyids286/image/upload/v1659352336/CapstoneProjects/yquaj1vvqisfuofoxmov.jpg");
 
   let history = useHistory();
@@ -47,7 +47,7 @@ const PostProject = () => {
         summary: summary,
         category: category,
         location: location,
-        Description: description,
+        // Description: description,
       };
       const response = await fetch(`${MY_APP_API_URL}/projects/${id}`, {
         method: "POST",
@@ -59,20 +59,22 @@ const PostProject = () => {
       });
       console.log(response);
       if (response.ok) {
-        if (file !== undefined) {
-          const newProject = await response.json();
-          console.log(newProject);
-          let projectId = newProject._id;
-          const newResponse = await fetch(`${MY_APP_API_URL}/projects/${projectId}/uploadFile`, {
-            method: "POST",
-            body: file,
-          });
+        // if (file !== undefined) {
+        const newProject = await response.json();
+        console.log(newProject);
+        let projectId = newProject._id;
+        const newResponse = await fetch(`${MY_APP_API_URL}/projects/${projectId}/uploadFile`, {
+          method: "POST",
+          body: file,
+        });
+        if (newResponse.ok) {
+          alert("Sucessfully posted");
+          history.push("/projects");
         } else {
           console.log("File was not uploaded!");
         }
-
-        alert("Sucessfully posted");
-        history.push("/projects");
+        // alert("Sucessfully posted");
+        // }
       } else {
         console.log("project not created!");
       }
@@ -111,7 +113,7 @@ const PostProject = () => {
 
                 <Form.Control className={styles.postInput} required type="text" placeholder="Where is the project to be delivered?" value={location} onChange={(e) => setLocation(e.target.value)} />
 
-                <Row className="">
+                {/* <Row className="">
                   <Form.Group className="" controlId="formGridAddress1">
                     <Form.Control
                       className={styles.postInput}
@@ -124,7 +126,7 @@ const PostProject = () => {
                       required
                     />
                   </Form.Group>
-                </Row>
+                </Row> */}
 
                 <div>
                   <Button className={styles.fileInput}>
@@ -155,7 +157,6 @@ const PostProject = () => {
                   <span className={styles.submitBtn} variant="success" type="submit" onClick={postProject}>
                     Save Project
                   </span>
-                 
                 </div>
               </Form>
             </Col>
