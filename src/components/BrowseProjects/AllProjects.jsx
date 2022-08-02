@@ -9,7 +9,7 @@ function AllProjects(props) {
       <Container className="">
         <Row className="pt-5">
           {props.projects &&
-            props.projects.map((p) => (
+            props.projects.reverse().map((p) => (
               // <>
               <ProjectCard p={p} key={p._id} />
               // </>
