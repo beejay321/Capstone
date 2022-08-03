@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Row, Col, Image } from "react-bootstrap";
+import { Alert, Image } from "react-bootstrap";
 import { connect } from "react-redux";
 import styles from "./register.module.css";
 
@@ -21,6 +21,11 @@ function RegisterPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showLogin, setShowLogin] = useState(true);
+  const [showAlert, setShowAlert] = useState(false);
+
+  const loggedIn = () => {
+    props.history.push("/");
+  };
 
   const signup = async (e) => {
     try {
@@ -67,14 +72,14 @@ function RegisterPage(props) {
         body: JSON.stringify(details),
       });
       if (res.ok) {
+        setShowAlert(true);
         const json = await res.json();
         console.log(json);
         localStorage.setItem("accessToken", json.accessToken);
         localStorage.setItem("refreshToken", json.refreshToken);
         localStorage.setItem("username", json.username);
         localStorage.setItem("id", json._id);
-        // alert("successfully logged in");
-        props.history.push("/");
+        // props.history.push("/");
       } else {
         console.log("there is an error");
       }
@@ -86,6 +91,17 @@ function RegisterPage(props) {
   return (
     <>
       <div className={styles.registerDiv}>
+        {showAlert && (
+          <div className={styles.alert}>
+            <Alert variant="success">
+              <div className={styles.closeAlert} onClick={loggedIn}>
+                <i class="bi bi-x-lg"></i>{" "}
+              </div>
+              You have successfully logged in
+            </Alert>
+          </div>
+        )}
+
         <div className={styles.loginContainer}>
           <div className={styles.imageContainer}>
             <div className={styles.imageDiv}>
@@ -116,31 +132,8 @@ function RegisterPage(props) {
               />
             )}{" "}
           </div>
-          {/* <Col xs={7} md={5}> */}
-
-          {/* <Form className={styles.loginBox}>
-              {showLogin ? (
-                <Login setShowLogin={setShowLogin} email={email} password={password} setEmail={setEmail} setPassword={setPassword} register={login} title="Login" />
-              ) : (
-                <Login
-                  firstname={firstname}
-                  lastname={lastname}
-                  setFirstName={setFirstName}
-                  setSurname={setSurname}
-                  setShowLogin={setShowLogin}
-                  email={email}
-                  password={password}
-                  setEmail={setEmail}
-                  setPassword={setPassword}
-                  register={signup}
-                  title="Signup"
-                />
-              )}
-              <Row></Row>
-            </Form> */}
-          {/* </Col> */}
         </div>
-      </div>{" "}
+      </div>
     </>
   );
 }
