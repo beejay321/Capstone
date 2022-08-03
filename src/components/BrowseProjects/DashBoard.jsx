@@ -28,12 +28,11 @@ const Dashboard = () => {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         });
-
         if (response.ok) {
           let data = await response.json();
-          setIsLoading(false);
           console.log(data);
           setProjects(data);
+          setIsLoading(false);
         }
       } catch (error) {
         console.log(error);
@@ -48,9 +47,9 @@ const Dashboard = () => {
       let response = await fetch(`${MY_APP_API_URL}/projects/search/${query}`);
       let result = await response.json();
       console.log(result);
-      setIsLoading(false);
       setProjects(result);
       console.log(projects);
+      setIsLoading(false);
     } catch (error) {
       console.log("error");
     }
@@ -62,9 +61,9 @@ const Dashboard = () => {
       let response = await fetch(`${MY_APP_API_URL}/projects?category=${category}`);
       let result = await response.json();
       console.log(result);
-      setIsLoading(false);
       setProjects(result);
       console.log(projects);
+      setIsLoading(false);
     } catch (error) {
       console.log("error");
     }
