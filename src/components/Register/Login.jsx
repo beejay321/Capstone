@@ -1,69 +1,67 @@
 import React from "react";
-import { Form, Row,  Button, Image } from "react-bootstrap";
+import { Form, Row, Button, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./register.module.css";
 
 const Login = ({ firstname, lastname, email, password, setSurname, setFirstName, setEmail, setPassword, register, title, setShowLogin }) => {
   return (
     <>
-      <div className={styles.loginContainer}>
+      <div className={styles.formDiv}>
         <div className={styles.title}>
           <div>
-            <Image src="https://res.cloudinary.com/dvyids286/image/upload/v1633950808/Capstone/sqpxzpmoq4nq0hpcbjpc.jpg" height="80" roundedCircle />
-            <h4 className="">{title}</h4>
+            <span className="">{title}</span>
           </div>
         </div>
-        {title === "Signup" && (
-          <div className="mb-3 px-5">
+        {title === "Sign Up" && (
+          <div className="">
             <Form.Group className="mb-3" controlId="name">
-              <Form.Control className={styles.loginInput} id="username" required value={firstname} onChange={(e) => setFirstName(e.target.value)} type="text" placeholder="First name" />
+              <Form.Control className={styles.postInput} id="username" required value={firstname} onChange={(e) => setFirstName(e.target.value)} type="text" placeholder="First name" />
               <Form.Control.Feedback type="invalid">First Name</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="name">
-              <Form.Control className={styles.loginInput} id="username" required value={lastname} onChange={(e) => setSurname(e.target.value)} type="text" placeholder="Surname" />
+              <Form.Control className={styles.postInput} id="username" required value={lastname} onChange={(e) => setSurname(e.target.value)} type="text" placeholder="Surname" />
               <Form.Control.Feedback type="invalid">Surname</Form.Control.Feedback>
             </Form.Group>
           </div>
         )}
-        <div className="mb-5 px-5">
-          <Form.Group className="mb-3" controlId="email">
-            <Form.Control className={styles.loginInput} id="username" required value={email} onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Email Address" />
-            <Form.Control.Feedback type="invalid">Please enter your email address</Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group className="mb-4" controlId="password">
-            <Form.Control className={styles.loginInput} id="password" required value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
-            <Form.Control.Feedback type="invalid">Please enter your password.</Form.Control.Feedback>
-          </Form.Group>
+        <div>
+          <Form.Control className={styles.postInput} required value={email} onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Email Address" />
+          <Form.Control className={styles.postInput} value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" required />
         </div>
-        <div className="d-grid gap-2 mb-5 px-5">
-          {/* disabled={user.username.length < 1 && user.password.length < 1 ? true : false} */}
-          <Button className={styles.loginButton} variant="primary" size="lg" type="button" onClick={register}>
-            {title}
-          </Button>
-        </div>
-
-        <Row className="d-grid gap-2 justify-content-md-center mb-2">
+        <div className="d-flex gap-2 justify-content-md-between mb-2">
+          <Form>
+            <div className={styles.loginformCheck}>
+              <Form.Check type="checkbox">
+                <Form.Check.Input className={styles.loginformCheck} type="checkbox" isValid />
+                <Form.Check.Label className={styles.loginformlink}>Remember me?</Form.Check.Label>
+              </Form.Check>
+            </div>
+          </Form>
           <Link to="/" className={styles.loginformlink}>
             <p>Forgot your password?</p>
           </Link>{" "}
-        </Row>
-
-        {title === "Signup" ? (
-          <div className="d-grid gap-2 justify-content-md-center mb-2" onClick={() => setShowLogin(true)}>
-            <p className={styles.loginformtext}>Back to login page </p>
-          </div>
-        ) : (
-          <Row className="d-grid gap-2 justify-content-md-center mb-2">
-            <p className={styles.loginformtext}>
-              Create a new account
-              <span className="m-1 ">
-                <Button className="ml-3" variant="outline-success" size="lg" type="button" onClick={() => setShowLogin(false)}>
-                  here{" "}
-                </Button>
-              </span>
-            </p>
-          </Row>
-        )}
+        </div>
+        <div className={styles.loginButtonDiv}>
+          <Button className={styles.loginButton} type="button" onClick={register}>
+            {title}
+          </Button>
+        </div>
+        <div>
+          {title === "Sign Up" ? (
+            <div className="d-grid gap-2 justify-content-md-center mb-2" onClick={() => setShowLogin(true)}>
+              <p className={styles.loginformtext}>Back to login page </p>
+            </div>
+          ) : (
+            <div className="d-grid gap-2 justify-content-md-center mb-2">
+              <p className={styles.loginformtext}>
+                New here?
+                <span className={styles.newAcc} size="lg" type="span" onClick={() => setShowLogin(false)}>
+                  Create a new account
+                </span>
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
