@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Row, Col } from "react-bootstrap";
+import { Form, Row, Col, Image } from "react-bootstrap";
 import { connect } from "react-redux";
 import styles from "./register.module.css";
 
@@ -87,9 +87,38 @@ function RegisterPage(props) {
     <>
       <div className={styles.registerDiv}>
         <div className={styles.loginContainer}>
-          {/* <Container className={styles.loginContainer}> */}
-          <Col xs={7} md={5}>
-            <Form className={styles.loginBox}>
+          <div className={styles.imageContainer}>
+            <div className={styles.imageDiv}>
+              <div className="d-flex justify-content-center">
+                <Image src="https://res.cloudinary.com/dvyids286/image/upload/v1659503066/CapstoneProjects/pauu3m1t0vh5lkff1dv2.png" height="200" roundedCircle />
+              </div>
+              <div className={styles.imageDivtext}>
+                <div className="d-flex justify-content-center">Client Connect</div>
+              </div>
+            </div>{" "}
+          </div>
+          <div className={styles.loginBox}>
+            {showLogin ? (
+              <Login setShowLogin={setShowLogin} email={email} password={password} setEmail={setEmail} setPassword={setPassword} register={login} title="Log In" />
+            ) : (
+              <Login
+                firstname={firstname}
+                lastname={lastname}
+                setFirstName={setFirstName}
+                setSurname={setSurname}
+                setShowLogin={setShowLogin}
+                email={email}
+                password={password}
+                setEmail={setEmail}
+                setPassword={setPassword}
+                register={signup}
+                title="Sign Up"
+              />
+            )}{" "}
+          </div>
+          {/* <Col xs={7} md={5}> */}
+
+          {/* <Form className={styles.loginBox}>
               {showLogin ? (
                 <Login setShowLogin={setShowLogin} email={email} password={password} setEmail={setEmail} setPassword={setPassword} register={login} title="Login" />
               ) : (
@@ -108,9 +137,8 @@ function RegisterPage(props) {
                 />
               )}
               <Row></Row>
-            </Form>
-          </Col>
-          {/* </Container> */}
+            </Form> */}
+          {/* </Col> */}
         </div>
       </div>{" "}
     </>
