@@ -21,12 +21,8 @@ function RegisterPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showLogin, setShowLogin] = useState(true);
-  const [showAlert, setShowAlert] = useState(false);
 
-  const loggedIn = () => {
-    props.history.push("/");
-  };
-
+ 
   const signup = async (e) => {
     try {
       const details = {
@@ -72,14 +68,13 @@ function RegisterPage(props) {
         body: JSON.stringify(details),
       });
       if (res.ok) {
-        setShowAlert(true);
         const json = await res.json();
         console.log(json);
         localStorage.setItem("accessToken", json.accessToken);
         localStorage.setItem("refreshToken", json.refreshToken);
         localStorage.setItem("username", json.username);
         localStorage.setItem("id", json._id);
-        // props.history.push("/");
+        props.history.push("/");
       } else {
         console.log("there is an error");
       }
@@ -91,7 +86,7 @@ function RegisterPage(props) {
   return (
     <>
       <div className={styles.registerDiv}>
-        {showAlert && (
+        {/* {showAlert && (
           <div className={styles.alert}>
             <Alert variant="success">
               <div className={styles.closeAlert} onClick={loggedIn}>
@@ -100,7 +95,7 @@ function RegisterPage(props) {
               You have successfully logged in
             </Alert>
           </div>
-        )}
+        )} */}
 
         <div className={styles.loginContainer}>
           <div className={styles.imageContainer}>
