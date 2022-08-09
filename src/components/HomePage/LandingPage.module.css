@@ -24,7 +24,7 @@
 .startContainer h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 3vmax;
   color: rgb(255, 255, 255);
 }
 
@@ -55,15 +55,6 @@
   display: flex;
 
   gap: 24px;
-}
-
-@media only screen and (max-width: 992px) {
-  .landingImage {
-    display: none;
-  }
-  .startContainer {
-    margin-left: 10px;
-  }
 }
 
 .howItWorksSection {
@@ -100,7 +91,6 @@
   width: 200px;
   height: 200px;
   background-color: #52ab991e;
-
 }
 
 .howItWorksIcon {
@@ -118,9 +108,26 @@
   font-weight: 500;
   font-family: "Poppins", sans-serif;
   padding: 18px 0px 0px;
-  margin: 16px 0px 0px ;
+  margin: 16px 0px 0px;
   color: rgb(44, 44, 44);
   display: grid;
   justify-content: center;
   text-align: center;
+}
+/* Mobile device */
+
+@media only screen and (max-width: 992px) {
+  .landingImage {
+    display: none;
+  }
+  .startContainer {
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  /* .homeDiv {
+    position: absolute;
+    top: 0;
+  } */
 }
