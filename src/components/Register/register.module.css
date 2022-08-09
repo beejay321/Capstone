@@ -25,7 +25,7 @@
 }
 .loginContainer {
   display: flex;
-  width: 70%;
+  width: 65%;
   box-shadow: 0px 5px 5px 5px rgb(232, 232, 232);
   border-radius: 15px;
 }
@@ -68,7 +68,7 @@
   padding-top: 10px;
   font-family: "Poppins" sans-serif;
   font-weight: bolder;
-  font-size: 48px;
+  font-size: 5vmin;
 }
 .formDiv {
   width: 100%;
@@ -95,7 +95,7 @@
   align-items: center;
   background-color: #52ab99;
   width: 35%;
-  font-size: 18px;
+  font-size: 1.8vmin;
   border-radius: 45px;
   border: none;
   color: #fcfcfc;
@@ -118,7 +118,7 @@
   color: rgb(82, 61, 22);
 }
 .loginformtext {
-  font-size: 15px;
+  font-size: 1vmax;
   font-weight: 500;
   color: rgb(49, 49, 49);
   cursor: pointer;
@@ -126,7 +126,7 @@
 
 .loginformlink {
   font-family: "Poppins" sans-serif;
-  font-size: 15px;
+  font-size: 1vmax;
   font-weight: 500;
   text-decoration: none !important;
   color: rgb(49, 49, 49) !important;
@@ -134,7 +134,7 @@
 }
 .loginformCheck {
   font-family: "Poppins" sans-serif;
-  font-size: 15px;
+  font-size: 1vmax;
   font-weight: 500;
   text-decoration: none !important;
   border-color: #52ab99 !important;
@@ -146,7 +146,7 @@
 }
 .newAcc {
   font-family: "Poppins" sans-serif;
-  font-size: 15px;
+  font-size: 1vmax;
   font-weight: 500;
   color: #aba952;
   padding: 0px 4px;
@@ -159,4 +159,30 @@
 .loginformlink:hover {
   text-decoration: none !important;
   color: rgb(49, 49, 49);
+}
+
+/* Mobile device  */
+
+@media only screen and (max-width: 950px) {
+  .loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    box-shadow: 0px 5px 5px 5px rgb(232, 232, 232);
+    border-radius: 15px;
+  }
+
+  .imageContainer {
+    display: none;
+  }
+  .loginBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    /* border-radius: 15px; */
+    min-height: 70vh;
+    /* padding: 10px 20px 7px; */
+  }
 }
