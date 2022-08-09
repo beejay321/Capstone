@@ -89,7 +89,7 @@ const PostProject = () => {
       <div className={styles.postProjectSection}>
         <Container className=" ">
           <Row>
-            <Col className={styles.postProjectForm} xs={{ offset: 2, span: 8 }}>
+            <Col className={styles.postProjectForm} xs={12} sm={{ offset: 1, span: 10 }} md={{ offset: 2, span: 8 }}>
               <h2 className={styles.title}>Create your Project</h2>
               <Form>
                 <Form.Control className={styles.postInput} required placeholder="Project Title" value={title} onChange={(e) => setTitle(e.target.value)} type="text" />
