@@ -105,3 +105,38 @@
   transform: scale(1.05);
   background-color: #52ab98;
 }
+/* Mobile device */
+@media only screen and (max-width: 850px) {
+  #navbox {
+    padding: 0px 10px;
+  }
+
+  .navLink {
+    display: flex;
+    gap: 0px;
+    justify-content: center;
+    align-items: flex-end;
+    color: #416974;
+  }
+
+  .navLink a {
+    text-decoration: none;
+    color: #416974;
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    padding: 5px 0px;
+    margin: 5px 0px;
+  }
+
+  .navLink a.active {
+    transform: scale(1.02);
+    color: #52ab99;
+    border-bottom: 2px solid #52ab99;
+    font-weight: 500;
+  }
+  #basic-navbar-nav > div:nth-child(3) > div > a {
+    padding: 5px 0px;
+    margin: 5px 0px;
+  }
+}
