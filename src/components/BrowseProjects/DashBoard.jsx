@@ -79,9 +79,9 @@ const Dashboard = () => {
           <Container className="pt-5">
             <Row>
               {loaders.map((l) => (
-                <Col xs={3}>
+                <Col xs={12} sm={6} lg={4} xl={3}>
                   <Card className={styles.projectCard}>
-                  <Skeleton className={styles.projectSkeleton} height={200}  />
+                    <Skeleton className={styles.projectSkeleton} height={200} />
 
                     <div className={styles.cardBody}>
                       <div className={styles.cardTitle}>
