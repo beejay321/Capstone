@@ -8,9 +8,9 @@ const Login = ({ firstname, lastname, email, password, setSurname, setFirstName,
     <>
       <div className={styles.formDiv}>
         <div className={styles.title}>
-          <div>
+          {/* <div> */}
             <span className="">{title}</span>
-          </div>
+          {/* </div> */}
         </div>
         {title === "Sign Up" && (
           <div className="">
