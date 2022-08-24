@@ -4,8 +4,7 @@ import "../../styles/checkout.css";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
 
-const MY_APP_API_URL = "http://localhost:3255";
-// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 const ConfirmDetails = ({ match, history }) => {
   const [bidder, setBidder] = useState("");
