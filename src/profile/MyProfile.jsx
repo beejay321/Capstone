@@ -18,7 +18,7 @@ import Reviews from "./Reviews";
 // import Messages from "../components/Message/Messages";
 import { useRouteMatch } from "react-router-dom/cjs/react-router-dom.min";
 
-// const MY_APP_API_URL = "http://localhost:3255";
+
 
 const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
