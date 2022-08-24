@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import { useHistory } from "react-router-dom";
 import styles from "./ProjectDetail.module.css";
-const MY_APP_API_URL = "http://localhost:3255";
-// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
+const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 function FreelancersBidView({ bids, project }) {
   const [showBids, setShowBids] = useState(true);
 
+  let history = useHistory();
   const deleteBid = async (bid) => {
     // e.preventDefault();
     try {
@@ -21,6 +21,7 @@ function FreelancersBidView({ bids, project }) {
       });
       if (response.ok) {
         alert("Deleted");
+        // window.location.reload();
       }
     } catch (error) {
       console.log(error);
