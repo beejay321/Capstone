@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-// const MY_APP_API_URL = "http://localhost:3255";
+
 
 const MyProjects = (props) => {
   return (
