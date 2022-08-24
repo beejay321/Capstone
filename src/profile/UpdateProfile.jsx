@@ -5,6 +5,8 @@ import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import styles from "./profile.module.css";
 import { useRouteMatch } from "react-router-dom";
+const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+
 
 const UpdateProfile = (props) => {
   let match = useRouteMatch();
@@ -26,7 +28,7 @@ const UpdateProfile = (props) => {
         occupation: occupation,
         skills: skill,
       };
-      const response = await fetch(`http://localhost:3255/users/${match.params.id}/updateProfile`, {
+      const response = await fetch(`${MY_APP_API_URL}/users/${match.params.id}/updateProfile`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
