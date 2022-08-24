@@ -1,23 +1,4 @@
-// export const addToFavAction = (project) => {
-//   return {
-//     type: "ADD_TO_FAV",
-//     payload: project,
-//   };
-// };
-
-// export const removeFromFavAction = (project) => {
-//   return {
-//     type: "REMOVE_FROM_FAV",
-//     payload: project,
-//   };
-// };
-
 const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
-
-
-
-
-
 
 export const loggedInAction = (user) => {
   return async (dispatch) => {
