@@ -8,10 +8,9 @@ import PaymentMade from "./PaymentMade";
 import ProjectCheckout from "./ProjectCheckout";
 import ProjectSummary from "./ProjectSummary";
 
-// const MY_APP_API_URL = "http://localhost:3255";
 const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
-const Checkout = ({ match, history }) => {
+const Checkout = ({ match }) => {
   const [bidder, setBidder] = useState("");
   const [price, setPrice] = useState("");
   const [projectDetails, setProjectDetails] = useState("");
