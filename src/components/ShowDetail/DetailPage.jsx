@@ -9,8 +9,7 @@ import DetailOfProject from "./DetailOfProject";
 import FreelancersBidView from "./FreelancersBidView";
 import OwnersBidView from "./OwnersBidView";
 
-// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
-const MY_APP_API_URL = "http://localhost:3255";
+const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 const DetailPage = ({ match, history }) => {
   const [project, setProject] = useState("");
