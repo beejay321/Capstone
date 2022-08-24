@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import "./profilepage.css";
 
-const MY_APP_API_URL = "http://localhost:3255";
 
-// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+
+const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 const EditExperience = (props) => {
   const [role, setRole] = useState("");
   const [company, setCompany] = useState("");
