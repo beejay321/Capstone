@@ -6,8 +6,7 @@ import styles from "./message.module.css";
 import { io } from "socket.io-client";
 import ChatBox from "./chatBox";
 import Footer from "../Footer";
-const MY_APP_API_URL = "http://localhost:3255";
-// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 const userId = localStorage.getItem("id");
 const socket = io(MY_APP_API_URL, { transports: ["websocket"] });
 function Messages(props) {
