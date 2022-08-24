@@ -14,8 +14,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const MY_APP_API_URL = "http://localhost:3255";
-// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 const BidModal = (props) => {
   const [user] = useState(localStorage.getItem("id"));
@@ -54,6 +53,7 @@ const BidModal = (props) => {
         console.log(response);
         alert("bid successful");
         setShow(false);
+        window.location.reload();
       } else {
         alert("Please check all fields");
       }
