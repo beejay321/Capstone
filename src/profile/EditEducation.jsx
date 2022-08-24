@@ -3,9 +3,9 @@ import { Modal, Button, Form } from "react-bootstrap";
 import "./profilepage.css";
 import styles from "./profile.module.css";
 
-const MY_APP_API_URL = "http://localhost:3255";
 
-// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+
+const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 function EditEducation(props) {
   const [degree, setDegree] = useState("");
   const [institution, setInstitution] = useState("");
