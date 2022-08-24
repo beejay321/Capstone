@@ -5,8 +5,7 @@ import "react-chat-elements/dist/main.css";
 import styles from "./message.module.css";
 
 const userId = localStorage.getItem("id");
-const MY_APP_API_URL = "http://localhost:3255";
-// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 function ChatRooms({ showChatBox, showNotification }) {
   const [chats, setChats] = useState([]);
