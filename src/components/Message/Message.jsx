@@ -3,6 +3,7 @@ import { Button, Col } from "react-bootstrap";
 import ChatBox from "./chatBox";
 import styles from "./message.module.css";
 import { io } from "socket.io-client";
+import { useHistory } from "react-router-dom";
 
 const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 // const userId = localStorage.getItem("id");
@@ -17,6 +18,7 @@ function Message(props) {
   // const [chats, setChats] = useState([]);
   // const [roomy, setRoomy] = useState("");
   // const [roomHistory, setRoomHistory] = useState("");
+  let history = useHistory();
 
   const user = props.user;
 
@@ -30,10 +32,14 @@ function Message(props) {
   // };
 
   const showChatBox = () => {
+    if (localStorage.getItem("id")) {
+      setShowButton(false);
+      setShowChat(true);
+    } else {
+      history.push("/register");
+    }
     // props.history.push(`/me/messages`);
     // createRoom();
-    setShowButton(false);
-    setShowChat(true);
   };
   const outputMessage = (msg) => {
     console.log(chatHistory);
