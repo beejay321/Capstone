@@ -16,7 +16,7 @@ function DetailOfProject({ project, match }) {
   useEffect(() => {
     console.log(project.bids);
     let bidded = project.bids.filter((b) => b.user._id === userId);
-    console.log(bidded.length)
+    console.log(bidded.length);
     if (bidded.length === 0) {
       setBidExists(false);
     }
@@ -55,7 +55,11 @@ function DetailOfProject({ project, match }) {
             <p className={styles.projectLocation}>{project.location}</p>
           </div>
           <div className={styles.bidOffer}>
-            {localStorage.getItem("id") === project.seller._id ? <EditProject project={project} history={history} /> : <div>{!bidExists && <BidModal match={match} project={project} />}</div>}
+            {localStorage.getItem("id") === project.seller._id ? (
+              <EditProject project={project} history={history} />
+            ) : (
+              <div>{!bidExists && <BidModal match={match} history={history} project={project}  />}</div>
+            )}
           </div>{" "}
         </div>
       </div>
