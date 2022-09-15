@@ -10,7 +10,7 @@ const LandingPage = (routerProps) => {
     if (localStorage.getItem("id")) {
       routerProps.history.push("/postproject");
     } else {
-      routerProps.history.push("/login");
+      routerProps.history.push("/register");
     }
   };
 
