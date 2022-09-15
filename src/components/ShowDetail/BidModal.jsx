@@ -63,11 +63,19 @@ const BidModal = (props) => {
     }
   };
 
+ 
+
   return (
     <>
-      <div className={styles.bidButton} onClick={handleShow}>
-        <span>Make an Offer</span>
-      </div>
+      {localStorage.getItem("id") ? (
+        <div className={styles.bidButton} onClick={handleShow}>
+          <span>Make an Offer</span>
+        </div>
+      ) : (
+        <div className={styles.bidButton} onClick={() => props.history.push("/register")}>
+          <span>Make an Offer</span>
+        </div>
+      )}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
