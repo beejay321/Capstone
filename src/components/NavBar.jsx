@@ -37,15 +37,22 @@ const NavBar = (props) => {
             </Nav>
 
             <Nav className="justify-content-end navLink">
-              <NavLink to="/postproject" className="">
-                Post a Project
-              </NavLink>
+              {localStorage.getItem("id") ? (
+                <NavLink to="/postproject" className="">
+                  Post a Project
+                </NavLink>
+              ) : (
+                <NavLink to="/register" className="">
+                  Post a Project
+                </NavLink>
+              )}
             </Nav>
             <Nav className=" ">
               {localStorage.getItem("id") ? (
                 <NavDropdown
+                  className=""
                   end
-                  title={<Image src="https://gravatar.com/avatar/127ecc1066b3208f58459e4a488bd764?s=30&d=mp&r=x" height="35" width="35" className="" alt="..." roundedCircle />}
+                  title={<Image src="https://gravatar.com/avatar/127ecc1066b3208f58459e4a488bd764?s=30&d=mp&r=x" height="35" width="35" alt="..." roundedCircle />}
                   align="right"
                 >
                   <NavDropdown.Item href={`/users/${localStorage.getItem("id")}`}>My Profile</NavDropdown.Item>
