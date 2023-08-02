@@ -9,7 +9,9 @@ import Search from "./Search";
 import Category from "./Category";
 import AllProjects from "./AllProjects";
 
-const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+//const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "https://clientconnect-b57f56bb1351.herokuapp.com";
+
 
 const Dashboard = () => {
   const [query, setQuery] = useState("");
