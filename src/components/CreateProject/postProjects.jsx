@@ -7,7 +7,8 @@ import NavBar from "../NavBar";
 import { useHistory } from "react-router-dom";
 
 // const MY_APP_API_URL = "http://localhost:3255";
-const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+//const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "https://clientconnect-b57f56bb1351.herokuapp.com";
 
 const PostProject = () => {
   const [seller] = useState(localStorage.getItem("id"));
