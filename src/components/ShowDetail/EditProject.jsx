@@ -3,7 +3,8 @@ import { Form, Row, Col, Button, Modal } from "react-bootstrap";
 import styles from "./ProjectDetail.module.css";
 
 
-const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+//const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "https://clientconnect-b57f56bb1351.herokuapp.com";
 
 function EditProject(props) {
   const [seller] = useState(localStorage.getItem("id"));
