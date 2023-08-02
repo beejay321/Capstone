@@ -5,7 +5,10 @@ import styles from "./message.module.css";
 import { io } from "socket.io-client";
 import { useHistory } from "react-router-dom";
 
-const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+//const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "https://clientconnect-b57f56bb1351.herokuapp.com";
+
+
 // const userId = localStorage.getItem("id");
 const socket = io(MY_APP_API_URL, { transports: ["websocket"] });
 
