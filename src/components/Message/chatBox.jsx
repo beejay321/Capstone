@@ -9,7 +9,7 @@ const userId = localStorage.getItem("id");
 
 // import InputEmoji from "react-input-emoji";
 
-// const MY_APP_API_URL = "http://localhost:3255";
+// const MY_APP_API_URL = "https://clientconnect-b57f56bb1351.herokuapp.com";
 // const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 const ChatBox = ({ title, chatcomp, chat, chatHistory, socket, user, setShowButton, selectedRoom, setShowChat, showChat }) => {
