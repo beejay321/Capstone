@@ -5,7 +5,8 @@ import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import styles from "./profile.module.css";
 import { useRouteMatch } from "react-router-dom";
-const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+//const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "https://clientconnect-b57f56bb1351.herokuapp.com";
 
 
 const UpdateProfile = (props) => {
