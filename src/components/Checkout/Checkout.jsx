@@ -8,7 +8,9 @@ import PaymentMade from "./PaymentMade";
 import ProjectCheckout from "./ProjectCheckout";
 import ProjectSummary from "./ProjectSummary";
 
-const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+//const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "https://clientconnect-b57f56bb1351.herokuapp.com";
+
 
 const Checkout = ({ match }) => {
   const [bidder, setBidder] = useState("");
