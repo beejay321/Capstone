@@ -4,7 +4,9 @@ import "../../styles/checkout.css";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
 
-const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+// const MY_APP_API_URL = "http://localhost:3255";
+const MY_APP_API_URL = "https://clientconnect-b57f56bb1351.herokuapp.com";
+// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 
 const ConfirmDetails = ({ match, history }) => {
   const [bidder, setBidder] = useState("");
@@ -22,12 +24,15 @@ const ConfirmDetails = ({ match, history }) => {
   useEffect(() => {
     const getProject = async () => {
       try {
-        let response = await fetch(`${MY_APP_API_URL}/projects/${match.params.projectId}`, {
-          method: "GET",
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        });
+        let response = await fetch(
+          `${MY_APP_API_URL}/projects/${match.params.projectId}`,
+          {
+            method: "GET",
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
         console.log(response);
         let result = await response.json();
         console.log(result);
@@ -42,7 +47,9 @@ const ConfirmDetails = ({ match, history }) => {
   useEffect(() => {
     const getBid = async () => {
       try {
-        let response = await fetch(`${MY_APP_API_URL}/projects/${match.params.projectId}/bids/${match.params.bidId}`);
+        let response = await fetch(
+          `${MY_APP_API_URL}/projects/${match.params.projectId}/bids/${match.params.bidId}`
+        );
         console.log(response);
         if (response.ok) {
           let result = await response.json();
@@ -74,12 +81,15 @@ const ConfirmDetails = ({ match, history }) => {
   useEffect(() => {
     const getProfile = async () => {
       try {
-        let response = await fetch(`${MY_APP_API_URL}/users/${match.params.bidderId}`, {
-          method: "GET",
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        });
+        let response = await fetch(
+          `${MY_APP_API_URL}/users/${match.params.bidderId}`,
+          {
+            method: "GET",
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
         if (response.ok) {
           let data = await response.json();
           console.log(data);

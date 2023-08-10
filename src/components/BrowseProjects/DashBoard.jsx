@@ -9,9 +9,9 @@ import Search from "./Search";
 import Category from "./Category";
 import AllProjects from "./AllProjects";
 
-//const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+// const MY_APP_API_URL = "http://localhost:3255";
+// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
 const MY_APP_API_URL = "https://clientconnect-b57f56bb1351.herokuapp.com";
-
 
 const Dashboard = () => {
   const [query, setQuery] = useState("");
@@ -59,7 +59,9 @@ const Dashboard = () => {
   const searchCategory = async (category) => {
     setIsLoading(true);
     try {
-      let response = await fetch(`${MY_APP_API_URL}/projects?category=${category}`);
+      let response = await fetch(
+        `${MY_APP_API_URL}/projects?category=${category}`
+      );
       let result = await response.json();
       console.log(result);
       setProjects(result);
@@ -73,7 +75,11 @@ const Dashboard = () => {
   return (
     <>
       <NavBar />
-      <Search query={query} searchProjects={searchProjects} setQuery={setQuery} />
+      <Search
+        query={query}
+        searchProjects={searchProjects}
+        setQuery={setQuery}
+      />
       <Category searchCategory={searchCategory} />
       {isLoading ? (
         <div className={styles.projectDiv}>
@@ -93,7 +99,11 @@ const Dashboard = () => {
                       </div>
                       <div className={styles.projectProp}>
                         <div className={styles.sellerImageDiv}>
-                          <Skeleton circle height="100%" containerClassName="avatar-skeleton" />
+                          <Skeleton
+                            circle
+                            height="100%"
+                            containerClassName="avatar-skeleton"
+                          />
                         </div>
                         <div className="">
                           <Skeleton count={2} width={80} />

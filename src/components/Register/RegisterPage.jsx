@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Image } from "react-bootstrap";
+import { Alert, Image, Col, Row, Form } from "react-bootstrap";
 import { connect } from "react-redux";
 import styles from "./register.module.css";
 
@@ -13,8 +13,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   isLogged: (user) => dispatch(loggedInAction(user)),
 });
-//const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
-const MY_APP_API_URL = "https://clientconnect-b57f56bb1351.herokuapp.com";
+
+// const MY_APP_API_URL = "https://clientconnectapp.herokuapp.com";
+const MY_APP_API_URL = "https://clientconnect-b57f56bb1351.herokuapp.com/";
+// const MY_APP_API_URL = "http://localhost:3255";
 
 function RegisterPage(props) {
   const [firstname, setFirstName] = useState("");
@@ -23,7 +25,6 @@ function RegisterPage(props) {
   const [password, setPassword] = useState("");
   const [showLogin, setShowLogin] = useState(true);
 
- 
   const signup = async (e) => {
     try {
       const details = {
@@ -69,6 +70,7 @@ function RegisterPage(props) {
         body: JSON.stringify(details),
       });
       if (res.ok) {
+        console.log(res);
         const json = await res.json();
         console.log(json);
         localStorage.setItem("accessToken", json.accessToken);
@@ -102,16 +104,30 @@ function RegisterPage(props) {
           <div className={styles.imageContainer}>
             <div className={styles.imageDiv}>
               <div className="d-flex justify-content-center">
-                <Image src="https://res.cloudinary.com/dvyids286/image/upload/v1659503066/CapstoneProjects/pauu3m1t0vh5lkff1dv2.png" height="200" roundedCircle />
+                <Image
+                  src="https://res.cloudinary.com/dvyids286/image/upload/v1659503066/CapstoneProjects/pauu3m1t0vh5lkff1dv2.png"
+                  height="200"
+                  roundedCircle
+                />
               </div>
               <div className={styles.imageDivtext}>
-                <div className="d-flex justify-content-center">Client Connect</div>
+                <div className="d-flex justify-content-center">
+                  Client Connect
+                </div>
               </div>
             </div>{" "}
           </div>
           <div className={styles.loginBox}>
             {showLogin ? (
-              <Login setShowLogin={setShowLogin} email={email} password={password} setEmail={setEmail} setPassword={setPassword} register={login} title="Log In" />
+              <Login
+                setShowLogin={setShowLogin}
+                email={email}
+                password={password}
+                setEmail={setEmail}
+                setPassword={setPassword}
+                register={login}
+                title="Log In"
+              />
             ) : (
               <Login
                 firstname={firstname}
@@ -128,6 +144,38 @@ function RegisterPage(props) {
               />
             )}{" "}
           </div>
+          {/* <Container className={styles.loginContainer}> */}
+          {/* <Col xs={7} md={5}>
+            <Form className={styles.loginBox}>
+              {showLogin ? (
+                <Login
+                  setShowLogin={setShowLogin}
+                  email={email}
+                  password={password}
+                  setEmail={setEmail}
+                  setPassword={setPassword}
+                  register={login}
+                  title="Login"
+                />
+              ) : (
+                <Login
+                  firstname={firstname}
+                  lastname={lastname}
+                  setFirstName={setFirstName}
+                  setSurname={setSurname}
+                  setShowLogin={setShowLogin}
+                  email={email}
+                  password={password}
+                  setEmail={setEmail}
+                  setPassword={setPassword}
+                  register={signup}
+                  title="Signup"
+                />
+              )}
+              <Row></Row>
+            </Form>
+          </Col> */}
+          {/* </Container> */}
         </div>
       </div>
     </>
