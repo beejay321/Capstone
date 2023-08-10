@@ -31,7 +31,7 @@ Clientconnect is a MERN stack marketplace website to connect freelancers to clie
 - #### Express js
 - #### MongoDb
 
-### please click the link below for the source code for the backend of this project. 
+### Please click the link below for the source code for the backend of this project. 
 <a
                 target="_blank"
                 href="https://github.com/beejay321/clientconnect-BE"
